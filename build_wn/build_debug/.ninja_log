@@ -1,0 +1,22 @@
+# ninja log v7
+16	396	8048981393398472	CMakeFiles/BaaghChaal.dir/src/main.cpp.obj	f2a1c59c3285b14a
+59	265	8048981511902175	BaaghChaal.exe	1027192c74b7d6f4
+41	215	8048542311368062	CMakeFiles/BaaghChaal.dir/src/engine/move_evaluator.cpp.obj	6784a0b74a770394
+12	214	8048542311072493	CMakeFiles/BaaghChaal.dir/src/core/game_manager.cpp.obj	2153bbef38803e10
+74	215	8048542311698083	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/game_configer_scene.cpp.obj	40ab2e23fd28e1f5
+85	216	8048542311820505	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/resource_manager.cpp.obj	4ad80143fa5cd5d7
+31	216	8048542311262682	CMakeFiles/BaaghChaal.dir/src/engine/minimax.cpp.obj	e4444604dbd2254b
+6	211	8048542311012435	CMakeFiles/BaaghChaal.dir/src/core/event_manager.cpp.obj	8a4ecb80948f97f4
+20	215	8048542311162724	CMakeFiles/BaaghChaal.dir/src/engine/board_evaluator.cpp.obj	20d5269cdae717aa
+64	217	8048542311608034	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	a34e34c8819783f9
+115	216	8048542312110484	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.obj	298c3a5a5baa5053
+4	58	8048981511356718	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/scence_core.cpp.obj	a13298c791c2d59e
+96	217	8048542311940539	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.obj	53f0cdb85921e01a
+125	214	8048542312210618	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/ui_config.cpp.obj	9f5b20b35938766c
+3	186	8048999501443465	build.ninja	2e3aaf01ae9101a
+3	186	8048999501403554	D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_wn/build_debug/cmake_install.cmake	2e3aaf01ae9101a
+8	400	8048981393315201	CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.obj	2b820d796f779203
+23	97	8048999504202814	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	a34e34c8819783f9
+6	362	8048999504032655	CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.obj	2b820d796f779203
+13	364	8048999504102659	CMakeFiles/BaaghChaal.dir/src/main.cpp.obj	f2a1c59c3285b14a
+364	550	8048999507606775	BaaghChaal.exe	12b13e589a567983

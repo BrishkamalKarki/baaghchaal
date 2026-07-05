@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 28,
+    "patch": 0
+  },
+  "configurePresets": [{
+    "name": "debug-linux",
+    "displayName": "Debug (unoptimized)",
+    "generator": "Ninja",
+    "binaryDir": "${sourceDir}/build_ln/build_debug",
+    "cacheVariables": {
+      "CMAKE_BUILD_TYPE": "Debug"
+    }
+  },
+  {
+    "name": "release-linux",
+    "displayName": "Release (optimized)",
+    "generator": "Ninja",
+    "binaryDir": "${sourceDir}/build_ln/build_release",
+    "cacheVariables": {
+      "CMAKE_BUILD_TYPE": "Release"
+    }
+  },
+  {
+    "name": "debug-windows",
+    "displayName": "Debug (unoptimized)",
+    "generator": "Ninja",
+    "binaryDir": "${sourceDir}/build_wn/build_debug",
+    "cacheVariables": {
+      "CMAKE_BUILD_TYPE": "Debug"
+    }
+  },
+  {
+    "name": "release-windows",
+    "displayName": "Release (optimized)",
+    "generator": "Ninja",
+    "binaryDir": "${sourceDir}/build_wn/build_release",
+    "cacheVariables": {
+      "CMAKE_BUILD_TYPE": "Release"
+    }
+  }
+]
+}

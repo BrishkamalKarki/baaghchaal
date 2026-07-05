@@ -1,0 +1,13 @@
+prefix=C:/Program Files (x86)/SDL3_image
+exec_prefix=C:/Program Files (x86)/SDL3_image
+libdir=C:/Program Files (x86)/SDL3_image/lib
+sharedlibdir=C:/Program Files (x86)/SDL3_image/lib
+includedir=C:/Program Files (x86)/SDL3_image/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

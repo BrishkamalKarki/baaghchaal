@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\examples\advanced\01-tag-tracks\tag-tracks.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\examples\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\examples\music.mp3" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\examples\sword.wav" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\examples\spring.wav" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\examples\splash.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DE05BAE9-20AB-3A2D-83AA-005D3B15BED0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

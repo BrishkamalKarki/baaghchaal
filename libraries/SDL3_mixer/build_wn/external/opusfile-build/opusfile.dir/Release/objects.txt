@@ -1,0 +1,4 @@
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/build_wn/external/opusfile-build/opusfile.dir/Release/info.obj
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/build_wn/external/opusfile-build/opusfile.dir/Release/internal.obj
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/build_wn/external/opusfile-build/opusfile.dir/Release/opusfile.obj
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/build_wn/external/opusfile-build/opusfile.dir/Release/stream.obj

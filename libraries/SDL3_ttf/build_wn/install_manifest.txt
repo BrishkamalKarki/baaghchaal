@@ -1,0 +1,10 @@
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/lib/SDL3_ttf.lib
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/bin/SDL3_ttf.dll
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/include/SDL3_ttf/SDL_textengine.h
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/include/SDL3_ttf/SDL_ttf.h
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/cmake/SDL3_ttfConfig.cmake
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/cmake/SDL3_ttfConfigVersion.cmake
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/cmake/SDL3_ttf-shared-targets.cmake
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/cmake/SDL3_ttf-shared-targets-release.cmake
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/lib/pkgconfig/sdl3-ttf.pc
+D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_wn/Release/share/licenses/SDL3_ttf/LICENSE.txt

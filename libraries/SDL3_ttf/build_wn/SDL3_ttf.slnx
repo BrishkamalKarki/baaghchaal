@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="RelWithDebInfo"/>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="SDL3_ttf-shared.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7ac9c7d1-02f2-3c79-912e-d1c26a7cfa26">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/harfbuzz/harfbuzz.vcxproj"/>
+	</Project>
+	<Project Path="external/freetype/freetype.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="4f02e14c-0e62-3d06-83b5-23084c78564d">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="glfont.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="b57df6cd-903c-3015-810c-153f105e474e">
+		<BuildDependency Project="SDL3_ttf-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/harfbuzz/harfbuzz.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="823c37c3-f2e8-35fa-ae41-623672e12ea5">
+		<BuildDependency Project="external/freetype/freetype.vcxproj"/>
+	</Project>
+	<Project Path="showfont.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2fb52e04-8e0a-36f7-9c9f-2a3fdeb0922f">
+		<BuildDependency Project="SDL3_ttf-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="testapp.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="016d2503-aec1-36ea-a7b6-6585964d19cc">
+		<BuildDependency Project="SDL3_ttf-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="testgputext.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="de4fa7e6-d4c3-353c-a088-4fb7c2f0f8e2">
+		<BuildDependency Project="SDL3_ttf-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Folder Name="/CMakePredefinedTargets/">
+		<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1249c292-4450-30aa-a0b1-161f089db425" DefaultStartup="true">
+			<BuildDependency Project="SDL3_ttf-shared.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<BuildDependency Project="glfont.vcxproj"/>
+			<BuildDependency Project="showfont.vcxproj"/>
+			<BuildDependency Project="testapp.vcxproj"/>
+			<BuildDependency Project="testgputext.vcxproj"/>
+		</Project>
+		<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1e4fb6c2-6974-3335-99b9-f344fb64187f">
+			<BuildDependency Project="ALL_BUILD.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+		</Project>
+		<Project Path="PACKAGE.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="16e1db4a-6fc6-3d13-8306-6a5c80c7f0d9">
+			<BuildDependency Project="ALL_BUILD.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+		</Project>
+		<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="77846a43-02d1-3a66-9de9-937fb17f066d"/>
+	</Folder>
+</Solution>

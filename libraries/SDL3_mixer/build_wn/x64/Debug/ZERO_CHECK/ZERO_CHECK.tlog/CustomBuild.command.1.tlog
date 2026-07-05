@@ -1,0 +1,10 @@
+^D:\BRISHKAMALMATERIAL\COLONELDOCUMENTS\CODEHUB\PROJECTS\CPP\BAAGHCHAAL\LIBRARIES\SDL3_MIXER\BUILD_WN\CMAKEFILES\68F863F40ED9FCBACE7CC2DA5EE8B02B\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer -BD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/build_wn --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/build_wn/SDL3_mixer.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

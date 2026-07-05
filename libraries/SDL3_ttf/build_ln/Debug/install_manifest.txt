@@ -1,0 +1,14 @@
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/libSDL3_ttf.so.0.1.0
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/libSDL3_ttf.so.0
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/libSDL3_ttf.so
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/include/SDL3_ttf/SDL_textengine.h
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/include/SDL3_ttf/SDL_ttf.h
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/SDL3_ttfConfig.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/SDL3_ttfConfigVersion.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/PkgConfigHelper.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/Findharfbuzz.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/Findplutosvg.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/SDL3_ttf-shared-targets.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/cmake/SDL3_ttf/SDL3_ttf-shared-targets-debug.cmake
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/lib/pkgconfig/sdl3-ttf.pc
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/install_ln/Debug/share/licenses/SDL3_ttf/LICENSE.txt

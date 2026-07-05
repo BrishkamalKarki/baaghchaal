@@ -1,0 +1,1 @@
+D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL3_mixer\build_wn\external\libmpg123-build\ports\cmake\src\compat\compat.dir\Debug\compat.lib

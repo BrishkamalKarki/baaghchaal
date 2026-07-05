@@ -1,0 +1,6 @@
+# Hashes of file build rules.
+c35fdeca8e054b87f6d2d5004f627de3 examples/CMakeFiles/copy-sdlmixer-example-resources
+823030c763742d78d3ff42c8c2eb1145 examples/music.mp3
+687ba2f8a2115b80f52039458ff946cb examples/splash.wav
+dbb625d376cf76f0119f55a0be931ee0 examples/spring.wav
+1ae0a4daf3b9b7fa679e07bf944fdccb examples/sword.wav

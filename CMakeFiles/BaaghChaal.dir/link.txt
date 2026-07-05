@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/BaaghChaal.dir/src/main.cpp.o -o BaaghChaal  -Wl,-rpath,/usr/local/lib /usr/local/lib/libSDL3.so.0.5.0 

@@ -1,0 +1,14 @@
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/SDL3_image-shared.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/uninstall.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/showanim.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/showimage.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/showclipboard.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/showgpuimage.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/package.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/package_source.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/edit_cache.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/rebuild_cache.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/list_install_components.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/install.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/install/local.dir
+/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_image/build_ln/Debug/CMakeFiles/install/strip.dir

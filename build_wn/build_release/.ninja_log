@@ -1,0 +1,22 @@
+# ninja log v7
+45	486	8048889467492950	CMakeFiles/BaaghChaal.dir/src/main.cpp.obj	aae821e66af1a75c
+487	755	8048889471905172	BaaghChaal.exe	de84b4494b6561b
+9	154	8048542318898027	CMakeFiles/BaaghChaal.dir/src/core/game_manager.cpp.obj	6a487203e5f0ef00
+5	125	8048542318868023	CMakeFiles/BaaghChaal.dir/src/core/event_manager.cpp.obj	e1e08c7c8597628a
+16	139	8048542318978142	CMakeFiles/BaaghChaal.dir/src/engine/board_evaluator.cpp.obj	e62b55a0bce686ae
+24	148	8048542319058120	CMakeFiles/BaaghChaal.dir/src/engine/minimax.cpp.obj	3d2463242341261
+51	155	8048542319344688	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	da76f073d5996ced
+61	174	8048542319424607	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/game_configer_scene.cpp.obj	2e37352f758f66d5
+35	156	8048542319169381	CMakeFiles/BaaghChaal.dir/src/engine/move_evaluator.cpp.obj	d592faec7d43f2a7
+69	190	8048542319514633	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/resource_manager.cpp.obj	6d935d076f68c573
+101	207	8048542319825947	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/ui_config.cpp.obj	f0fd77998fddaf24
+77	189	8048542319584657	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.obj	89ebec43e122401a
+85	184	8048542319664617	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/scence_core.cpp.obj	a405d2a022877979
+92	191	8048542319744633	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.obj	ef4905654c697f34
+2	144	8048999503309815	build.ninja	a7c5fa906cc7faf0
+2	144	8048999503290361	D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_wn/build_release/cmake_install.cmake	a7c5fa906cc7faf0
+36	481	8048889467404135	CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.obj	e71240c682ac6bda
+24	93	8048999583522941	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	da76f073d5996ced
+14	350	8048999583422905	CMakeFiles/BaaghChaal.dir/src/main.cpp.obj	aae821e66af1a75c
+6	352	8048999583333080	CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.obj	e71240c682ac6bda
+352	538	8048999586799886	BaaghChaal.exe	9d8af8e11f8bd68f

@@ -1,0 +1,16 @@
+# ninja log v5
+14	85	1783221299709051900	CMakeFiles/BaaghChaal.dir/src/engine/minimax.cpp.o	dc6b184fbc845aca
+20	101	1783221299719484100	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/ui_config.cpp.o	a13034327023bdcf
+18	98	1783221299717697000	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/resource_manager.cpp.o	3891ef8cdca2bd66
+16	482	1783241871158159300	CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.o	fa8f5790585c1daf
+20	99	1783221299720224200	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.o	5e2d00ca0315f5c4
+12	434	1783242108981675200	CMakeFiles/BaaghChaal.dir/src/main.cpp.o	bb1f50b7a1161718
+31	565	1783243490514234300	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.o	61d8241a51263fb
+19	103	1783221299723234400	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.o	75b735d2ea905665
+15	97	1783221299717754000	CMakeFiles/BaaghChaal.dir/src/engine/move_evaluator.cpp.o	276bae963cc348d5
+14	92	1783221299713924600	CMakeFiles/BaaghChaal.dir/src/engine/board_evaluator.cpp.o	bd4a548d4ebf4e9
+565	662	1783243490610819400	BaaghChaal	6d93e7e4e5f0ce53
+13	96	1783221299714503300	CMakeFiles/BaaghChaal.dir/src/core/game_manager.cpp.o	e8d18c2f6fbf0ea5
+18	656	1783241871332586900	CMakeFiles/BaaghChaal.dir/src/ui/ui_manager.cpp.o	e3e2415d101001a1
+17	94	1783221299713697100	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/game_configer_scene.cpp.o	b8a3c913d2798ec0
+12	90	1783221299713290000	CMakeFiles/BaaghChaal.dir/src/core/event_manager.cpp.o	a64aa5c5ca98e1fd

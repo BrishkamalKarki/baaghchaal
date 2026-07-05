@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="RelWithDebInfo"/>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="external/flac-build/src/libFLAC/FLAC.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0bd14236-be1a-361e-a68d-06a62e2c965b">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/ogg-build/ogg.vcxproj"/>
+	</Project>
+	<Project Path="SDL3_mixer-shared.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="40059498-a4f6-30e8-aa1c-a8050c58a3d6">
+		<BuildDependency Project="external/flac-build/src/libFLAC/FLAC.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/libgme-build/gme/gme_shared.vcxproj"/>
+		<BuildDependency Project="external/libmpg123-build/ports/cmake/src/libmpg123/libmpg123.vcxproj"/>
+		<BuildDependency Project="external/opusfile-build/opusfile.vcxproj"/>
+		<BuildDependency Project="external/vorbis-build/lib/vorbisfile.vcxproj"/>
+		<BuildDependency Project="external/wavpack-build/wavpack.vcxproj"/>
+		<BuildDependency Project="external/libxmp-build/xmp_shared.vcxproj"/>
+	</Project>
+	<Project Path="examples/advanced-tag-tracks.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3a50d629-85f5-3015-aefc-a5c52e339e69">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="examples/copy-sdlmixer-example-resources.vcxproj"/>
+	</Project>
+	<Project Path="examples/basics-load-and-play.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="4c210754-618b-35c3-bbad-5fa0aa670b97">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="examples/copy-sdlmixer-example-resources.vcxproj"/>
+	</Project>
+	<Project Path="examples/basics-metadata.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="ce859452-d6ce-3da9-aa2b-56bc868c1707">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="examples/copy-sdlmixer-example-resources.vcxproj"/>
+	</Project>
+	<Project Path="examples/basics-play-multiple-sounds.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1ab5f15f-37a8-3cbd-b800-74b79697198e">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="examples/copy-sdlmixer-example-resources.vcxproj"/>
+	</Project>
+	<Project Path="examples/basics-play-with-options.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="89a88809-3da9-337d-b3c0-ef5972fda725">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="examples/copy-sdlmixer-example-resources.vcxproj"/>
+	</Project>
+	<Project Path="examples/basics-seeking.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f9ec8928-2a93-3757-81ab-ea85e9270fee">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="examples/copy-sdlmixer-example-resources.vcxproj"/>
+	</Project>
+	<Project Path="examples/basics-sinewave.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7a3ff830-4b46-3843-b987-a57060cdade9">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/libmpg123-build/ports/cmake/src/compat/compat.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="442f7af2-827d-3769-8a70-f39d630cd8da">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="examples/copy-sdlmixer-example-resources.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="71cc86e1-75ed-3e1c-8837-1550bb36997b">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/libgme-build/gme/gme_shared.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="d032a783-c1c3-3ba3-aa69-2ed2c71783b4">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/libmpg123-build/ports/cmake/src/libmpg123/libmpg123.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="d234cf7a-2662-3a90-96c6-2262c25dd923">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/libmpg123-build/ports/cmake/src/compat/compat.vcxproj"/>
+	</Project>
+	<Project Path="external/ogg-build/ogg.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="62847927-c108-3667-9826-509373baaab8">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/opus-build/opus.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="94272135-4cfc-3056-9f55-02ce56b9a8ce">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/opusfile-build/opusfile.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2b9d1141-a3a3-3a54-ab9f-9ebc242451fa">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/ogg-build/ogg.vcxproj"/>
+		<BuildDependency Project="external/opus-build/opus.vcxproj"/>
+	</Project>
+	<Project Path="test/testaudiodecoder.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a66377ba-7e97-368f-97bd-d4e3466dc0ba">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="test/testmixer.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="b78fd39b-3fc8-30b8-9476-bb6b1cf4fc87">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="test/testspatialization.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="552fae45-ac5a-3be2-812c-cc7886c2cef0">
+		<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/vorbis-build/lib/vorbis.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="61f67464-63f9-3a72-9235-7e09a8affbde">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/ogg-build/ogg.vcxproj"/>
+	</Project>
+	<Project Path="external/vorbis-build/lib/vorbisfile.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a71f027d-964c-3c24-a286-405ea66acf31">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="external/ogg-build/ogg.vcxproj"/>
+		<BuildDependency Project="external/vorbis-build/lib/vorbis.vcxproj"/>
+	</Project>
+	<Project Path="external/wavpack-build/wavpack.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7c038753-929a-38e7-a3d3-e87e4011014e">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="external/libxmp-build/xmp_shared.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="63522c83-21fc-3902-93d8-a1524c4a2cb7">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Folder Name="/CMakePredefinedTargets/">
+		<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="b9ea1df7-f075-33f2-ad17-4b9543d07232" DefaultStartup="true">
+			<BuildDependency Project="SDL3_mixer-shared.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<BuildDependency Project="examples/advanced-tag-tracks.vcxproj"/>
+			<BuildDependency Project="examples/basics-load-and-play.vcxproj"/>
+			<BuildDependency Project="examples/basics-metadata.vcxproj"/>
+			<BuildDependency Project="examples/basics-play-multiple-sounds.vcxproj"/>
+			<BuildDependency Project="examples/basics-play-with-options.vcxproj"/>
+			<BuildDependency Project="examples/basics-seeking.vcxproj"/>
+			<BuildDependency Project="examples/basics-sinewave.vcxproj"/>
+			<BuildDependency Project="test/testaudiodecoder.vcxproj"/>
+			<BuildDependency Project="test/testmixer.vcxproj"/>
+			<BuildDependency Project="test/testspatialization.vcxproj"/>
+		</Project>
+		<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="359ed40f-e8e2-3ee1-8bbf-3be0cf16b133">
+			<BuildDependency Project="ALL_BUILD.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+		</Project>
+		<Project Path="PACKAGE.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="1eeccc77-7f98-3ee8-bbf0-3647a3017ab8">
+			<BuildDependency Project="ALL_BUILD.vcxproj"/>
+			<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+			<Build Solution="RelWithDebInfo|*" Project="false"/>
+			<Build Solution="Debug|*" Project="false"/>
+			<Build Solution="Release|*" Project="false"/>
+			<Build Solution="MinSizeRel|*" Project="false"/>
+		</Project>
+		<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="5a7e98b1-9995-3893-a68a-3cf6830cbaa0"/>
+	</Folder>
+</Solution>
