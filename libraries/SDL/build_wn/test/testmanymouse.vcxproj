@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5ACD8FBC-843F-3D96-BB83-773B4A40A947}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>testmanymouse</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">testmanymouse.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">testmanymouse</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">testmanymouse.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">testmanymouse</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">testmanymouse.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">testmanymouse</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">testmanymouse.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">testmanymouse</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-relwithdebinfo\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-relwithdebinfo\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-relwithdebinfo\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\RelWithDebInfo\SDL3_test.lib;..\RelWithDebInfo\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/RelWithDebInfo/testmanymouse.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/RelWithDebInfo/testmanymouse.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-debug\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-debug\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-debug\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Debug\SDL3_test.lib;..\Debug\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/Debug/testmanymouse.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/Debug/testmanymouse.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-release\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-release\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-release\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Release\SDL3_test.lib;..\Release\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/Release/testmanymouse.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/Release/testmanymouse.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-minsizerel\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;HAVE_BUILD_CONFIG;HAVE_OPENGL;HAVE_SIGNAL_H;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-minsizerel\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\..\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-config-minsizerel\build_config;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\include-revision;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\include;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src\video\khronos;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\MinSizeRel\SDL3_test.lib;..\MinSizeRel\SDL3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/MinSizeRel/testmanymouse.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/MinSizeRel/testmanymouse.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL -BD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn --check-stamp-file D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython3.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\CMakeFiles\cmake.verify_globs;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\FindFFmpeg.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\PkgConfigHelper.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\sdlcompilers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL -BD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn --check-stamp-file D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython3.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\CMakeFiles\cmake.verify_globs;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\FindFFmpeg.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\PkgConfigHelper.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\sdlcompilers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL -BD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn --check-stamp-file D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython3.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\CMakeFiles\cmake.verify_globs;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\FindFFmpeg.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\PkgConfigHelper.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\sdlcompilers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL -BD:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn --check-stamp-file D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL/build_wn/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.4\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython\Support.cmake;C:\Program Files\CMake\share\cmake-4.4\Modules\FindPython3.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\CMakeFiles\cmake.verify_globs;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\FindFFmpeg.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\PkgConfigHelper.cmake;D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\cmake\sdlcompilers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\testmanymouse.c" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\ZERO_CHECK.vcxproj">
+      <Project>{A5D9593C-46B4-322F-89CC-CD84401D1112}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\SDL3-shared.vcxproj">
+      <Project>{869EF0F5-15B2-3909-A15F-008BA76E85A5}</Project>
+      <Name>SDL3-shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\SDL3_test.vcxproj">
+      <Project>{9FBD94F3-D517-331E-A229-D5E12D9077BE}</Project>
+      <Name>SDL3_test</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

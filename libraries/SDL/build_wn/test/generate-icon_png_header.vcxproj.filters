@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\CMakeFiles\62e65a860951485ea25f827b3a411b30\icon.h.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\CMakeFiles\b268da252c95e25d20efe710a4421de4\generate-icon_png_header.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\CMakeFiles\generate-icon_png_header" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E8660839-28CA-3EBE-A8E8-5F63A36E7CE6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

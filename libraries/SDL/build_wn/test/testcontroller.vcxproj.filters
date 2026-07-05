@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\testcontroller.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepadutils.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_axis_arrow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_axis_arrow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_axis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_axis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_back.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_back.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_battery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_battery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_battery_wired.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_battery_wired.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_button_background.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_button_background.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_button_small.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_button_small.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_dual_touchpad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_dual_touchpad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_abxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_face_abxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_axby.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_face_axby.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_bayx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_face_bayx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_sony.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_face_sony.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_front.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_front.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_grip_sense.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_grip_sense.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_touchpad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_touchpad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_wired.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_wired.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_wireless.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\gamepad_wireless.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\sdltests_utils.dir\$(Configuration)\testutils.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E8660839-28CA-3EBE-A8E8-5F63A36E7CE6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{848526E5-0ADF-3C7C-87E5-677D972F58D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{9947B175-46CD-3599-AAD5-C49A93B5A51C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{906E8185-6315-3CB1-A62F-1D0C698550D9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

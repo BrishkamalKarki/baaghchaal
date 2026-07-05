@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\testrendertarget.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\audiofile.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_axis.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_axis_arrow.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_back.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_battery.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_battery_unknown.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_battery_wired.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_button.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_button_background.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_button_small.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_dual_touchpad.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_abxy.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_axby.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_bayx.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_face_sony.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_front.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_grip_sense.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_touchpad.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_wired.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\gamepad_wireless.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\glass.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\icon.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\icon2x.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\logaudiodev.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\msdf_font.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\physaudiodev.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\sample.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\sdl-test_round.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\soundboard.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\soundboard_levels.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\speaker.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\testyuv.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\trashcan.png">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\moose.dat" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\msdf_font.csv" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\sample.wav" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\sword.wav" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\unifont-15.1.05.hex" />
+    <None Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\test\utf8.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="D:\BrishkamalMaterial\ColonelDocuments\CodeHub\Projects\Cpp\baaghchaal\libraries\SDL\build_wn\test\sdltests_utils.dir\$(Configuration)\testutils.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{9947B175-46CD-3599-AAD5-C49A93B5A51C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{55D8AD0E-9E97-3683-A7B2-90337468BAD4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{906E8185-6315-3CB1-A62F-1D0C698550D9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
