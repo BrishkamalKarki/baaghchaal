@@ -15,15 +15,17 @@ if [ "$1" = "-R" ]; then
     echo -e "\e[34mre-builded dude\e[0m"
   fi
   cmake --build "$BUILD_DIR/$SUB_BUILD_DIR"
+  echo -e "\e[36me-compiled the code dude"
   echo -e "\e[32mrunning in release mode in linux\e[0m"
   ./build_ln/build_release/BaaghChaal
 else
+  SUB_BUILD_DIR="build_debug"
   if [ "$2" = "-C" ] || [ "$1" = "-C" ]; then
-    SUB_BUILD_DIR="build_debug"
     cmake --preset debug-linux
     echo -e "\e[34mre-builded dude\e[0m"
   fi
   cmake --build "$BUILD_DIR/$SUB_BUILD_DIR"
+  echo -e "\e[36mre-compiled the code dude"
   echo -e "\e[32mrunning in debug mode in linux\e[0m"
   ./build_ln/build_debug/BaaghChaal
 fi

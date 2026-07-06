@@ -23,11 +23,10 @@ if (($args.Count -ge 1 -and $args[0] -eq "-C") -or ($args.Count -ge 1 -and $args
     Write-Host "re-builded the release dude" -ForegroundColor Blue
 }
 
-
 if ($args.Count -ge 1 -and $args[0] -eq "-R"){
     $SUB_BUILD_DIR="build_release"
     cmake --build "$BUILD_DIR/$SUB_BUILD_DIR"
-     Write-Host "re-compiled the code dude" -ForegroundColor Yellow
+    Write-Host "re-compiled the code dude" -ForegroundColor Yellow
     Write-Host "running in release mode in windows" -ForegroundColor Green 
     & "./build_wn/build_release/BaaghChaal.exe" 
 }

@@ -3,7 +3,7 @@ set(CMAKE_HOST_SYSTEM_NAME "Linux")
 set(CMAKE_HOST_SYSTEM_VERSION "6.17.0-35-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
-
+include("/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/cmake/bootstrap-vcpkg.cmake")
 
 set(CMAKE_SYSTEM "Linux-6.17.0-35-generic")
 set(CMAKE_SYSTEM_NAME "Linux")

@@ -1,9 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/build_wn/cmake_install.cmake",
-		"D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/build_wn/external/harfbuzz/cmake_install.cmake",
-		"D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_ttf/build_wn/external/freetype/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

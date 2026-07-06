@@ -1,6 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Program Files/CMake/share/cmake-4.4/Modules/CheckCSourceCompiles.cmake
-C:/Program Files/CMake/share/cmake-4.4/Modules/CheckLanguage.cmake
-D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/external/flac/cmake/CheckCPUArch.c.in
-D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/external/flac/cmake/CheckCPUArch.cmake
-D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/libraries/SDL3_mixer/external/flac/src/libFLAC/CMakeLists.txt
