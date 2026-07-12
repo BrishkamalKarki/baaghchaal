@@ -1,7 +1,7 @@
 #include "game_session.hpp"
 
 GameSession::GameSession(SDL_Window* win, SDL_Renderer* rend, int w, int h)
-    : window(win), renderer(rend), window_w(w), window_h(h), gameConf(w, h), ui_manager(&gameConf, win, rend)
+    : window(win), renderer(rend), window_w(w), window_h(h), gameConf(1920, 1080, 1920.f/1080.f), ui_manager(&gameConf, win, rend)
 {
     ui_manager.initScene();
 }

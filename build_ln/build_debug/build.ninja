@@ -112,13 +112,6 @@ build CMakeFiles/BaaghChaal.dir/src/ui/game_scene/game_configer_scene.cpp.o: CXX
   OBJECT_DIR = CMakeFiles/BaaghChaal.dir
   OBJECT_FILE_DIR = CMakeFiles/BaaghChaal.dir/src/ui/game_scene
 
-build CMakeFiles/BaaghChaal.dir/src/ui/game_scene/resource_manager.cpp.o: CXX_COMPILER__BaaghChaal_unscanned_Debug /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src/ui/game_scene/resource_manager.cpp || cmake_object_order_depends_target_BaaghChaal
-  DEP_FILE = CMakeFiles/BaaghChaal.dir/src/ui/game_scene/resource_manager.cpp.o.d
-  FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src -isystem /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_ln/build_debug/vcpkg_installed/x64-linux/include
-  OBJECT_DIR = CMakeFiles/BaaghChaal.dir
-  OBJECT_FILE_DIR = CMakeFiles/BaaghChaal.dir/src/ui/game_scene
-
 build CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.o: CXX_COMPILER__BaaghChaal_unscanned_Debug /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src/ui/game_scene/result_scene.cpp || cmake_object_order_depends_target_BaaghChaal
   DEP_FILE = CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.o.d
   FLAGS = -g -std=gnu++17
@@ -128,13 +121,6 @@ build CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.o: CXX_COMPIL
 
 build CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.o: CXX_COMPILER__BaaghChaal_unscanned_Debug /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src/ui/game_scene/startup_scene.cpp || cmake_object_order_depends_target_BaaghChaal
   DEP_FILE = CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.o.d
-  FLAGS = -g -std=gnu++17
-  INCLUDES = -I/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src -isystem /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_ln/build_debug/vcpkg_installed/x64-linux/include
-  OBJECT_DIR = CMakeFiles/BaaghChaal.dir
-  OBJECT_FILE_DIR = CMakeFiles/BaaghChaal.dir/src/ui/game_scene
-
-build CMakeFiles/BaaghChaal.dir/src/ui/game_scene/ui_config.cpp.o: CXX_COMPILER__BaaghChaal_unscanned_Debug /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src/ui/game_scene/ui_config.cpp || cmake_object_order_depends_target_BaaghChaal
-  DEP_FILE = CMakeFiles/BaaghChaal.dir/src/ui/game_scene/ui_config.cpp.o.d
   FLAGS = -g -std=gnu++17
   INCLUDES = -I/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/src -isystem /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_ln/build_debug/vcpkg_installed/x64-linux/include
   OBJECT_DIR = CMakeFiles/BaaghChaal.dir
@@ -155,7 +141,7 @@ build CMakeFiles/BaaghChaal.dir/src/ui/ui_manager.cpp.o: CXX_COMPILER__BaaghChaa
 #############################################
 # Link the executable BaaghChaal
 
-build BaaghChaal: CXX_EXECUTABLE_LINKER__BaaghChaal_Debug CMakeFiles/BaaghChaal.dir/src/core/event_manager.cpp.o CMakeFiles/BaaghChaal.dir/src/core/game_manager.cpp.o CMakeFiles/BaaghChaal.dir/src/engine/board_evaluator.cpp.o CMakeFiles/BaaghChaal.dir/src/engine/minimax.cpp.o CMakeFiles/BaaghChaal.dir/src/engine/move_evaluator.cpp.o CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.o CMakeFiles/BaaghChaal.dir/src/main.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/game_configer_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/resource_manager.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/ui_config.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/ui_manager.cpp.o | vcpkg_installed/x64-linux/debug/lib/libSDL3.a vcpkg_installed/x64-linux/debug/lib/libSDL3_image.a vcpkg_installed/x64-linux/debug/lib/libSDL3_ttf.a vcpkg_installed/x64-linux/debug/lib/libSDL3_mixer.a vcpkg_installed/x64-linux/debug/lib/libSDL3.a vcpkg_installed/x64-linux/debug/lib/libfreetyped.a vcpkg_installed/x64-linux/debug/lib/libbz2d.a vcpkg_installed/x64-linux/debug/lib/libpng16d.a vcpkg_installed/x64-linux/debug/lib/libz.a vcpkg_installed/x64-linux/debug/lib/libbrotlidec.a vcpkg_installed/x64-linux/debug/lib/libbrotlicommon.a
+build BaaghChaal: CXX_EXECUTABLE_LINKER__BaaghChaal_Debug CMakeFiles/BaaghChaal.dir/src/core/event_manager.cpp.o CMakeFiles/BaaghChaal.dir/src/core/game_manager.cpp.o CMakeFiles/BaaghChaal.dir/src/engine/board_evaluator.cpp.o CMakeFiles/BaaghChaal.dir/src/engine/minimax.cpp.o CMakeFiles/BaaghChaal.dir/src/engine/move_evaluator.cpp.o CMakeFiles/BaaghChaal.dir/src/game/game_session.cpp.o CMakeFiles/BaaghChaal.dir/src/main.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/game_configer_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/result_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/game_scene/startup_scene.cpp.o CMakeFiles/BaaghChaal.dir/src/ui/ui_manager.cpp.o | vcpkg_installed/x64-linux/debug/lib/libSDL3.a vcpkg_installed/x64-linux/debug/lib/libSDL3_image.a vcpkg_installed/x64-linux/debug/lib/libSDL3_ttf.a vcpkg_installed/x64-linux/debug/lib/libSDL3_mixer.a vcpkg_installed/x64-linux/debug/lib/libSDL3.a vcpkg_installed/x64-linux/debug/lib/libfreetyped.a vcpkg_installed/x64-linux/debug/lib/libbz2d.a vcpkg_installed/x64-linux/debug/lib/libpng16d.a vcpkg_installed/x64-linux/debug/lib/libz.a vcpkg_installed/x64-linux/debug/lib/libbrotlidec.a vcpkg_installed/x64-linux/debug/lib/libbrotlicommon.a
   FLAGS = -g
   LINK_FLAGS = -pthread
   LINK_LIBRARIES = vcpkg_installed/x64-linux/debug/lib/libSDL3.a  vcpkg_installed/x64-linux/debug/lib/libSDL3_image.a  vcpkg_installed/x64-linux/debug/lib/libSDL3_ttf.a  vcpkg_installed/x64-linux/debug/lib/libSDL3_mixer.a  vcpkg_installed/x64-linux/debug/lib/libSDL3.a  vcpkg_installed/x64-linux/debug/lib/libfreetyped.a  vcpkg_installed/x64-linux/debug/lib/libbz2d.a  vcpkg_installed/x64-linux/debug/lib/libpng16d.a  -lm  vcpkg_installed/x64-linux/debug/lib/libz.a  vcpkg_installed/x64-linux/debug/lib/libbrotlidec.a  vcpkg_installed/x64-linux/debug/lib/libbrotlicommon.a

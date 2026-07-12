@@ -12,8 +12,11 @@ void UIManager::initScene()
 
 void UIManager::renderLayer()
 {
+  // board_scene->buildUI();
   board_scene->render();
 }
 
 UIManager::UIManager(Config* conf, SDL_Window* win, SDL_Renderer* rend): 
-gameConf(conf), window(win), renderer(rend){} 
+gameConf(conf), window(win), renderer(rend), texture(rend){
+  texture.loadTexture();
+} 

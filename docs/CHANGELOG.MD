@@ -51,3 +51,19 @@ Release:
 
 ### Fixed
   nothing
+
+### [1 Brishkamal Karki] - 2026-07-05
+
+### Added
+- Added a rounded rectangle in `rounded_rect.hpp`
+- Added texture  manager in `resource_manager.hpp`
+
+### Description
+Just made a rounded rectangle that can be fully implemented for which color, size, position and shape and size needs to be given.
+Also an texture manager which need a image file to be loaded.
+
+### Changed
+  - Added the things related to rounded rectangle and the texture in `ui_manager.hpp/cpp` and `ui_layer.hpp`
+
+### Fixed
+  nothing

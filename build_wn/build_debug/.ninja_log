@@ -14,3 +14,8 @@
 135	998	8050157182112765	CMakeFiles/BaaghChaal.dir/src/ui/ui_manager.cpp.obj	d13788ac7fc11999
 85	1207	8050157181617247	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	787796753fadd1ae
 1207	1413	8050157192827554	BaaghChaal.exe	4c39e393cc0c8178
+31	1030	8051438843814039	CMakeFiles/BaaghChaal.dir/src/main.cpp.obj	5bd0f9ce3a66accf
+36	1152	8051438843866423	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	787796753fadd1ae
+1152	1530	8051438855026512	BaaghChaal.exe	4c39e393cc0c8178
+7	870	8051441709906543	CMakeFiles/BaaghChaal.dir/src/ui/game_scene/board_scene.cpp.obj	787796753fadd1ae
+871	1125	8051441718545680	BaaghChaal.exe	4c39e393cc0c8178

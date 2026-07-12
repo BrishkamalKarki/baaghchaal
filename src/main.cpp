@@ -17,7 +17,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
       return SDL_APP_FAILURE;
   }
 
-  window = SDL_CreateWindow("BaaghChaal", 900, 770, SDL_WINDOW_RESIZABLE);
+  window = SDL_CreateWindow("BaaghChaal", 1600, 700, SDL_WINDOW_RESIZABLE);
   if (!window) {
       SDL_Log("WINDOW CANNOT BE CREATED: %s", SDL_GetError());
       return SDL_APP_FAILURE;
@@ -31,7 +31,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
   }
 
   SDL_Log("STARTING THE GAME");
-  game = new GameSession(window, renderer, 1600, 1000);
+  game = new GameSession(window, renderer, 1600, 1200);
   *appstate = game;
   return SDL_APP_CONTINUE;
 }
