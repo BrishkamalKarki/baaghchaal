@@ -26,6 +26,7 @@ public:
     SDL_FPoint p55;
     RoundedRect rrect;
     RoundedRect rrect1;
+    Button playButton;
     BoardScene(UIManager* uim);
     void buildUI() override;
     void render() override;

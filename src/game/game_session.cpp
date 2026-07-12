@@ -11,6 +11,12 @@ SDL_AppResult GameSession::handleEvent(SDL_Event* event)
     if (event->type == SDL_EVENT_QUIT) {
         return SDL_APP_SUCCESS;
     }
+
+    for(auto button : ui_manager.board_layer.buttons)
+    {
+    button->handleEvent(*event);
+    }
+
     return SDL_APP_CONTINUE;
 }
 

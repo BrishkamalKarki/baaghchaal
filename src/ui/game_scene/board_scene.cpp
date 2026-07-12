@@ -51,6 +51,30 @@ void BoardScene::buildUI(){
   
   goat_rect = {300.f, 600.f, 200.f, 200.f};
   ui_manager->board_layer.textures.push_back({ui_manager->texture.goat, &goat_rect});
+
+  TTF_Font* font = TTF_OpenFont("arial.ttf", 24);
+
+  if (!font)
+  {
+    SDL_Log("Failed to load font: %s", SDL_GetError());
+  }
+
+  //it says that the ttf library has not been initialized when i've initialized it in main.cpp under appinit
+
+  playButton = Button(
+    {250.f, 80.f},
+    "Play",
+    font
+  );
+
+  playButton.changePosition({400.f, 300.f});
+
+  playButton.onClick = []()
+  {
+    SDL_Log("Play button pressed!");
+  };
+
+  ui_manager->board_layer.buttons.push_back(&playButton);
 } 
 
 void BoardScene::render(){
@@ -100,6 +124,11 @@ void BoardScene::render(){
 //                       round_rect->indices.data(),
 //                       static_cast<int>(round_rect->indices.size()));
 // }
+
+  for (const auto& button : ui_manager->board_layer.buttons)
+  {
+    button->draw(renderer);
+  }
 } 
 
 BoardScene::BoardScene(UIManager* uim): ui_manager(uim)
