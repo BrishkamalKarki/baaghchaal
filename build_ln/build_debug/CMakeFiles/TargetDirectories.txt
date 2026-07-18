@@ -1,3 +1,0 @@
-/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_ln/build_debug/CMakeFiles/BaaghChaal.dir
-/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_ln/build_debug/CMakeFiles/edit_cache.dir
-/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_ln/build_debug/CMakeFiles/rebuild_cache.dir
