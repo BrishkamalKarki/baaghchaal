@@ -30,6 +30,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
       return SDL_APP_FAILURE;
   }
 
+  if (!TTF_Init())  
+  {
+    SDL_Log("TTF Init failed");
+  }
+
   SDL_Log("STARTING THE GAME");
   game = new GameSession(window, renderer, 1600, 1200);
   *appstate = game;
