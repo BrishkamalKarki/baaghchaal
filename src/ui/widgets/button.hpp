@@ -26,16 +26,13 @@ public:
     std::function<void()> onClick;
 
     Button(){}
-    Button(SDL_FPoint size, std::string text, TTF_Font* font, std::function<void()> on_click = nullptr)
-        : text_str(std::move(text)), font(font), onClick(on_click), size(size) {}
+    Button(SDL_FPoint pos, SDL_FPoint size, std::string text, TTF_Font* font, SDL_Color color = {200, 200, 200, 255}, std::function<void()> on_click = nullptr)
+        : position(pos), text_str(std::move(text)), font(font), onClick(on_click), size(size) {
+            shape.upper_color = color;
+        }
 
     void draw(SDL_Renderer* renderer) {
-        // 1. Draw Lower Shadow Layer
-        SDL_FRect lower_rect{position.x, position.y + shape.offset_lower, size.x, size.y};
-        SDL_SetRenderDrawColor(renderer, shape.lower_color.r, shape.lower_color.g, shape.lower_color.b, shape.lower_color.a);
-        SDL_RenderFillRect(renderer, &lower_rect);
-
-        // 2. Draw Upper Face Layer
+        // Draw Button Face Layer
         SDL_FRect upper_rect{position.x, position.y, size.x, size.y};
         SDL_SetRenderDrawColor(renderer, shape.upper_color.r, shape.upper_color.g, shape.upper_color.b, shape.upper_color.a);
         SDL_RenderFillRect(renderer, &upper_rect);
@@ -91,36 +88,22 @@ public:
 
     void handleEvent(const SDL_Event& event)
     {
-        //coordinates of the window do not match, button is pressed when mouse is somewhere random.
         if(event.type == SDL_EVENT_MOUSE_BUTTON_DOWN)
         {
-            SDL_Log("Mouse clicked!");
-
             float mouseX = event.button.x;
             float mouseY = event.button.y;
 
-            SDL_Log("Mouse position: %.1f %.1f", mouseX, mouseY);
-
             SDL_FRect bounds = getGlobalBounds();
 
-            SDL_Log("Button bounds: %.1f %.1f %.1f %.1f",
-                    bounds.x,
-                    bounds.y,
-                    bounds.w,
-                    bounds.h);
-
-            if(onClick)
-            {
-                SDL_Log("Button has callback.");
-            }
-
             if(mouseX >= bounds.x &&
-            mouseX <= bounds.x + bounds.w &&
-            mouseY >= bounds.y &&
-            mouseY <= bounds.y + bounds.h)
+               mouseX <= bounds.x + bounds.w &&
+               mouseY >= bounds.y &&
+               mouseY <= bounds.y + bounds.h)
             {
-                SDL_Log("Inside button!");
-                onClick();
+                if(onClick)
+                {
+                    onClick();
+                }
             }
         }
     }

@@ -52,29 +52,42 @@ void BoardScene::buildUI(){
   goat_rect = {300.f, 600.f, 200.f, 200.f};
   ui_manager->board_layer.textures.push_back({ui_manager->texture.goat, &goat_rect});
 
-  TTF_Font* font = TTF_OpenFont("arial.ttf", 24);
-
   if (!font)
   {
-    SDL_Log("Failed to load font: %s", SDL_GetError());
+    SDL_Log("ERROR: Font was not set!");
   }
-
-  //it says that the ttf library has not been initialized when i've initialized it in main.cpp under appinit
-
+  
   playButton = Button(
-    {250.f, 80.f},
-    "Play",
-    font
+    {400.f, 300.f}, //TOP-LEFT POSITION COORDINATES
+    {250.f, 80.f}, //SIZE (LENGTH, BREADTH)
+    "Play", //TEXT ON BUTTON
+    font, //FONT
+    {200, 200, 200, 255} //COLOR
   );
 
-  playButton.changePosition({400.f, 300.f});
-
+  //ONCLICK FUNCTION
   playButton.onClick = []()
   {
     SDL_Log("Play button pressed!");
   };
 
   ui_manager->board_layer.buttons.push_back(&playButton);
+
+  circButton = CircularButton(
+    {800.f, 350.f}, //CENTER COORDINATES
+    70.f, //RADIUS
+    "Circ", //TEXT ON BUTTON
+    font, //FONT
+    {200, 200, 200, 255} //COLOR
+  );
+  
+  // ONCLICK FUNCTION
+  circButton.onClick = []()
+  {
+      SDL_Log("Circular Button clicked!");
+  };
+
+  ui_manager->board_layer.circular_buttons.push_back(&circButton);
 } 
 
 void BoardScene::render(){
@@ -128,6 +141,11 @@ void BoardScene::render(){
   for (const auto& button : ui_manager->board_layer.buttons)
   {
     button->draw(renderer);
+  }
+
+  for (const auto& c_button : ui_manager->board_layer.circular_buttons)
+  {
+    c_button->draw(renderer);
   }
 } 
 

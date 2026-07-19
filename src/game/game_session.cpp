@@ -1,8 +1,9 @@
 #include "game_session.hpp"
 
-GameSession::GameSession(SDL_Window* win, SDL_Renderer* rend, int w, int h)
+GameSession::GameSession(SDL_Window* win, SDL_Renderer* rend, TTF_Font* font, int w, int h)
     : window(win), renderer(rend), window_w(w), window_h(h), gameConf(1920, 1080, 1920.f/1080.f), ui_manager(&gameConf, win, rend)
 {
+    ui_manager.setFont(font);
     ui_manager.initScene();
 }
 
@@ -12,9 +13,21 @@ SDL_AppResult GameSession::handleEvent(SDL_Event* event)
         return SDL_APP_SUCCESS;
     }
 
+    if (event->type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+        float logicalX, logicalY;
+        SDL_RenderCoordinatesFromWindow(renderer, event->button.x, event->button.y, &logicalX, &logicalY);
+        event->button.x = logicalX;
+        event->button.y = logicalY;
+    }
+
     for(auto button : ui_manager.board_layer.buttons)
     {
     button->handleEvent(*event);
+    }
+
+    for(auto c_button : ui_manager.board_layer.circular_buttons)
+    {
+        c_button->handleEvent(*event);
     }
 
     return SDL_APP_CONTINUE;

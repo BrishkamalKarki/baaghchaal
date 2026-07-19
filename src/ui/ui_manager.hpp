@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
 #include <vector>
 #include <memory>
 
@@ -25,6 +26,8 @@ public:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     bool scene_state = false;
+    TTF_Font* font = nullptr; 
+
     UIManager(Config* gameConf, SDL_Window* win, SDL_Renderer*);
     ScenceOrd scnord;
     std::vector <ScenceOrd> pair_scene;
@@ -33,4 +36,5 @@ public:
     BoardLayer board_layer;
     void initScene();
     void renderLayer();
+    void setFont(TTF_Font* f) { font = f; }
 };

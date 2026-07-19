@@ -3,6 +3,7 @@
 
 #include "config.hpp"
 #include "ui/ui_manager.hpp"
+#include <SDL3_ttf/SDL_ttf.h>
 
 class GameSession {
 public:
@@ -14,7 +15,7 @@ public:
     Config gameConf;
     UIManager ui_manager;
 
-    GameSession(SDL_Window* win, SDL_Renderer* rend, int w, int h);
+    GameSession(SDL_Window* win, SDL_Renderer* rend, TTF_Font* font, int w, int h);
     SDL_AppResult runFrame();
     SDL_AppResult handleEvent(SDL_Event* event);
     void render();

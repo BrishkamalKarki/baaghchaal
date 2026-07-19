@@ -67,3 +67,13 @@ Also an texture manager which need a image file to be loaded.
 
 ### Fixed
   nothing
+
+### [2 Bishesh Khatri] - 2026-07-12
+
+### Added
+- Added button ui, the button now shows up and is defined under button.hpp. 
+- Added cirulcar button ui, defined under circular_button.hpp. 
+- Added GoogleSans-VariableFont_GRAD,opsz,wght.ttf font inside the assets folder.
+
+### Fixed
+- Intercepted SDL_EVENT_MOUSE_BUTTON_DOWN in GameSession and used SDL_RenderCoordinatesFromWindow to convert raw window coordinates into logical coordinates, fixing the button hit-box misalignment.

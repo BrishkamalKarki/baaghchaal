@@ -7,6 +7,7 @@ void UIManager::initScene()
   board_scene = std::make_unique <BoardScene>(this);
   pair_scene.push_back(ScenceOrd::BOARD_SCENE);
   pair_scene.push_back(ScenceOrd::BOARD_SCENE);
+  board_scene->setFont(font);
   board_scene->buildUI();
 } 
 
