@@ -5,6 +5,7 @@
 
 #include "widgets/rounded_rect.hpp"
 #include "widgets/button.hpp"
+#include "widgets/circular_button.hpp"
 
 class BoardLayer{
 public:
@@ -13,6 +14,7 @@ public:
   std::vector <std::pair<SDL_Texture*, SDL_FRect*>> textures;
   std::vector <RoundedRect*> rounded_rects;
   std::vector <Button*> buttons;
+  std::vector <CircularButton*> circular_buttons;
 };
 
 

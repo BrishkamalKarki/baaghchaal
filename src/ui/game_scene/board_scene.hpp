@@ -13,6 +13,7 @@ class BoardScene : public Scenes
 {   
 private:
     int w_w, w_h;
+    TTF_Font* font = nullptr;
 public:
     UIManager* ui_manager = nullptr;
     SDL_Window* window = nullptr;
@@ -27,7 +28,9 @@ public:
     RoundedRect rrect;
     RoundedRect rrect1;
     Button playButton;
+    CircularButton circButton;
     BoardScene(UIManager* uim);
+    void setFont(TTF_Font* f) { font = f; }
     void buildUI() override;
     void render() override;
 };  
