@@ -6,7 +6,7 @@
 
 # DEFAULT - DEBUG MODE
 BUILD_DIR="build_ln"
-SUB_BUILD_DIR="build_debug"
+SUB_BUILD_DIR="build_release"
 
 
 if [ "$1" = "-R" ]; then

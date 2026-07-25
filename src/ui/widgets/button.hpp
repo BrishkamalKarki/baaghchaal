@@ -32,12 +32,12 @@ public:
         }
 
     void draw(SDL_Renderer* renderer) {
-        // Draw Button Face Layer
+        // DRAW BUTTON FACE LAYER
         SDL_FRect upper_rect{position.x, position.y, size.x, size.y};
         SDL_SetRenderDrawColor(renderer, shape.upper_color.r, shape.upper_color.g, shape.upper_color.b, shape.upper_color.a);
         SDL_RenderFillRect(renderer, &upper_rect);
 
-        // 3. Draw Centered Text
+        // DRAW CENTERED TEXT
         if (font && !text_str.empty()) {
             SDL_Surface* text_surface = TTF_RenderText_Blended(font, text_str.c_str(), text_str.length(), text_color);
             if (text_surface) {
@@ -92,8 +92,18 @@ public:
         {
             float mouseX = event.button.x;
             float mouseY = event.button.y;
-
             SDL_FRect bounds = getGlobalBounds();
+
+            // SDL_Log("Button bounds: %.1f %.1f %.1f %.1f",
+            //         bounds.x,
+            //         bounds.y,
+            //         bounds.w,
+            //         bounds.h);
+
+            if(onClick)
+            {
+                SDL_Log("Button has callback.");
+            }
 
             if(mouseX >= bounds.x &&
                mouseX <= bounds.x + bounds.w &&

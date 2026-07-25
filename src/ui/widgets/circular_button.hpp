@@ -21,7 +21,7 @@ public:
     TTF_Font* font = nullptr;
     SDL_Color text_color{0, 0, 0, 255};
     
-    SDL_FPoint position{0.0f, 0.0f}; // Center of the button
+    SDL_FPoint position{0.0f, 0.0f}; // CENTER OF THE BUTTON
     float radius = 50.0f;
     
     std::function<void()> onClick;
@@ -36,9 +36,9 @@ public:
         vertices.clear();
         indices.clear();
 
-        // Higher number of segments for smoother circles, especially if radius is large
+        // HIGHER NUMBER OF SEGMENTS FOR SMOOTH CIRCLES, ESPECIALLY IF RADIUS IS LARGE
         int num_segments = static_cast<int>(std::fmax(36.0f, r * 0.5f)); 
-        float PI = 3.14159265358979323846f;
+        float PI = 3.141592653f;
         
         SDL_Vertex center;
         center.position.x = cx;
@@ -47,13 +47,17 @@ public:
         center.color.b = col.b / 255.0f;
         center.color.r = col.r / 255.0f;
         center.color.g = col.g / 255.0f;
+        center.tex_coord = {0.5f, 0.5f};
         vertices.push_back(center);
+        
 
         for (int i = 0; i < num_segments; i++) {
             float theta = 2.0f * PI * static_cast<float>(i) / static_cast<float>(num_segments);
             SDL_Vertex v;
             v.position.x = cx + r * std::cos(theta);
             v.position.y = cy + r * std::sin(theta);
+            v.tex_coord.x = 0.5f + 0.5f * std::sin(theta-PI/2.f);
+            v.tex_coord.y = 0.5f + 0.5f * std::cos(theta-PI/2.f);
             v.color = center.color;
             vertices.push_back(v);
         }
@@ -65,15 +69,16 @@ public:
         }
     }
 
-    void draw(SDL_Renderer* renderer) const {
+    void draw(SDL_Renderer* renderer, SDL_Texture* tex = nullptr) const {
         std::vector<SDL_Vertex> vertices;
         std::vector<int> indices;
 
-        // Draw Button Face Layer (Circle)
+        
+        // DRAW BUTTON FACE LAYER (CIRCLE)
         makeCircleGeometry(position.x, position.y, radius, shape.upper_color, vertices, indices);
-        SDL_RenderGeometry(renderer, nullptr, vertices.data(), vertices.size(), indices.data(), indices.size());
+        SDL_RenderGeometry(renderer, tex, vertices.data(), vertices.size(), indices.data(), indices.size());
 
-        // 3. Draw Centered Text
+        // DRAW CENTERED TEXT
         if (font && !text_str.empty()) {
             SDL_Surface* text_surface = TTF_RenderText_Blended(font, text_str.c_str(), text_str.length(), text_color);
             if (text_surface) {
@@ -107,15 +112,15 @@ public:
     void handleEvent(const SDL_Event& event) const
     {
         if(event.type == SDL_EVENT_MOUSE_BUTTON_DOWN)
-        {
+        {   
             float mouseX = event.button.x;
             float mouseY = event.button.y;
-
-            // Hit detection: Check if distance from mouse to center is <= radius
+            
+            // HIT DETECTION: CHECK IF DISTANCE FROM MOUSE TO CENTER IS <= RAIDUS
             float dx = mouseX - position.x;
             float dy = mouseY - position.y;
             float distance_sq = dx * dx + dy * dy;
-
+            
             if(distance_sq <= radius * radius)
             {
                 if(onClick)

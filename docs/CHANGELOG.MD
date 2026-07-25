@@ -52,7 +52,7 @@ Release:
 ### Fixed
   nothing
 
-### [1 Brishkamal Karki] - 2026-07-05
+### [2 Brishkamal Karki] - 2026-07-07
 
 ### Added
 - Added a rounded rectangle in `rounded_rect.hpp`

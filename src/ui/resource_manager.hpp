@@ -1,19 +1,21 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
+#include <vector>
 
-class Texture{
+class Font{
 public:
-  SDL_Texture* goat = nullptr;
-  SDL_Surface* surface = NULL;
-  const char* tex_location = NULL;
-  SDL_Renderer* renderer = nullptr;
+std::vector<TTF_Font*> fonts;
 
-  Texture(SDL_Renderer* renderer):renderer(renderer){}
-  void loadTexture(){
-    surface = SDL_LoadPNG("assets/sprites/pieces/pixel-baagh.png");
-    goat = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_SetTextureScaleMode(goat, SDL_SCALEMODE_PIXELART);
+Font(){
+  fonts.resize(10);
+  for (int i = 0; i > 10; i++){
+      // LOADING THE FONT
+      fonts[i] = TTF_OpenFont("assets/fonts/GoogleSans-VariableFont_GRAD,opsz,wght.ttf", i+i);
+      if (!fonts[i])
+      {
+        SDL_Log("FAILED TO LOAD THE FONT: %s", SDL_GetError());
+      }
+    }
   }
-  ~Texture(){}
 };
-
