@@ -77,3 +77,22 @@ Also an texture manager which need a image file to be loaded.
 
 ### Fixed
 - Intercepted SDL_EVENT_MOUSE_BUTTON_DOWN in GameSession and used SDL_RenderCoordinatesFromWindow to convert raw window coordinates into logical coordinates, fixing the button hit-box misalignment.
+
+### [4 Brishkamal Karki] - 2026-07-26
+
+### Added
+- Updated the system archetecture:
+  - scenes to be put in seperate folder - game_scenes
+  - all the audio, fonts and textures will be in game_managers
+  - board position configuration and the system configuration to be placed as a seperate folder - game_config
+- Added font_manager, texture_manager, board_config, theme_config, system_config, engine, game_state, event_manager
+
+### Description
+Updated the Event managers to seperate file where the events are checked. Reconfigured the system file archetecture. Added the texture manager and updated the font manager. Partially added the board scence where a baagh can move in the board and the valid moves around a point are seen. Partially made the engine - that can now give the valid positions to move and to change the position. This has been only implemented on the baagh texture.
+
+### Changed
+  nothing
+
+
+### Fixed
+  nothing

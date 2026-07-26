@@ -32,8 +32,9 @@ public:
     Engine* engine = nullptr;
     GameState* game_state = nullptr;
     bool scene_state = false;
+    bool state_changed = false;
 
-    UIManager(Config* gameConf, SDL_Window* win, SDL_Renderer*, Engine* engine, GameState* game_state);
+    UIManager(Config* gameConf, SDL_Window* win, SDL_Renderer*, Engine* engine, void* game_state);
     ScenceOrd scnord;
     std::vector <ScenceOrd> pair_scene;
     std::unique_ptr<BoardScene> board_scene;

@@ -18,7 +18,7 @@ SDL_AppResult GameEvent::handleEvent(SDL_Event* event)
         button->handleEvent(*event);
     }
 
-    for(auto c_button : ui_manager->board_layer.circular_buttons)
+    for(auto [id, c_button] : ui_manager->board_layer.circular_buttons)
     {
         c_button->handleEvent(*event);
     }

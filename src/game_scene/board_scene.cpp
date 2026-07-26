@@ -3,93 +3,61 @@
 #include "ui/ui_manager.hpp"
 #include "game_config/theme_config.hpp"
 
-void BoardScene::buildUI(){
+void BoardScene::clearLayers(){
   ui_manager->board_layer.rects.clear();
   ui_manager->board_layer.points.clear();
-
-  int ww, wh;
-  if (SDL_GetWindowSize(window, &ww, &wh)){
-    SDL_Log("the width : %d, height: %d", ww, wh);
-    w_w = ww;
-    w_h = wh;
-  }
-
-  rrect = RoundedRect(500.f, 200.f);
-  rrect.makeRoundRect(500.f, 500.f, 40.f, &theme.light_silver, 45.f);
-  // ui_manager->board_layer.rounded_rects.push_back(&rrect);
-
-  rrect1 = RoundedRect(400.f, 20.f);
-  rrect1.makeRoundRect(800.f, 200.f, 4.f, &theme.light_silver);
-  // ui_manager->board_layer.rounded_rects.push_back(&rrect1);
-
-  rect1 = {200.f, 400.f, 100.f, 100.f};
-  // ui_manager->board_layer.rects.push_back({&rect1, &theme.cyan});
-
-  rect2 = {300.f, 500.f, 10.f, 100.f};
-  // ui_manager->board_layer.rects.push_bac k({&rect2, &theme.light_silver});
-
-  p11 = {120.f, 120.f};
-  p55 = {800.f, 800.f};
-  // ui_manager->board_layer.points.push_back({{&p11, &p55}, &theme.light_silver});
-  
-
-
-
-
-
-
-
-  // tada = {{200.f, 200.f}, 40.f, "", nullptr, theme.white};
-  // tada.onClick = [](){
-  //   SDL_Log("aksdjfa;lksdjf");
-  // };
-  // ui_manager->board_layer.circular_buttons.push_back(&tada);
-
-
-
-
-
+  ui_manager->board_layer.textures.clear();
+  ui_manager->board_layer.background_texture.clear();
+  ui_manager->board_layer.rounded_rects.clear();
+  ui_manager->board_layer.buttons.clear();
+  ui_manager->board_layer.circular_buttons.clear();
+  ui_manager->board_layer.circles.clear();
+  ui_manager->board_layer.lines_rects.clear();
+  ui_manager->board_layer.baagh_pieces.clear();
+  ui_manager->board_layer.goat_pieces.clear();
+  line_rects.clear();
+  board_pnt_btn.clear();
+  rects.clear();
+  rect.clear();
   baagh_circ.clear();
+  clicked_at = -1;
+}
+
+void BoardScene::buildUI(){
+  this->clearLayers();
+
+  // MAKING THE BAAGH TEXTURES - CIRCULAR BUTTONS
   baagh_circ.resize(4);
-  // MAKING THE BAAGH TEXTURES
-  for (int baagh=0; baagh<4; baagh++){
-    baagh_circ[baagh] = {{bconfig.baagh_ini[baagh].first, bconfig.baagh_ini[baagh].second}, 40.f, "", nullptr, theme.white};
-    baagh_circ[baagh].onClick = [this, baagh](){
-      this->ui_manager->engine->getValidMovesAt(baagh);
-    };
-    ui_manager->board_layer.baagh_pieces.push_back({baagh, std::make_pair(&baagh_circ[baagh], ui_manager->texture.baagh)});
+  int pos = 0;
+  int baagh = 0;
+  for (int row=0; row<5; row++){
+    for (int col=0; col<5; col++){
+      if (ui_manager->game_state->board_state[pos].second == 'T'){
+        baagh_circ[baagh] = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 40.f, "", nullptr, theme.white};
+        baagh_circ[baagh].onClick = [this, pos](){
+          this->ui_manager->state_changed = true;
+          this->ui_manager->engine->routeToEngine(pos, 'T');
+          this->clicked_at = pos;
+        };
+        ui_manager->board_layer.baagh_pieces.push_back({pos + 1, std::make_pair(&baagh_circ[baagh], ui_manager->texture.baagh)});
+        baagh++; 
+      };
+      pos++;
+    }
   }
-
-
-
-  
-
-  // for (int baagh=1; baagh<=4; baagh++){
-  // }
-  // ui_manager->board_layer.textures.push_back({ui_manager->texture.baagh, &baagh_rect});
   
   // MAKING THE BOARD
-  board_rect = {(static_cast<float>(ww)/2)-400.f, (static_cast<float>(wh)/2)-400.f, 800.f, 800.f};
+  board_rect = {(static_cast<float>(w_w)/2)-400.f, (static_cast<float>(w_h)/2)-400.f, 800.f, 800.f};
+  // SDL_Log(" %f   %f", (static_cast<float>(ww))/2-400.f, (static_cast<float>(wh))/2-400.f);
   ui_manager->board_layer.textures.push_back({ui_manager->texture.board, &board_rect}); 
 
   int i = 0;
-  rect.clear();
-  rect.reserve(25);
-  for (int row=0; row<5; row++){ // FOR EACH ROW
-    for (int col=0; col<5; col++){ // FOR EACH COLUMN
-      rect[i] = {bconfig.points[row][col].second.first-5, bconfig.points[row][col].second.second-5, 10.f, 10.f};
-      // SDL_Log("%f, %f", bconfig.points[row][col].second.first, bconfig.points[row][col].second.second);
-      // ui_manager->board_layer.rects.push_back({&rect[i], &theme.light_silver});
-      i++;
-    }
-  }
 
-  cover_rect = {0.f, 0.f, static_cast<float>(ww), static_cast<float>(wh)};
+  cover_rect = {0.f, 0.f, static_cast<float>(w_w), static_cast<float>(w_h)}; 
   // ui_manager->board_layer.textures.push_back({ui_manager->texture.baagh, NULL});
 
 
   // MAKEING THE LINES IN THE BOARD
-  line_rects.clear();
   line_rects.resize(12); 
   i = 0;
   for (int turn=0; turn<2; turn++){ // FOR EACH VERTICAL LINES
@@ -104,7 +72,6 @@ void BoardScene::buildUI(){
         line_rects[i].makeRoundRect(bconfig.lines[turn][ln].first, bconfig.lines[turn][ln].second, bconfig.rad, &theme.light_silver);
         ui_manager->board_layer.lines_rects.push_back(&line_rects[i]);
       }
-      // SDL_Log("%f, %f", bconfig.points[row][col].second.first, bconfig.points[row][col].second.second);
       i++;
     }
   }
@@ -120,23 +87,25 @@ void BoardScene::buildUI(){
 
   // DRAWING THE CIRCULAR BUTTON IN EACH OF THE BOARD POINTS
   i = 0;
-  board_pnt_btn.clear();
   board_pnt_btn.resize(25); 
   for (int row=0; row<5; row++){
     for (int col=0; col<5; col++){
-      // SDL_Log("%f, %f are the points", bconfig.points[row][col].second.first-5, bconfig.points[row][col].second.second-5);
-      board_pnt_btn[i] = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 25.f, "", nullptr, theme.invisible};
-      ui_manager->board_layer.circular_buttons.push_back(&board_pnt_btn[i]);
-      int pos = i+1;
-      board_pnt_btn[i].onClick = [pos](){
-        SDL_Log("The %dth button is clicked.", pos);
+      if (std::find(ui_manager->engine->valid_moves.begin(), ui_manager->engine->valid_moves.end(), i+1) != ui_manager->engine->valid_moves.end())
+        board_pnt_btn[i] = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 15.f, "", nullptr, theme.greenish_yellow};
+      else
+        board_pnt_btn[i] = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 15.f, "", nullptr, theme.invisible};
+      
+      ui_manager->board_layer.circular_buttons.push_back({i+1, &board_pnt_btn[i]});
+      board_pnt_btn[i].onClick = [this, i](){
+        this->ui_manager->state_changed = true;
+        this->ui_manager->engine->routeToEngine(i);
       };
       i++;
     }
   }
 
   // STORING THE BACKGROUND TEXTURE
-  bg_rect = {0.f, 0.f, static_cast<float>(ww), static_cast<float>(wh)};
+  bg_rect = {0.f, 0.f, static_cast<float>(w_w), static_cast<float>(w_h)};
   ui_manager->board_layer.background_texture.push_back({ui_manager->texture.background, NULL});
 
 }  
@@ -148,38 +117,6 @@ void BoardScene::render(){
   for (const auto& [bg, rect] : ui_manager->board_layer.background_texture){
     SDL_RenderTexture(renderer, bg, NULL, rect);
   }
-  // SDL_SetRenderLogicalPresentation(renderer, 1600, 900, SDL_LOGICAL_PRESENTATION_LETTERBOX); // RE-ENABLEING THE LOGICAL PRESENTATION 
-  // SDL_SetRenderLogicalPresentation(renderer, window_w, window_w/ui_manager->gameConf->max_aspect_ratio, SDL_LOGICAL_PRESENTATION_LETTERBOX);
-
-  // for (const auto& [points, col] : ui_manager->board_layer.points){
-  //   SDL_SetRenderDrawColor(renderer, col->r, col->g, col->b, col->a);
-  //   SDL_RenderLine(renderer, points.first->x, points.first->y, points.second->x, points.second->y);
-  // }
-
-  // for (const auto& round_rect : ui_manager->board_layer.rounded_rects){
-  // SDL_RenderGeometry(renderer, NULL, 
-  //   round_rect->rounded_rect.data(), 
-  //   static_cast<int>(round_rect->rounded_rect.size()), 
-  //   round_rect->indices.data(), 
-  //   round_rect->indices.size());
-  // }
-  // for (const auto& round_rect : ui_manager->board_layer.rounded_rects){
-  // SDL_RenderGeometry(renderer, NULL,
-  //                       round_rect->rounded_rect.data(),
-  //                       static_cast<int>(round_rect->rounded_rect.size()),
-  //                       round_rect->indices.data(),
-  //                       static_cast<int>(round_rect->indices.size()));
-  // }
-
-  for (const auto& button : ui_manager->board_layer.buttons)
-  {
-    // button->draw(renderer);
-  }
-  // RENDERING THE CIRCLE
-  for (const auto& circ : ui_manager->board_layer.circles){
-    // circ->render(renderer);
-  }
-  // for (const auto& round_rect : ui_manager->board_layer.rounded_rects){
 
   for (const auto& [tex, rect] : ui_manager->board_layer.textures){
     SDL_RenderTexture(renderer, tex, NULL, rect);
@@ -187,7 +124,6 @@ void BoardScene::render(){
   
   for (const auto& [rect, col] : ui_manager->board_layer.rects){
     SDL_SetRenderDrawColor(renderer, col->r, col->g, col->b, col->a);
-    // SDL_RenderFillRect(renderer, rect);
   }
 
   for (const auto& line_rects : ui_manager->board_layer.lines_rects){
@@ -198,8 +134,8 @@ void BoardScene::render(){
     line_rects->indices.size());
   } 
 
-  // 
-  for (const auto& brd_pnt_btn : ui_manager->board_layer.circular_buttons){
+  // LAYERING THE BOARD BY THE CIRCULAR BUTTONS
+  for (const auto& [id, brd_pnt_btn] : ui_manager->board_layer.circular_buttons){
     brd_pnt_btn->draw(renderer);
   }
 

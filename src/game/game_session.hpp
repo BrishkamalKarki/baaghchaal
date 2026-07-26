@@ -19,6 +19,7 @@ public:
     Config gameConf;
     UIManager ui_manager;
     GameEvent game_event;
+    BoardConfig b_config;
     Engine engine;
 
     GameSession(SDL_Window* win, SDL_Renderer* rend, void* game_state, int w, int h);

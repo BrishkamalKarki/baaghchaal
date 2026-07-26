@@ -16,7 +16,7 @@ public:
   std::vector <std::pair<SDL_Texture*, SDL_FRect*>> background_texture;
   std::vector <RoundedRect*> rounded_rects;
   std::vector <Button*> buttons;
-  std::vector <CircularButton*> circular_buttons;
+  std::vector <std::pair<int, CircularButton*>> circular_buttons;
   std::vector <Circle*> circles;
   std::vector <RoundedRect*> lines_rects;
   std::vector <std::pair<int, std::pair<CircularButton*, SDL_Texture*>>> baagh_pieces;

@@ -13,8 +13,7 @@ public:
   float factor;
   std::vector<std::vector<std::pair<int, std::pair<float, float>>>> points;
   std::vector<std::vector<std::pair<float, float>>> lines;
-  std::vector<std::pair<float, float>> baagh_ini;
-
+  std::vector<std::pair<int, int>> points_info; // STORING WHICH ROW AND THE COLUMN THE POINTS LIES IN
   // THIS STORES THE COORDINATES OF EACH POINTS (25 POINTS) FOR THE BOARD
   void makePoints();
 };

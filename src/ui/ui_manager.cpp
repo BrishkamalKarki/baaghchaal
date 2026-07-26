@@ -11,11 +11,14 @@ void UIManager::initScene()
 
 void UIManager::renderLayer()
 {
-  // board_scene->buildUI();
+  if (state_changed){
+    board_scene->buildUI();
+    state_changed = false;
+  }
   board_scene->render();
 }
 
-UIManager::UIManager(Config* conf, SDL_Window* win, SDL_Renderer* rend, Engine* engine, GameState* game_state): 
-gameConf(conf), window(win), renderer(rend), texture(rend), engine(engine), game_state(game_state){
+UIManager::UIManager(Config* conf, SDL_Window* win, SDL_Renderer* rend, Engine* engine, void* game_state): 
+gameConf(conf), window(win), renderer(rend), texture(rend), engine(engine), game_state(static_cast<GameState*>(game_state)){
   texture.loadTexture();
 } 

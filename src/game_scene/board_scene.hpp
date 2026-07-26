@@ -35,6 +35,9 @@ public:
     SDL_FPoint p55;
     CircularButton tada;
 
+    int clicked_at;
+    SDL_Color temp_col;
+
     std::vector<RoundedRect> line_rects;
     std::vector<CircularButton> board_pnt_btn;
 
@@ -47,5 +50,6 @@ public:
     void setFont(TTF_Font* f) { font = f; }
     void buildUI() override;
     void render() override;
+    void clearLayers();
 }; 
 

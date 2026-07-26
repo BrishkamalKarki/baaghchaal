@@ -25,4 +25,5 @@ public:
   SDL_Color gunmetal = {42, 52, 57, 255};
   SDL_Color light_silver = {220, 220, 220, 255};
   SDL_Color dark_steel = {112, 128, 144, 255};
+  SDL_Color greenish_yellow = {180, 255, 30, 255};
 };
