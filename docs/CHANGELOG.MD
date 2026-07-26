@@ -88,7 +88,7 @@ Also an texture manager which need a image file to be loaded.
 - Added font_manager, texture_manager, board_config, theme_config, system_config, engine, game_state, event_manager
 
 ### Description
-Updated the Event managers to seperate file where the events are checked. Reconfigured the system file archetecture. Added the texture manager and updated the font manager. Partially added the board scence where a baagh can move in the board and the valid moves around a point are seen. Partially made the engine - that can now give the valid positions to move and to change the position. This has been only implemented on the baagh texture.
+Updated the Event managers to seperate file where the events are checked. Reconfigured the system file archetecture. Added the texture manager and updated the font manager. Partially added the board scence where a baagh can move in the board and the valid moves around a point are seen. Partially made the engine - that can now give the valid positions to move and to change the position. This has been only implemented on the baagh texture. Added the circular button such that texture can be rendered on it.
 
 ### Changed
   nothing

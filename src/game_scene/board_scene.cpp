@@ -99,6 +99,7 @@ void BoardScene::buildUI(){
       board_pnt_btn[i].onClick = [this, i](){
         this->ui_manager->state_changed = true;
         this->ui_manager->engine->routeToEngine(i);
+        ui_manager->engine->valid_moves.clear();
       };
       i++;
     }

@@ -37,39 +37,45 @@ void Engine::getValidMovesAt(int pos){
       if (g_pos-1 == pos){
         valid_moves.clear();
         valid_moves.reserve(8);
-        // if (row != 1 && row != 5 && col != 1 && col!= 5){
 
-        int row_of_pos = pos % 5;      // 0-indexed row
-        int col_of_pos = pos / 5;      // 0-indexed col
+        int row_of_pos = pos % 5;      
+        int col_of_pos = pos / 5;      
 
         bool has_up    = row_of_pos > 0;
         bool has_down  = row_of_pos < 4;
         bool has_left  = col_of_pos > 0;
         bool has_right = col_of_pos < 4;
 
-         if (has_up && has_left && game_state->board_state[pos - 6].second == ' ')
-            valid_moves.push_back(game_state->board_state[pos - 6].first); // UP-LEFT
+        if (row == col || row + col == 6){
+            if (has_up && has_left && game_state->board_state[pos - 6].second == ' ')
+               valid_moves.push_back(game_state->board_state[pos - 6].first); // UP-LEFT
+        }
 
         if (has_left && game_state->board_state[pos - 5].second == ' ')
             valid_moves.push_back(game_state->board_state[pos - 5].first); // LEFT
 
-        if (has_down && has_left && game_state->board_state[pos - 4].second == ' ')
-            valid_moves.push_back(game_state->board_state[pos - 4].first); // DOWN-LEFT
-
+        if (row == col || row + col == 6){
+            if (has_down && has_left && game_state->board_state[pos - 4].second == ' ')
+                valid_moves.push_back(game_state->board_state[pos - 4].first); // DOWN-LEFT
+        }
         if (has_up && game_state->board_state[pos - 1].second == ' ')
             valid_moves.push_back(game_state->board_state[pos - 1].first); // UP
 
         if (has_down && game_state->board_state[pos + 1].second == ' ')
             valid_moves.push_back(game_state->board_state[pos + 1].first); // DOWN
 
-        if (has_up && has_right && game_state->board_state[pos + 4].second == ' ')
+        if (row == col || row + col == 6){
+            if (has_up && has_right && game_state->board_state[pos + 4].second == ' ')
             valid_moves.push_back(game_state->board_state[pos + 4].first); // UP-RIGHT
+        }
 
         if (has_right && game_state->board_state[pos + 5].second == ' ')
             valid_moves.push_back(game_state->board_state[pos + 5].first); // RIGHT
 
-        if (has_down && has_right && game_state->board_state[pos + 6].second == ' ')
-            valid_moves.push_back(game_state->board_state[pos + 6].first); // DOWN-RIGHT
+        if (row == col || row + col == 6){
+            if (has_down && has_right && game_state->board_state[pos + 6].second == ' ')
+                valid_moves.push_back(game_state->board_state[pos + 6].first); // DOWN-RIGHT
+        }
       }
       g_pos++;
 
