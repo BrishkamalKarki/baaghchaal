@@ -46,7 +46,7 @@ void Engine::getValidMovesAt(int pos){
         bool has_left  = col_of_pos > 0;
         bool has_right = col_of_pos < 4;
 
-        if (row == col || row + col == 6){
+        if (row == col){
             if (has_up && has_left && game_state->board_state[pos - 6].second == ' ')
                valid_moves.push_back(game_state->board_state[pos - 6].first); // UP-LEFT
         }
@@ -54,7 +54,7 @@ void Engine::getValidMovesAt(int pos){
         if (has_left && game_state->board_state[pos - 5].second == ' ')
             valid_moves.push_back(game_state->board_state[pos - 5].first); // LEFT
 
-        if (row == col || row + col == 6){
+        if (row + col == 6){
             if (has_down && has_left && game_state->board_state[pos - 4].second == ' ')
                 valid_moves.push_back(game_state->board_state[pos - 4].first); // DOWN-LEFT
         }
@@ -64,7 +64,7 @@ void Engine::getValidMovesAt(int pos){
         if (has_down && game_state->board_state[pos + 1].second == ' ')
             valid_moves.push_back(game_state->board_state[pos + 1].first); // DOWN
 
-        if (row == col || row + col == 6){
+        if (row + col == 6){
             if (has_up && has_right && game_state->board_state[pos + 4].second == ' ')
             valid_moves.push_back(game_state->board_state[pos + 4].first); // UP-RIGHT
         }
@@ -72,7 +72,7 @@ void Engine::getValidMovesAt(int pos){
         if (has_right && game_state->board_state[pos + 5].second == ' ')
             valid_moves.push_back(game_state->board_state[pos + 5].first); // RIGHT
 
-        if (row == col || row + col == 6){
+        if (row == col){
             if (has_down && has_right && game_state->board_state[pos + 6].second == ' ')
                 valid_moves.push_back(game_state->board_state[pos + 6].first); // DOWN-RIGHT
         }

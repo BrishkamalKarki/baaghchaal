@@ -1,3 +1,0 @@
-D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_wn/build_release/CMakeFiles/BaaghChaal.dir
-D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_wn/build_release/CMakeFiles/edit_cache.dir
-D:/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build_wn/build_release/CMakeFiles/rebuild_cache.dir
