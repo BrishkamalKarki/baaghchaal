@@ -7,4 +7,9 @@ GameState::GameState(){
     if (baagh_pos.find(pos) != baagh_pos.end()) board_state.push_back({pos, 'T'});
     else board_state.push_back({pos, ' '});
   }
+  turn = "goat";
+  baagh_trapped = 0;
+  goats_in_hand = 20;
+  goats_killed = 0;
+  goats_finished = false;
 }

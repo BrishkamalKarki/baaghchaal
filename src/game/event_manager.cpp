@@ -27,6 +27,10 @@ SDL_AppResult GameEvent::handleEvent(SDL_Event* event)
     {
         baagh.first->handleEvent(*event);
     }
+    for(auto [id, goat] : ui_manager->board_layer.goat_pieces)
+    {
+        goat.first->handleEvent(*event);
+    }
 
     return SDL_APP_CONTINUE;
 }

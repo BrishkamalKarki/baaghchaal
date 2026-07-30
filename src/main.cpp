@@ -16,14 +16,14 @@ GameState* game_state = nullptr;
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv)
 {
   if (!SDL_Init(SDL_INIT_VIDEO)) {
-      SDL_Log("VIDEO SYSTEM COULD NOT BE INITIALIZED: %s", SDL_GetError());
-      return SDL_APP_FAILURE;
+    SDL_Log("VIDEO SYSTEM COULD NOT BE INITIALIZED: %s", SDL_GetError());
+    return SDL_APP_FAILURE; 
   }
 
   window = SDL_CreateWindow("BaaghChaal", 1600, 900, SDL_WINDOW_RESIZABLE);
   if (!window) {
-      SDL_Log("WINDOW CANNOT BE CREATED: %s", SDL_GetError());
-      return SDL_APP_FAILURE;
+    SDL_Log("WINDOW CANNOT BE CREATED: %s", SDL_GetError());
+    return SDL_APP_FAILURE;
   }
 
   renderer = SDL_CreateRenderer(window, NULL);

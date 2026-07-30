@@ -26,4 +26,14 @@ public:
   SDL_Color light_silver = {220, 220, 220, 255};
   SDL_Color dark_steel = {112, 128, 144, 255};
   SDL_Color greenish_yellow = {180, 255, 30, 255};
+
+  SDL_Color wooden_brown = {138, 90, 54, 255};
+  SDL_Color wooden_dark_brown = {92, 58, 33, 255};
+
+  SDL_Color forest_green = {34, 139, 34, 255};
+  SDL_Color deep_forest_green = {22, 85, 22, 255};
+  SDL_Color emerald_dark = {0, 90, 60, 255};
+  SDL_Color pine_green = {1, 70, 32, 255};
+  SDL_Color hunter_green = {53, 94, 59, 255};
+  SDL_Color olive_dark = {60, 80, 20, 255};
 };

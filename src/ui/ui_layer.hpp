@@ -20,6 +20,10 @@ public:
   std::vector <Circle*> circles;
   std::vector <RoundedRect*> lines_rects;
   std::vector <std::pair<int, std::pair<CircularButton*, SDL_Texture*>>> baagh_pieces;
-  std::vector <std::pair<Circle*, SDL_Texture*>> goat_pieces;
+  std::vector <std::pair<int, std::pair<CircularButton*, SDL_Texture*>>> goat_pieces;
+  std::vector <std::pair<SDL_Texture*, SDL_FRect*>> texture_components;
+  std::vector <RoundedRect*> info_boards;
+  std::vector <std::pair<CircularButton*, SDL_Texture*>> board_tex_comp;
+  std::vector <std::pair<SDL_FRect*, SDL_Texture*>> texts;
 };
 

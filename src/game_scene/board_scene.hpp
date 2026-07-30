@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include <SDL3_ttf/SDL_ttf.h>
+#include <string>
 
 #include "scene_core.hpp"
 #include "ui/ui_layer.hpp"
@@ -23,31 +25,84 @@ public:
     Theme theme;
     BoardConfig bconfig;
 
-    SDL_FRect rect1;
+    SDL_FRect baaghchaal_txt;
     SDL_FRect rect2;
     std::vector<SDL_FRect> rect;
-    std::vector<CircularButton> baagh_circ; // HOLDS THE BAAGH TEXTURE
-    Circle goat_circ; // HOLDS THE BAAKHRA TEXTURE
+    std::vector<CircularButton> baagh_circ; // HOLDS THE BAAGH 
+    std::vector<CircularButton> goat_circ; // HOLDS THE BAAKHRA 
     SDL_FRect board_rect;
     SDL_FRect cover_rect;
     SDL_FRect bg_rect;
     SDL_FPoint p11;
     SDL_FPoint p55;
-    CircularButton tada;
+    CircularButton baagh_board_circ;
+
+    // ROUNDED RECTS
+    RoundedRect in_tiger_info_board;
+    RoundedRect mid_tiger_info_board;
+    RoundedRect out_tiger_info_board;
+    RoundedRect out_goat_info_board;
+    RoundedRect mid_goat_info_board;
+    RoundedRect in_goat_info_board;
+    RoundedRect in_timer_info_board;
+    RoundedRect mid_timer_info_board;
+    RoundedRect out_timer_info_board;
+    RoundedRect out_turn_info_board;
+    RoundedRect in_turn_info_board;
+    RoundedRect mid_turn_info_board;
+    RoundedRect mid_config_info_board;
+    RoundedRect in_config_info_board;
+    RoundedRect out_config_info_board;
+
+    RoundedRect baagh_board_line;
+    RoundedRect goat_board_line;
+    RoundedRect timer_board_line;
+    RoundedRect config_board_line;
+    RoundedRect turn_board_line;
+
+    RoundedRect rounded_rects[19];
+    
+    // BAAGH BOARD
+    SDL_Surface* baagh_title;
+    SDL_Texture* baagh_title_tex;
+    SDL_FRect baagh_title_rect;
+
+    SDL_Surface* goat_title;
+    SDL_Texture* goat_title_tex;
+    SDL_FRect goat_title_rect;
+
+    SDL_Surface* conf_title;
+    SDL_Texture* conf_title_tex;
+    SDL_FRect conf_title_rect;
+
+    SDL_Surface* timer_title;
+    SDL_Texture* timer_title_tex;
+    SDL_FRect timer_title_rect;
+
+    SDL_Surface* turn_title;
+    SDL_Texture* turn_title_tex;
+    SDL_FRect turn_title_rect;
+
+    CircularButton turn_board_circ; 
 
     int clicked_at;
     SDL_Color temp_col;
 
     std::vector<RoundedRect> line_rects;
-    std::vector<CircularButton> board_pnt_btn;
+    std::vector<std::pair<CircularButton, std::string>> board_pnt_btn;
 
     std::vector<SDL_FRect> rects;
     RoundedRect rrect;
     RoundedRect rrect1;
     Button playButton;
+    
     Circle circ;
     BoardScene(UIManager* uim);
     void setFont(TTF_Font* f) { font = f; }
+    void createBoardTexts(TTF_Font* font, const char* text, float centerX, float centerY,
+                    SDL_Color color, float factor_x_text, float factor_y_text, SDL_Surface*& surface,
+                    SDL_Texture*& texture, SDL_FRect& rect);
+    void createRoundRects(float w, float h, float x, float y, float rad, SDL_Color *col, RoundedRect& r_rects, float diag_ang = 0.0f);
     void buildUI() override;
     void render() override;
     void clearLayers();

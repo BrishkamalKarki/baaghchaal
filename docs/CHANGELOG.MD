@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on Keep a Changelog  
 and this project adheres to Semantic Versioning.
 
+---
+
 ### [1 Brishkamal Karki] - 2026-07-05
 
 ### Added
@@ -52,6 +54,8 @@ Release:
 ### Fixed
   nothing
 
+---
+
 ### [2 Brishkamal Karki] - 2026-07-07
 
 ### Added
@@ -68,7 +72,9 @@ Also an texture manager which need a image file to be loaded.
 ### Fixed
   nothing
 
-### [2 Bishesh Khatri] - 2026-07-12
+--- 
+
+### [3 Bishesh Khatri] - 2026-07-12
 
 ### Added
 - Added button ui, the button now shows up and is defined under button.hpp. 
@@ -77,6 +83,8 @@ Also an texture manager which need a image file to be loaded.
 
 ### Fixed
 - Intercepted SDL_EVENT_MOUSE_BUTTON_DOWN in GameSession and used SDL_RenderCoordinatesFromWindow to convert raw window coordinates into logical coordinates, fixing the button hit-box misalignment.
+
+---
 
 ### [4 Brishkamal Karki] - 2026-07-26
 
@@ -96,3 +104,23 @@ Updated the Event managers to seperate file where the events are checked. Reconf
 
 ### Fixed
   nothing
+
+---
+
+### [5 Brishkamal Karki] - 2026-07-30
+
+### Added
+- Added the most of the ui part in the board scene
+- Added different variants of fonts
+- Added the logic part of putting the goat, moving the baagh and the goat along with eating the goat
+### Description
+Added the rounded rects in the board scece for the configuration info display, baagh and goat info display, timer display, turn display. U can now play it in a 2 player mode roughly.
+
+### Changed
+  nothing
+
+
+### Fixed
+  nothing
+
+---
