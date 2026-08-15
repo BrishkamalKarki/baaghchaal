@@ -29,6 +29,7 @@ public:
 
   SDL_Color wooden_brown = {138, 90, 54, 255};
   SDL_Color wooden_dark_brown = {92, 58, 33, 255};
+  SDL_Color whitish_brown = {210, 180, 140, 255};
 
   SDL_Color forest_green = {34, 139, 34, 255};
   SDL_Color deep_forest_green = {22, 85, 22, 255};

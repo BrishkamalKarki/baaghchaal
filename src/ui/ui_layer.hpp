@@ -24,6 +24,6 @@ public:
   std::vector <std::pair<SDL_Texture*, SDL_FRect*>> texture_components;
   std::vector <RoundedRect*> info_boards;
   std::vector <std::pair<CircularButton*, SDL_Texture*>> board_tex_comp;
-  std::vector <std::pair<SDL_FRect*, SDL_Texture*>> texts;
+  std::vector <std::pair<SDL_FRect, SDL_Texture*>> texts;
 };
 
