@@ -12,4 +12,14 @@ GameState::GameState(){
   goats_in_hand = 20;
   goats_killed = 0;
   goats_finished = false;
+  bot_taken = "baagh";
+  human_taken = "goat";
+  game_mode = "B V P";
+  bot_diff_level = "HARD";
+
+  player1 = "baagh";
+  player2 = "goat";
+
+  timer_mode = true;
+  sec_p_move = 45;
 }

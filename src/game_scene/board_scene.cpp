@@ -212,26 +212,46 @@ void BoardScene::buildUI(){
   createBoardTexts(ui_manager->font.font_bold, "CONFIG", 200.f, 210.f, theme.white, -80, -40, conf_title, conf_title_tex, conf_title_rect);
   createBoardTexts(ui_manager->font.font_bold, "TURN", 200.f, 660.f, theme.white, -80, -40, turn_title, turn_title_tex, turn_title_rect);
 
-  createBoardTexts(ui_manager->font.font_regular_bold, "TOTAL BAAGHS   4", 1400.f, 150.f, theme.whitish_brown, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
+  createBoardTexts(ui_manager->font.font_regular_bold, "TOTAL BAAGHS   4", 1400.f, 150.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
   int baagh_trapped = ui_manager->engine->board_eval.checkBaaghTrapped();
   
   std::string baagh_trapped_text = "BAAGHS TRAPPED   " + std::to_string(baagh_trapped);
   int goats_killed = ui_manager->game_state->goats_killed;
-  createBoardTexts(ui_manager->font.font_regular_bold, baagh_trapped_text.c_str(), 1400.f, 150.f, theme.whitish_brown, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
-  createBoardTexts(ui_manager->font.font_regular_bold, "TOTAL GOATS   20", 1400.f, 350.f, theme.whitish_brown, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
+  createBoardTexts(ui_manager->font.font_regular_bold, baagh_trapped_text.c_str(), 1400.f, 150.f, theme.white, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
+  createBoardTexts(ui_manager->font.font_regular_bold, "TOTAL GOATS   20", 1400.f, 350.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
   std::string goatts_killed_text = "GOATS KILLED   " + std::to_string(goats_killed);
   int goats_in_hands = ui_manager->game_state->goats_in_hand;
   std::string goatts_ih_text = "GOATS IN HAND   " + std::to_string(goats_in_hands);
 
-  createBoardTexts(ui_manager->font.font_regular_bold, goatts_ih_text.c_str(), 1400.f, 350.f, theme.whitish_brown, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
-  createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 1400.f, 350.f, theme.whitish_brown, -80, 70, normal_texts, normal_text_tex, normal_text_rect);
+  createBoardTexts(ui_manager->font.font_regular_bold, goatts_ih_text.c_str(), 1400.f, 350.f, theme.white, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
+  createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 1400.f, 350.f, theme.white, -80, 70, normal_texts, normal_text_tex, normal_text_rect);
 
   if (ui_manager->game_state->timer_mode){
-    // createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 1400.f, 350.f, theme.whitish_brown, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
+    // createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 1400.f, 350.f, theme.white, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
   }
 
-  createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 308.f, 408.f, theme.whitish_brown, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
-
+  std::string game_mode = "GAME MODE   " + ui_manager->game_state->game_mode;
+  createBoardTexts(ui_manager->font.font_regular_bold, game_mode.c_str(), 200.f, 360.f, theme.white, -80, -130, normal_texts, normal_text_tex, normal_text_rect);
+  std::string time_p_move = "TIME P MOVE   " + std::to_string(ui_manager->game_state->sec_p_move);
+  createBoardTexts(ui_manager->font.font_regular_bold, time_p_move.c_str(), 200.f, 360.f, theme.white, -80, -105, normal_texts, normal_text_tex, normal_text_rect);
+  if (ui_manager->game_state->game_mode == "B V P"){
+    std::string bot_diff_level = "BOT LEVEL   " + ui_manager->game_state->bot_diff_level;
+    createBoardTexts(ui_manager->font.font_regular_bold, bot_diff_level.c_str(), 200.f, 360.f, theme.white, -80, -55, normal_texts, normal_text_tex, normal_text_rect);
+    std::string bot = "BOT   " + ui_manager->game_state->bot_taken;
+    std::transform(bot.begin(), bot.end(), bot.begin(), ::toupper);
+    createBoardTexts(ui_manager->font.font_regular_bold, bot.c_str(), 200.f, 360.f, theme.white, -80, -30, normal_texts, normal_text_tex, normal_text_rect);
+    std::string player = "PLAYER   " + ui_manager->game_state->human_taken;
+    std::transform(player.begin(), player.end(), player.begin(), ::toupper);
+    createBoardTexts(ui_manager->font.font_regular_bold, player.c_str(), 200.f, 360.f, theme.white, -80, -5, normal_texts, normal_text_tex, normal_text_rect);
+  }
+  else{
+    std::string player1 = "PLAYER1   " + ui_manager->game_state->player1;
+    std::transform(player1.begin(), player1.end(), player1.begin(), ::toupper);
+    createBoardTexts(ui_manager->font.font_regular_bold, player1.c_str(), 200.f, 360.f, theme.white, -80, -55, normal_texts, normal_text_tex, normal_text_rect);
+    std::string player2 = "PLAYER2   " + ui_manager->game_state->player2;
+    std::transform(player2.begin(), player2.end(), player2.begin(), ::toupper);
+    createBoardTexts(ui_manager->font.font_regular_bold, player2.c_str(), 200.f, 360.f, theme.white, -80, -30, normal_texts, normal_text_tex, normal_text_rect);
+  }
 
 };
 
