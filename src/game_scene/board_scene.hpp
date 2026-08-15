@@ -83,6 +83,10 @@ public:
     SDL_Texture* turn_title_tex;
     SDL_FRect turn_title_rect;
 
+    SDL_Surface* normal_texts;
+    SDL_Texture* normal_text_tex;
+    SDL_FRect normal_text_rect;
+
     CircularButton turn_board_circ; 
 
     int clicked_at;
