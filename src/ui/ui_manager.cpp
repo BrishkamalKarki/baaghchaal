@@ -11,10 +11,30 @@ void UIManager::initScene()
 
 void UIManager::renderLayer()
 {
+  bool is_bot_mode = (game_state->game_mode == "B V P");
+
+  if (is_bot_mode){ // SYNCHRONOUS BOT MOVE (no threading = no data races)
+    if (game_state->turn == game_state->bot_taken){
+      engine->performBotMove();
+      state_changed = true;
+    }
+  }
+
+  
+  if (game_state->timer_mode && game_state->sec_p_move > 0){ // MAKGING THE TIMER SYNCHROUNOUS
+    Uint64 elapsed_ms = SDL_GetTicks() - engine->turn_start_ticks;
+    int current_sec = static_cast<int>(elapsed_ms / 1000);
+    if (current_sec != last_timer_sec){
+        last_timer_sec = current_sec;
+        state_changed = true;
+    }
+  }
+
   if (state_changed){
     board_scene->buildUI();
     state_changed = false;
   }
+
   board_scene->render();
 }
 

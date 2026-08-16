@@ -124,3 +124,19 @@ Added the rounded rects in the board scece for the configuration info display, b
   nothing
 
 ---
+
+
+### [5 Brishkamal Karki] - 2026-08-16
+
+### Added
+- Added the full ui for board scene
+- Added the total engine and the bot (minimax with alphabeta prunning)
+### Description
+
+### Changed
+  nothing
+
+### Fixed
+  nothing
+
+---

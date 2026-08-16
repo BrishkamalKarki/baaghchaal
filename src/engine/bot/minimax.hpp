@@ -2,110 +2,59 @@
 
 #include <vector>
 #include <string>
-#include <unordered_map>
-#include <cstdint>
-#include <chrono>
-#include <game/game_state.hpp>
-#include "engine/board_evaluator.hpp"
+
 #include "engine/rules.hpp"
 
 class Engine;
+class BoardEvaluator;
 
-enum class TTFlag { EXACT, LOWER, UPPER };
-
-struct TTEntry {
-    uint64_t key = 0;
-    int depth = -1;
-    int score = 0;
-    TTFlag flag = TTFlag::EXACT;
-    int bestFrom = -2;
-    int bestTo = -1;
-};
-
-class MiniMax{
-  public:
-    MiniMax(Engine* eng);
-
+class MiniMax {
+public:
     Engine* engine = nullptr;
     BoardEvaluator* eval_board = nullptr;
 
-    void findBestMove();
+    char bot_piece;
+    char opp_piece;
 
     int from;
     int to;
-    char bot_piece;
-    char opp_piece;
-    char turn;
 
-    static const int MAX_PLY = 64;
-
-  private:
     int depth_lim;
-    std::chrono::steady_clock::time_point search_start;
-    long long time_budget_ms;
-    bool time_up;
-    long long node_count;
 
-    int negamax(int depth, int alpha, int beta);
-    int quiescence(int alpha, int beta, int qdepth);
-    bool timeCheck();
-
-    struct SearchMove {
-        int from;
-        int to;
-        int score;
-    };
-
-    std::vector<SearchMove> generateMoves();
-    void scoreMoves(std::vector<SearchMove>& moves, int depth, int ttFrom, int ttTo);
-
-    void applyMove(const SearchMove& move,
-                    std::vector<std::pair<int,char>>& savedBoard,
-                    std::string& savedGameTurn,
-                    int& savedGoatsInHand,
-                    int& savedGoatsKilled,
-                    char& savedTurn,
-                    bool& wasCapture);
-
-    void undoMove(const std::vector<std::pair<int,char>>& savedBoard,
-                  const std::string& savedGameTurn,
-                  int savedGoatsInHand,
-                  int savedGoatsKilled,
-                  char savedTurn);
-
-    int killerFrom[MAX_PLY][2];
-    int killerTo[MAX_PLY][2];
-
-    int history[2][25][25];
-
-    static const size_t TT_SIZE = 1 << 20;
-    std::vector<TTEntry> tt;
-    uint64_t computeHash();
-
-    int evaluate_score();
-
-    struct TigerScan {
-        int totalMobility = 0;
-        int totalCaptures = 0;
-        std::vector<int> vulnerableGoatPositions;
-        int escapeScore = 0;
+    struct TigerScoreFactors {
+        int ttl_mobility = 0;
+        int ttl_capture = 0;
+        int esc_score = 0;
         int restriction = 0;
         int danger = 0;
-        int centerControl = 0;
-        int edgeScore = 0;
+        int center_control = 0;
+        int trapped_count = 0;
+        int edge_score = 0;
+        std::vector<int> vulnerable_goat_pos;
     };
 
     struct PlacementSafety {
-        int safe = 0;
+        int safe      = 0;
         int dangerous = 0;
     };
 
+    explicit MiniMax(Engine* eng);
+
+    void findBestMove();
+
+private:
+
+
+    int minimax(int depth, bool maximizingPlayer, int alpha, int beta);
+    int evaluate_score();
+
     int countTigers();
     int countGoats();
-    int goatMobility();
+
     int goatClusters();
-    int goatAdvancedPositions();
     int goatBlockingScore();
-    TigerScan scanTigers();
+
+    TigerScoreFactors getScoreTiger();
+
     PlacementSafety computePlacementSafety();
 };

@@ -43,6 +43,7 @@ public:
     Texture texture;
     Font font;
     BoardLayer board_layer;
+    int last_timer_sec = -1;
     void initScene();
     void renderLayer();
 };

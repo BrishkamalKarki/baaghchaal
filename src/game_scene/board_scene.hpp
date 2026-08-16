@@ -87,6 +87,11 @@ public:
     SDL_Texture* normal_text_tex;
     SDL_FRect normal_text_rect;
 
+    // Live timer — updated every frame in render(), never in buildUI()
+    SDL_Texture* live_timer_tex = nullptr;
+    SDL_FRect    live_timer_rect{};
+    void updateTimerText();
+
     CircularButton turn_board_circ; 
 
     int clicked_at;
