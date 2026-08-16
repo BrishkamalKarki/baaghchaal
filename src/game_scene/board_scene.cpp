@@ -3,6 +3,7 @@
 #include "ui/ui_manager.hpp"
 #include <algorithm>
 #include "game_config/theme_config.hpp"
+#include <algorithm>
 
 void BoardScene::clearLayers(){
   ui_manager->board_layer.rects.clear();
@@ -27,6 +28,15 @@ void BoardScene::clearLayers(){
 }
 
 void BoardScene::buildUI(){
+  std::string winner = ui_manager->engine->board_eval.checkWinner();
+  if (winner == "goat" || winner == "baagh") {
+      ui_manager->game_state->game_won = winner;
+      ui_manager->pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
+      ui_manager->initScene();
+      ui_manager->state_changed = true;
+      return;
+  }
+
   this->clearLayers();
 
   // MAKING THE BAAGH TEXTURES - CIRCULAR BUTTONS

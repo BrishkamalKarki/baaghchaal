@@ -8,6 +8,9 @@
 #include "game_config/system_config.hpp"
 #include "game_scene/scene_core.hpp"
 #include "game_scene/board_scene.hpp"
+#include "game_scene/game_configer_scene.hpp"
+#include "game_scene/startup_scene.hpp"
+#include "game_scene/result_scene.hpp"
 #include "game_managers/texture_manager.hpp"
 #include "game_managers/font_manager.hpp"
 #include "engine/engine.hpp"
@@ -37,7 +40,10 @@ public:
     UIManager(Config* gameConf, SDL_Window* win, SDL_Renderer*, Engine* engine, void* game_state);
     ScenceOrd scnord;
     std::vector <ScenceOrd> pair_scene;
+    std::unique_ptr<StartupScene> startup_scene;
+    std::unique_ptr<GameConfigerScene> config_scene;
     std::unique_ptr<BoardScene> board_scene;
+    std::unique_ptr<ResultScene> result_scene;
 
     // RESOURCES IN HERE
     Texture texture;
@@ -46,4 +52,5 @@ public:
     int last_timer_sec = -1;
     void initScene();
     void renderLayer();
+    void handleEvents(const SDL_Event& event);
 };
