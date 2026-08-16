@@ -32,13 +32,14 @@ SDL_AppResult GameSession::runFrame()
 
     SDL_RenderPresent(renderer);
 
+    // DECLARAING THE TIME OUT WINNER
     std::string winner = ui_manager.engine->board_eval.checkWinner();
-    if (winner == "goat" || winner == "baagh") {
-        ui_manager.game_state->game_won = winner;
+    if (winner == "goat" || winner == "baagh"){
         ui_manager.game_state->move = 0;
         ui_manager.game_state->turn = "goat";
         ui_manager.pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
         ui_manager.initScene();
+        ui_manager.game_state->won_by_time_out = true;
         ui_manager.state_changed = true;
     }
 

@@ -120,55 +120,77 @@ void StartupScene::buildUI(){
 void StartupScene::buildInfoOverlay(){
   float center_x = static_cast<float>(w_w) / 2.f;
   float center_y = static_cast<float>(w_h) / 2.f;
- 
+
+  // PUSH THE INFO PANEL LOWER SO THE BAAGHCHAAL LOGO IN THE BACKGROUND STAYS VISIBLE.
+  // THE LOGO SITS AT Y~50..215, SO WE SHIFT THE PANEL CENTER DOWN BY 150px.
+  float panel_cy = center_y + 150.f;
+
   // INFO PANEL - LAYERED BLACK / WOODEN_BROWN / WOODEN_DARK_BROWN, SAME 3-DEPTH LOOK AS BEFORE.
   // KEPT AS A SOLID PANEL (RATHER THAN A PILL BUTTON) SINCE IT NEEDS TO HOLD A BLOCK OF RULES TEXT.
-  out_info_board = RoundedRect(720.f, 560.f);
-  out_info_board.makeRoundRect(center_x, center_y, 28.f, &theme.black);
+  float panel_w = 740.f;
+  float panel_h = 560.f;
+  out_info_board = RoundedRect(panel_w, panel_h);
+  out_info_board.makeRoundRect(center_x, panel_cy, 28.f, &theme.black);
   info_panels.push_back(&out_info_board);
- 
-  mid_info_board = RoundedRect(712.f, 552.f);
-  mid_info_board.makeRoundRect(center_x, center_y, 28.f, &theme.wooden_brown);
+
+  mid_info_board = RoundedRect(panel_w - 8.f, panel_h - 8.f);
+  mid_info_board.makeRoundRect(center_x, panel_cy, 28.f, &theme.wooden_brown);
   info_panels.push_back(&mid_info_board);
- 
-  in_info_board = RoundedRect(704.f, 544.f);
-  in_info_board.makeRoundRect(center_x, center_y, 28.f, &theme.wooden_dark_brown);
+
+  in_info_board = RoundedRect(panel_w - 16.f, panel_h - 16.f);
+  in_info_board.makeRoundRect(center_x, panel_cy, 28.f, &theme.wooden_dark_brown);
   info_panels.push_back(&in_info_board);
- 
-  // TITLE
-  addInfoText(ui_manager->font.font_bold, "HOW TO PLAY", center_x, center_y - 240.f, theme.white, -110.f, -20.f);
- 
-  // RULES, ONE LINE PER FACT
-  float line_y = center_y - 170.f;
+
+  // TITLE - PULLED CLOSER TO THE PANEL CENTER FOR MORE TOP MARGIN
+  addInfoText(ui_manager->font.font_bold, "HOW TO PLAY", center_x, panel_cy - 220.f, theme.white, -110.f, -20.f);
+
+  // RULES, ONE LINE PER FACT - CENTERED HORIZONTALLY FOR A BALANCED LOOK ON BOTH SIDES.
+  // EACH LINE IS RENDERED WITH factor_x CALCULATED AS NEGATIVE HALF ITS PIXEL WIDTH.
+  // SINCE createBoardTexts POSITIONS AT (centerX + factor_x), PASSING -(textureWidth/2)
+  // CENTERS THE TEXT. WE RENDER TO A TEMP SURFACE FIRST TO MEASURE, THEN USE addInfoText.
+  float line_y = panel_cy - 165.f;
   float line_step = 34.f;
-  addInfoText(ui_manager->font.font_regular_bold, "20 GOATS FACE OFF AGAINST 4 TIGERS", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "GOATS WIN BY TRAPPING ALL 4 TIGERS", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "TIGERS WIN BY CAPTURING 5 GOATS", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "TAP AN OPEN POINT TO PLACE A GOAT", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "ONCE ALL GOATS ARE PLACED, TAP A GOAT", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "THEN TAP A HIGHLIGHTED POINT TO MOVE IT", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "TIGERS CAPTURE BY JUMPING OVER A GOAT", center_x, line_y, theme.light_silver, -300.f, 0.f);
-  line_y += line_step;
-  addInfoText(ui_manager->font.font_regular_bold, "INTO AN EMPTY POINT DIRECTLY BEHIND IT", center_x, line_y, theme.light_silver, -300.f, 0.f);
- 
+
+  auto addCenteredInfoLine = [&](const std::string& text, SDL_Color color){
+    SDL_Surface* measure = TTF_RenderText_Blended(ui_manager->font.font_regular_bold, text.c_str(), 0, color);
+    float tw = static_cast<float>(measure->w);
+    SDL_DestroySurface(measure);
+    addInfoText(ui_manager->font.font_regular_bold, text, center_x, line_y, color, -tw / 2.f, 0.f);
+    line_y += line_step;
+  };
+
+  addCenteredInfoLine("20 GOATS FACE OFF AGAINST 4 TIGERS", theme.light_silver);
+  addCenteredInfoLine("GOATS WIN BY TRAPPING ALL 4 TIGERS", theme.light_silver);
+  addCenteredInfoLine("TIGERS WIN BY CAPTURING 5 GOATS", theme.light_silver);
+  addCenteredInfoLine("TAP AN OPEN POINT TO PLACE A GOAT", theme.light_silver);
+  addCenteredInfoLine("ONCE ALL GOATS ARE PLACED, TAP A GOAT", theme.light_silver);
+  addCenteredInfoLine("THEN TAP A HIGHLIGHTED POINT TO MOVE IT", theme.light_silver);
+  addCenteredInfoLine("TIGERS CAPTURE BY JUMPING OVER A GOAT", theme.light_silver);
+  addCenteredInfoLine("INTO AN EMPTY POINT DIRECTLY BEHIND IT", theme.light_silver);
+
+  // DEVELOPER CREDITS AT THE BOTTOM OF THE INFO PANEL
+  line_y += 10.f;  // SMALL GAP BEFORE CREDITS
+  SDL_Color credit_color = {180, 180, 180, 255};
+  auto addCenteredCreditLine = [&](const std::string& text){
+    SDL_Surface* measure = TTF_RenderText_Blended(ui_manager->font.font_regular, text.c_str(), 0, credit_color);
+    float tw = static_cast<float>(measure->w);
+    SDL_DestroySurface(measure);
+    addInfoText(ui_manager->font.font_regular, text, center_x, line_y, credit_color, -tw / 2.f, 0.f);
+    line_y += 26.f;
+  };
+  addCenteredCreditLine("DEVELOPED BY: Brishkamal Karki, Bishesh Khatri, Chandan Panjiyar");
+
   // BACK BUTTON - SAME PILL STYLE AND FONT AS THE MAIN MENU BUTTONS
-  createPillButton(back_btn_shape, back_btn, {center_x, center_y + 220.f}, {220.f, 60.f},
+  createPillButton(back_btn_shape, back_btn, {center_x, panel_cy + 210.f}, {220.f, 60.f},
                     "BACK", ui_manager->font.font_regular_bold, theme.wooden_brown, theme.white);
   back_btn.onClick = [this](){ showing_info = false; };
 }
  
 void StartupScene::render(){
-  // BACKDROP - DRAWN TWICE TO COUNTER THE TEXTURE'S BUILT-IN LOW ALPHA (SET GLOBALLY IN
-  // Texture::loadTexture SO IT READS BRIGHT AND SATURATED LIKE THE MOCKUP INSTEAD OF WASHED OUT
-  SDL_RenderTexture(renderer, ui_manager->texture.cover, NULL, &bg_rect);
+  // BACKDROP - COVER DIM IMAGE ALREADY INCLUDES THE BAAGHCHAAL LOGO, NO NEED TO DRAW IT SEPARATELY
+  SDL_RenderTexture(renderer, ui_manager->texture.cover_dim, NULL, &bg_rect);
  
-  // SUBTITLE
+  // SUBTITLE 
   for (const auto& [rect, tex] : texts){
     SDL_RenderTexture(renderer, tex, NULL, &rect);
   }
@@ -205,12 +227,12 @@ void StartupScene::render(){
 void StartupScene::handleEvent(const SDL_Event& event){
   if (showing_info){
     // WHILE THE OVERLAY IS OPEN, ONLY THE BACK BUTTON SHOULD BE CLICKABLE
-    back_btn.handleEvent(event);
+    if (back_btn.handleEvent(event)) return;
     return;
   }
  
   // NORMAL MENU - PLAY / INFO / EXIT ARE ALL CLICKABLE
-  play_btn.handleEvent(event);
-  info_btn.handleEvent(event);
-  exit_btn.handleEvent(event);
+  if (play_btn.handleEvent(event)) return;
+  if (info_btn.handleEvent(event)) return;
+  if (exit_btn.handleEvent(event)) return;
 }

@@ -95,14 +95,11 @@ void BoardScene::buildUI(){
   
   // MAKING THE BOARD
   board_rect = {(static_cast<float>(w_w)/2)-400.f, (static_cast<float>(w_h)/2)-400.f, 800.f, 800.f};
-  // SDL_Log(" %f   %f", (static_cast<float>(ww))/2-400.f, (static_cast<float>(wh))/2-400.f);
   ui_manager->board_layer.textures.push_back({ui_manager->texture.board, &board_rect}); 
 
   int i = 0;
 
   cover_rect = {0.f, 0.f, static_cast<float>(w_w), static_cast<float>(w_h)}; 
-  // ui_manager->board_layer.textures.push_back({ui_manager->texture.baagh, NULL});
-
 
   // MAKEING THE LINES IN THE BOARD
   line_rects.resize(12); 
@@ -138,10 +135,9 @@ void BoardScene::buildUI(){
   i = 0;
   board_pnt_btn.resize(25); 
   if (ui_manager->game_state->turn == "goat" && ui_manager->game_state->goats_in_hand > 0){
-  for (int i = 0; i <= 24; i++){
-    // SDL_Log("%d %c", i, ui_manager->game_state->board_state[i].second);
-    if (ui_manager->game_state->board_state[i].second != 'G' || ui_manager->game_state->board_state[i].second != 'T')
-      ui_manager->engine->board_eval.valid_moves.push_back(i);
+    for (int i = 0; i <= 24; i++){
+      if (ui_manager->game_state->board_state[i].second != 'G' || ui_manager->game_state->board_state[i].second != 'T')
+        ui_manager->engine->board_eval.valid_moves.push_back(i);
     }
   }
 
@@ -248,24 +244,38 @@ void BoardScene::buildUI(){
   // TIMER PART OVER IN HERE
   if (ui_manager->game_state->timer_mode && ui_manager->game_state->sec_p_move > 0){
     Uint64 now = SDL_GetTicks();
-    Uint64 elapsed_ms = now - ui_manager->engine->turn_start_ticks;
-    int elapsed_sec = static_cast<int>(elapsed_ms / 1000);
-    int remaining = ui_manager->game_state->sec_p_move - elapsed_sec;
-    if (remaining <= 0){
-      remaining = 0;
-      ui_manager->game_state->game_won = ui_manager->game_state->turn;
-    } 
-    std::string time_left_text = "TIME LEFT   " + std::to_string(remaining) + "S";
-    if (remaining <= 0){
-          std::string winner = ui_manager->game_state->turn == "baagh" ? "goat" : "baagh";
-          ui_manager->game_state->game_won = winner;
-          ui_manager->game_state->move = 0;
-          ui_manager->game_state->turn = "goat";
-          ui_manager->pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
-          ui_manager->initScene();
-          ui_manager->state_changed = true;
+
+    SDL_Log("pauesd and unpaued at %d %d", paused_time/1000, unpaused_time/1000);
+    std::string time_left_text;
+    if (!ui_manager->game_state->game_paused){
+      Uint64 elapsed_ms = now - ui_manager->engine->turn_start_ticks;
+      int elapsed_sec = static_cast<int>(elapsed_ms / 1000);
+      int remaining = ui_manager->game_state->sec_p_move - elapsed_sec;
+      unpaused_time = 0; 
+      paused_time = 0;
+      if (remaining <= 0){
+        remaining = 0;
+        ui_manager->game_state->game_won = ui_manager->game_state->turn;
+      } 
+      // GOING TO THE RESULT SCREEN
+      time_left_text = "TIME LEFT   " + std::to_string(remaining) + "S";
+      if (remaining <= 0){
+            std::string winner = ui_manager->game_state->turn == "baagh" ? "goat" : "baagh";
+            ui_manager->game_state->game_won = winner;
+            ui_manager->game_state->won_by_time_out = true;
+            ui_manager->game_state->move = 0;
+            ui_manager->game_state->turn = "goat";
+            ui_manager->pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
+            ui_manager->initScene();
+            ui_manager->state_changed = true;
+      }
+      saved_time_string = time_left_text;
+      createBoardTexts(ui_manager->font.font_regular_bold, time_left_text.c_str(), 1400.f, 700.f - 125.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
     }
-    createBoardTexts(ui_manager->font.font_regular_bold, time_left_text.c_str(), 1400.f, 700.f - 125.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
+    else{
+      createBoardTexts(ui_manager->font.font_regular_bold, saved_time_string.c_str(), 1400.f, 700.f - 125.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
+    }
+
   }
 
   std::string game_mode = "GAME MODE   " + ui_manager->game_state->game_mode;
@@ -293,7 +303,18 @@ void BoardScene::buildUI(){
   std::string move_no = "MOVE   " + std::to_string(ui_manager->game_state->move);
   createBoardTexts(ui_manager->font.font_regular_bold, move_no.c_str(), 200.f, 705.f - 175.f, theme.white, -80, 15, normal_texts, normal_text_tex, normal_text_rect);
 
-};
+  // PAUSE BUTTON - BOTTOM LEFT CORNER
+  pause_btn_rect = {50.f, static_cast<float>(w_h) - 130.f, 120.f, 80.f};
+  pause_hit_btn = Button({pause_btn_rect.x, pause_btn_rect.y}, {pause_btn_rect.w, pause_btn_rect.h}, "", nullptr, {0,0,0,0});
+  pause_hit_btn.shape.upper_color.a = 0; // INVISIBLE FILL
+  pause_hit_btn.onClick = [this](){
+    showing_pause = true;
+    ui_manager->game_state->game_paused = true;
+    paused_time = SDL_GetTicks();
+  };
+
+  buildPauseOverlay();
+}
 
 void BoardScene::createBoardTexts(TTF_Font* font, const char* text, float centerX, float centerY,
                 SDL_Color color, float factor_x_text, float factor_y_text,
@@ -317,7 +338,6 @@ void BoardScene::createRoundRects(float w, float h, float x, float y, float rad,
 void BoardScene::render(){
   
   // RENDERING THE BACKGROUND IMAGE
-  // SDL_SetRenderLogicalPresentation(renderer, 0, 0, SDL_LOGICAL_PRESENTATION_DISABLED); // DISABLEING THE LOGICAL PRESENTATION
   for (const auto& [bg, rect] : ui_manager->board_layer.background_texture){
     SDL_RenderTexture(renderer, bg, NULL, rect);
   }
@@ -331,11 +351,11 @@ void BoardScene::render(){
   } 
 
   for (const auto& line_rects : ui_manager->board_layer.lines_rects){
-  SDL_RenderGeometry(renderer, NULL, 
-    line_rects->rounded_rect.data(),
-    static_cast<int>(line_rects->rounded_rect.size()),
-    line_rects->indices.data(), 
-    line_rects->indices.size());
+    SDL_RenderGeometry(renderer, NULL, 
+      line_rects->rounded_rect.data(),
+      static_cast<int>(line_rects->rounded_rect.size()),
+      line_rects->indices.data(), 
+      line_rects->indices.size());
   } 
 
   // LAYERING THE BOARD BY THE CIRCULAR BUTTONS
@@ -362,10 +382,10 @@ void BoardScene::render(){
   // SHOWING THE INFO BOARDS
   for (const auto& rect : ui_manager->board_layer.info_boards){
     SDL_RenderGeometry(renderer, NULL, 
-    rect->rounded_rect.data(), 
-    static_cast<int>(rect->rounded_rect.size()),
-    rect->indices.data(), 
-    rect->indices.size());
+      rect->rounded_rect.data(), 
+      static_cast<int>(rect->rounded_rect.size()),
+      rect->indices.data(), 
+      rect->indices.size());
   }
 
   // SHOWING THE TEXTURES IN THE INFOS BOARDS
@@ -376,13 +396,147 @@ void BoardScene::render(){
   for (const auto& [rect, text] : ui_manager->board_layer.texts){
     SDL_RenderTexture(renderer, text, NULL, &rect);
   }
+
+  // PAUSE BUTTON ICON - ALWAYS VISIBLE IN BOTTOM LEFT
+  SDL_RenderTexture(renderer, ui_manager->texture.pause_button, NULL, &pause_btn_rect);
+
+  // PAUSE OVERLAY - DRAWN ON TOP OF EVERYTHING WHEN ACTIVE
+  if (showing_pause){
+    renderPauseOverlay();
+  }
 } 
 
-BoardScene::BoardScene(UIManager* uim): ui_manager(uim)
-{
+
+void createPausePillButton(SDL_Renderer* , RoundedRect& shape, Button& btn, SDL_FPoint center, SDL_FPoint size, const std::string& text, TTF_Font* font,
+  SDL_Color fill, SDL_Color text_color){
+  btn = Button({center.x - size.x / 2.f, center.y - size.y / 2.f}, size, text, font, fill);
+  btn.text_color = text_color;
+  btn.shape.upper_color.a = 0;
+  shape = RoundedRect(size.x, size.y);
+  shape.makeRoundRect(center.x, center.y, 15.f, &fill);
+}
+
+static void renderPausePillButton(SDL_Renderer* renderer, RoundedRect& shape, Button& btn){
+  SDL_RenderGeometry(renderer, NULL,
+    shape.rounded_rect.data(), static_cast<int>(shape.rounded_rect.size()),
+    shape.indices.data(), static_cast<int>(shape.indices.size()));
+  SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+  btn.draw(renderer);
+}
+
+void BoardScene::buildPauseOverlay(){
+  // CLEAN UP ANY PREVIOUS PAUSE TEXTURES
+  for (auto& [rect, tex] : pause_texts){
+    if (tex) SDL_DestroyTexture(tex);
+  }
+  pause_texts.clear();
+  pause_panels.clear();
+
+  float cx = static_cast<float>(w_w) / 2.f;
+  float cy = static_cast<float>(w_h) / 2.f;
+  
+  // LAYERED WOODEN PANEL - SAME 3-DEPTH STYLE AS THE INFO OVERLAY
+  float pw = 500.f, ph = 400.f;
+  out_pause_board = RoundedRect(pw, ph);
+  out_pause_board.makeRoundRect(cx, cy, 28.f, &theme.black);
+  pause_panels.push_back(&out_pause_board);
+  
+  mid_pause_board = RoundedRect(pw - 8.f, ph - 8.f);
+  mid_pause_board.makeRoundRect(cx, cy, 28.f, &theme.wooden_brown);
+  pause_panels.push_back(&mid_pause_board);
+
+  in_pause_board = RoundedRect(pw - 16.f, ph - 16.f);
+  in_pause_board.makeRoundRect(cx, cy, 28.f, &theme.wooden_dark_brown);
+  pause_panels.push_back(&in_pause_board);
+  
+  // TITLE TEXT 
+  {
+    SDL_Surface* surf = TTF_RenderText_Blended(ui_manager->font.font_bold, "PAUSED", 0, theme.white);
+    SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
+    float tw = static_cast<float>(surf->w);
+    float th = static_cast<float>(surf->h);
+    SDL_DestroySurface(surf);
+    SDL_FRect r = {cx - tw / 2.f, cy - 160.f, tw, th};
+    pause_texts.push_back({r, tex});
+  }
+  
+  // PILL BUTTONS - RESUME / MAIN MENU / EXIT GAME
+  createPausePillButton(renderer, resume_btn_shape, resume_btn, {cx, cy - 50.f}, {280.f, 60.f}, "RESUME", ui_manager->font.font_regular_bold, 
+    theme.greenish_yellow, theme.black); resume_btn.onClick = [this](){ 
+      showing_pause = false; 
+      ui_manager->game_state->game_paused = false; 
+      unpaused_time = SDL_GetTicks();
+      ui_manager->engine->turn_start_ticks += unpaused_time- paused_time;
+    };
+    
+  createPausePillButton(renderer, mainmenu_btn_shape, mainmenu_btn, {cx, cy + 30.f}, {280.f, 60.f}, "MAIN MENU", ui_manager->font.font_regular_bold, theme.wooden_brown, theme.white);
+  mainmenu_btn.onClick = [this, uim = ui_manager](){ 
+    showing_pause = false; 
+    ui_manager->game_state->game_paused = false;
+    uim->deferred_actions.push_back([uim]() {
+      *uim->game_state = GameState();
+      uim->result_scene.reset();
+      uim->config_scene.reset();
+      uim->startup_scene.reset();
+      uim->pair_scene.clear();
+      uim->pair_scene.push_back(ScenceOrd::INITIAL_SCENE);
+      uim->board_scene.reset();
+      uim->initScene();
+      uim->state_changed = true;
+    });
+  };
+  
+  createPausePillButton(renderer, exitgame_btn_shape, exitgame_btn, {cx, cy + 110.f}, {280.f, 60.f}, "EXIT GAME", ui_manager->font.font_regular_bold, theme.wooden_brown, theme.white);
+  exitgame_btn.onClick = [](){
+    SDL_Event quit_event;
+    quit_event.type = SDL_EVENT_QUIT;
+    SDL_PushEvent(&quit_event);
+  };
+}
+
+void BoardScene::renderPauseOverlay(){
+  // DIM EVERYTHING BEHIND THE OVERLAY
+  SDL_SetRenderDrawColor(renderer, 0, 0, 0, 170);
+  SDL_FRect full = {0.f, 0.f, static_cast<float>(w_w), static_cast<float>(w_h)};
+  SDL_RenderFillRect(renderer, &full);
+
+  // PANEL
+  for (const auto* panel : pause_panels){
+    SDL_RenderGeometry(renderer, NULL,
+      panel->rounded_rect.data(),
+      static_cast<int>(panel->rounded_rect.size()),
+      panel->indices.data(),
+      panel->indices.size());
+  }
+
+  // TITLE
+  for (const auto& [rect, tex] : pause_texts){
+    SDL_RenderTexture(renderer, tex, NULL, &rect);
+  }
+  
+  // BUTTONS
+  renderPausePillButton(renderer, resume_btn_shape, resume_btn);
+  renderPausePillButton(renderer, mainmenu_btn_shape, mainmenu_btn);
+  renderPausePillButton(renderer, exitgame_btn_shape, exitgame_btn);
+}
+
+void BoardScene::handleEvent(const SDL_Event& event){
+  if (showing_pause){
+    // WHILE PAUSED, ONLY THE OVERLAY BUTTONS SHOULD RESPOND
+    if (resume_btn.handleEvent(event)) return;
+    if (mainmenu_btn.handleEvent(event)) return; // DO NOT access 'this' after this point
+    if (exitgame_btn.handleEvent(event)) return;
+    return;
+  }
+  // PAUSE BUTTON HIT-TEST
+  pause_hit_btn.handleEvent(event);
+}
+
+BoardScene::BoardScene(UIManager* uim): ui_manager(uim){
   w_w = ui_manager->gameConf->windowW;
   w_h = ui_manager->gameConf->windowH;
   window = ui_manager->window;
   renderer = ui_manager->renderer;
   bconfig.makePoints();
+  ui_manager->engine->turn_start_ticks = SDL_GetTicks();
 }

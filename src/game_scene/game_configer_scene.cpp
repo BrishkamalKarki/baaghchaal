@@ -175,10 +175,13 @@ void GameConfigerScene::buildUI() {
     startY += 120.0f;
 
     // 5. PLAY BUTTON TO LAUNCH THE GAME BOARD SCENE
-    btn_play = createConfigButton({centerX - 125.0f, startY}, {250.f, 70.f}, "PLAY", [this]() {
-        ui_manager->pair_scene.push_back(ScenceOrd::BOARD_SCENE);
-        ui_manager->initScene(); 
-        ui_manager->state_changed = true;
+    btn_play = createConfigButton({centerX - 125.0f, startY}, {250.f, 70.f}, "PLAY", [this, uim = ui_manager]() {
+        uim->game_state->saveGameState(); 
+        uim->deferred_actions.push_back([uim]() {
+            uim->pair_scene.push_back(ScenceOrd::BOARD_SCENE);
+            uim->initScene(); 
+            uim->state_changed = true;
+        });
     });
     btn_play.text_color = theme.black;
 
@@ -186,8 +189,8 @@ void GameConfigerScene::buildUI() {
 }
 
 void GameConfigerScene::handleEvents(const SDL_Event& event) {
-    btn_pvp.handleEvent(event);
-    btn_bot.handleEvent(event);
+    if (btn_pvp.handleEvent(event)) return;
+    if (btn_bot.handleEvent(event)) return;
 
     if (ui_manager->game_state->game_mode == "B V P") {
         btn_side_baagh.handleEvent(event);
@@ -197,16 +200,16 @@ void GameConfigerScene::handleEvents(const SDL_Event& event) {
         btn_diff_high.handleEvent(event);
     }
 
-    btn_timer_on.handleEvent(event);
-    btn_timer_off.handleEvent(event);
+    if (btn_timer_on.handleEvent(event)) return;
+    if (btn_timer_off.handleEvent(event)) return;
 
     if (ui_manager->game_state->timer_mode) {
-        btn_time_10.handleEvent(event);
-        btn_time_20.handleEvent(event);
-        btn_time_30.handleEvent(event);
+        if (btn_time_10.handleEvent(event)) return;
+        if (btn_time_20.handleEvent(event)) return;
+        if (btn_time_30.handleEvent(event)) return;
     }
 
-    btn_play.handleEvent(event);
+    if (btn_play.handleEvent(event)) return;
 }
 
 void GameConfigerScene::render() {

@@ -23,6 +23,8 @@ public:
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
     Theme theme;
+
+    bool out_by_time = false;
  
     // HOOK THESE UP FROM UIManager / GameSession TO ACTUALLY RESTART THE GAME
     // OR SWITCH BACK TO THE START SCREEN - THIS SCENE DOESN'T KNOW HOW TO DO EITHER ITSELF

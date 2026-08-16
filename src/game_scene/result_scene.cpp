@@ -94,10 +94,19 @@ void ResultScene::buildUI(){
   bool baagh_won = (winner == "baagh");
  
   std::string winner_text = baagh_won ? "THE BAAGH WINS!" : "THE GOATS WIN!";
-  std::string winner_sub  = baagh_won
-      ? "ALL " + std::to_string(static_cast<int>(Rules::KILLED_GOATS)) + " GOATS WERE HUNTED DOWN"
-      : "ALL " + std::to_string(static_cast<int>(Rules::TIGERS_TRAPPED)) + " BAAGHS WERE SURROUNDED";
- 
+  std::string winner_sub;
+  if (ui_manager->game_state->won_by_time_out){
+    winner_sub = "  WON BY TIMEOUT ";
+  }
+  else{
+    winner_sub  = baagh_won
+        ? "ALL " + std::to_string(static_cast<int>(Rules::KILLED_GOATS)) + " GOATS WERE HUNTED DOWN"
+        : "ALL " + std::to_string(static_cast<int>(Rules::TIGERS_TRAPPED)) + " BAAGHS WERE SURROUNDED";
+  }
+  SDL_Log("%s" ,winner_sub.c_str());
+
+
+
   // ACCENT COLOR MATCHES THE WINNING SIDE - AMBER/ORANGE FOR THE TIGER, GREENISH-YELLOW FOR THE
   // GOATS - SO THE HEADLINE AND DIVIDERS READ AS ONE DELIBERATE, WINNER-THEMED CARD
   SDL_Color accent = baagh_won ? theme.orange : theme.greenish_yellow;
@@ -142,13 +151,13 @@ void ResultScene::buildUI(){
   createRoundRects(460.f, 4.f, center_x, center_y - 130.f, 2.f, &accent, title_divider);
  
   // SCORE LINES - PLAIN, GENEROUSLY SPACED TEXT DIRECTLY ON THE CARD, NO BOXED PANEL
-  std::string goats_killed_text  = "GOATS KILLED    " + std::to_string(gs->goats_killed) + " / " + std::to_string(static_cast<int>(Rules::KILLED_GOATS));
+  std::string goats_killed_text = "GOATS KILLED    " + std::to_string(gs->goats_killed) + " / " + std::to_string(static_cast<int>(Rules::KILLED_GOATS));
   std::string baagh_trapped_text = "BAAGHS TRAPPED    " + std::to_string(gs->baagh_trapped) + " / " + std::to_string(static_cast<int>(Rules::TIGERS_TRAPPED));
-  std::string mode_text          = "GAME MODE    " + gs->game_mode;
+  std::string mode_text = "GAME MODE    " + gs->game_mode;
  
-  addText(ui_manager->font.font_regular_bold, goats_killed_text, center_x, center_y - 75.f, theme.white, 0.f, 0.f);
-  addText(ui_manager->font.font_regular_bold, baagh_trapped_text, center_x, center_y - 35.f, theme.white, 0.f, 0.f);
-  addText(ui_manager->font.font_regular_bold, mode_text, center_x, center_y + 5.f, theme.light_silver, 0.f, 0.f);
+  addText(ui_manager->font.font_regular_bold, goats_killed_text, center_x, center_y - 95.f, theme.white, 0.f, 0.f);
+  addText(ui_manager->font.font_regular_bold, baagh_trapped_text, center_x, center_y - 55.f, theme.white, 0.f, 0.f);
+  addText(ui_manager->font.font_regular_bold, mode_text, center_x, center_y - 15.f, theme.light_silver, 0.f, 0.f);
  
   // RE-CENTER EACH SCORE LINE OFF ITS OWN MEASURED WIDTH (THEY'RE ALL DIFFERENT LENGTHS)
   for (auto it = texts.end() - 3; it != texts.end(); ++it){
@@ -162,11 +171,14 @@ void ResultScene::buildUI(){
   // READS AS THE PRIMARY ACTION; MAIN MENU STAYS THE NEUTRAL WOODEN-BROWN SECONDARY ACTION.
   createPillButton(play_again_btn_shape, play_again_btn, {center_x - 130.f, center_y + 130.f}, {220.f, 64.f},
                     "PLAY AGAIN", ui_manager->font.font_regular_bold, accent, theme.black);
-  play_again_btn.onClick = [this](){ if (onPlayAgain) onPlayAgain(); };
+  play_again_btn.onClick = [this](){ 
+    if (onPlayAgain) onPlayAgain(); 
+  };
  
   createPillButton(main_menu_btn_shape, main_menu_btn, {center_x + 130.f, center_y + 130.f}, {220.f, 64.f},
                     "MAIN MENU", ui_manager->font.font_regular_bold, theme.wooden_brown, theme.white);
-  main_menu_btn.onClick = [this](){ if (onMainMenu) onMainMenu(); };
+  main_menu_btn.onClick = [this](){ if (onMainMenu) onMainMenu(); 
+  };
 }
  
 void ResultScene::render(){
@@ -200,6 +212,6 @@ void ResultScene::render(){
  
 void ResultScene::handleEvent(const SDL_Event& event){
   // BOTH BUTTONS ARE ALWAYS ON SCREEN - NO OVERLAY/SUBMENU TOGGLE ON THIS SCENE
-  play_again_btn.handleEvent(event);
-  main_menu_btn.handleEvent(event);
+  if (play_again_btn.handleEvent(event)) return;
+  if (main_menu_btn.handleEvent(event)) return;
 }
