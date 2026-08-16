@@ -42,7 +42,7 @@ public:
     SDL_SetTextureAlphaMod(board, 255);
 
     // COVER TEXTURE LOADING
-    cover = IMG_LoadTexture(renderer, "assets/sprites/cover_bright.png");
+    cover = IMG_LoadTexture(renderer, "assets/sprites/cover_dim.png");
     int x = cover->w;
     int y = cover->h;
     SDL_Log("%d, %d", x, y);

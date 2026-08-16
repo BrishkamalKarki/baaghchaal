@@ -14,7 +14,7 @@ GameState::GameState(){
   goats_finished = false;
   bot_taken = "goat";
   human_taken = "baagh";
-  game_mode = "B V P";
+  game_mode = "";
   bot_diff_level = "HARD";
 
   player1 = "baagh";

@@ -30,12 +30,12 @@ class Engine{
     void changePosGoat();
     void selectPos(int pos);
 
-    void performBotMove();
+    int performBotMove();
 
     uint32_t bit_board_tigers[10];
     uint32_t bit_board_goats[10];
     int saved = -1;
-    std::vector<std::pair<int, char>> board_state;
+    std::vector<std::pair<int, char>> board_state; 
 
     // AFTER THE GOAT OR BAAGH IS MOVED OR PLACED
     Uint64 turn_start_ticks = 0;

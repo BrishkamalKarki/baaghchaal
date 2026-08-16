@@ -32,6 +32,16 @@ SDL_AppResult GameSession::runFrame()
 
     SDL_RenderPresent(renderer);
 
+    std::string winner = ui_manager.engine->board_eval.checkWinner();
+    if (winner == "goat" || winner == "baagh") {
+        ui_manager.game_state->game_won = winner;
+        ui_manager.game_state->move = 0;
+        ui_manager.game_state->turn = "goat";
+        ui_manager.pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
+        ui_manager.initScene();
+        ui_manager.state_changed = true;
+    }
+
     Uint64 frame_end_time = SDL_GetTicks();
     if (frame_end_time - start_time < 1000/gameConf.FPS_limit){
         // SETTING UP THE FPS LIMIT FOR THE GAME - CURRENT FPS LIMIT = 60

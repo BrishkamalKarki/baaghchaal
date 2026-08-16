@@ -23,5 +23,6 @@ public:
   int goats_killed;
   int baagh_trapped;
   bool goats_finished;
+  bool clicked_tobe_reloaded = false;
   GameState();
 };

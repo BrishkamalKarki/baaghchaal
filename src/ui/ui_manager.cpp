@@ -9,7 +9,7 @@ void UIManager::initScene()
       startup_scene->onPlayBot = [this]() {
           pair_scene.push_back(ScenceOrd::CONFIGURE_SCENE);
           initScene();
-          state_changed = true;
+          state_changed = true; 
       };
       startup_scene->onExit = []() {
           SDL_Event quit_event;
@@ -18,7 +18,8 @@ void UIManager::initScene()
       };
       startup_scene->onInfo = []() {};
       startup_scene->buildUI();
-  } else if (pair_scene.back() == ScenceOrd::INITIAL_SCENE) {
+  }
+  else if (pair_scene.back() == ScenceOrd::INITIAL_SCENE) {
       if (!startup_scene) {
           startup_scene = std::make_unique<StartupScene>(this);
           startup_scene->onPlayBot = [this]() {
@@ -77,31 +78,83 @@ void UIManager::renderLayer()
   if (pair_scene.empty()) return;
 
   if (pair_scene.back() == ScenceOrd::INITIAL_SCENE) {
-      if (startup_scene) startup_scene->render();
-  } else if (pair_scene.back() == ScenceOrd::CONFIGURE_SCENE) {
-      if (config_scene) config_scene->render();
-  } else if (pair_scene.back() == ScenceOrd::BOARD_SCENE) {
+    if (startup_scene) startup_scene->render();
+  } 
+  else if (pair_scene.back() == ScenceOrd::CONFIGURE_SCENE) {
+    if (config_scene) config_scene->render();
+  } 
+  else if (pair_scene.back() == ScenceOrd::BOARD_SCENE) {
+    bool is_bot_mode = (game_state->game_mode == "B V P");
+
+      if (is_bot_mode){ // SYNCHRONOUS BOT MOVE 
+        if (game_state->turn == game_state->bot_taken){
+          engine->performBotMove();
+          state_changed = true;
+        }
+      }
+
+    // SDL_Log("===== GAME STATE DEBUG =====");
+    // SDL_Log("turn: %s", game_state->turn.c_str());
+    // SDL_Log("game_won: %s", game_state->game_won.c_str());
+    // SDL_Log("bot_taken: %s", game_state->bot_taken.c_str());
+    // SDL_Log("human_taken: %s", game_state->human_taken.c_str());
+    // SDL_Log("game_mode: %s", game_state->game_mode.c_str());
+    // SDL_Log("player1: %s", game_state->player1.c_str());
+    // SDL_Log("player2: %s", game_state->player2.c_str());
+    // SDL_Log("bot_diff_level: %s", game_state->bot_diff_level.c_str());
+    // SDL_Log("timer_mode: %s", game_state->timer_mode ? "true" : "false");
+    // SDL_Log("sec_p_move: %d", game_state->sec_p_move);
+    // SDL_Log("move: %d", game_state->move);
+    // SDL_Log("goats_in_hand: %d", game_state->goats_in_hand);
+    // SDL_Log("goats_killed: %d", game_state->goats_killed);
+    // SDL_Log("baagh_trapped: %d", game_state->baagh_trapped);
+    // SDL_Log("goats_finished: %s", game_state->goats_finished ? "true" : "false");
+
+
+      if (game_state->timer_mode && game_state->sec_p_move > 0){ 
+        Uint64 elapsed_ms = SDL_GetTicks() - engine->turn_start_ticks;
+        int current_sec = static_cast<int>(elapsed_ms / 1000);
+        if (current_sec != last_timer_sec){
+            last_timer_sec = current_sec;
+            state_changed = true;
+          }
+
+          // SDL_Log("sec = %d", current_sec);
+          // if (current_sec <= 0){
+          //   std::string winner = game_state->turn == "baagh" ? "goat" : "baagh";
+          //     game_state->game_won = winner;
+          //     game_state->move = 0;
+          //     game_state->turn = "goat";
+          //     pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
+          //     initScene();
+          //     state_changed = true;
+          // }
+      }
       if (state_changed){
         board_scene->buildUI();
         state_changed = false;
       }
       if (board_scene) board_scene->render();
-  } else if (pair_scene.back() == ScenceOrd::RESULT_SCREEN) {
-      if (result_scene) result_scene->render();
+  } 
+  else if (pair_scene.back() == ScenceOrd::RESULT_SCREEN) {
+    if (result_scene) result_scene->render();
   }
+
+  SDL_Log(" move is %d" , game_state->move);
+
 }
 
 void UIManager::handleEvents(const SDL_Event& event) {
   if (pair_scene.empty()) return;
-
+  
   if (pair_scene.back() == ScenceOrd::INITIAL_SCENE) {
-      if (startup_scene) startup_scene->handleEvent(event);
+    if (startup_scene) startup_scene->handleEvent(event);
   } else if (pair_scene.back() == ScenceOrd::CONFIGURE_SCENE) {
-      if (config_scene) config_scene->handleEvents(event);
+    if (config_scene) config_scene->handleEvents(event);
   } else if (pair_scene.back() == ScenceOrd::BOARD_SCENE) {
-      // Handled internally/globally
   } else if (pair_scene.back() == ScenceOrd::RESULT_SCREEN) {
-      if (result_scene) result_scene->handleEvent(event);
+    if (result_scene) result_scene->handleEvent(event);
+    
   }
 }
 

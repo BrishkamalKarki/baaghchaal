@@ -24,9 +24,6 @@ int BoardEvaluator::getValidMovesAt(int pos, std::string where){
         bool is_anti_diag = (row_of_pos + col_of_pos == 4);
 
         if (where != "none"){
-            // CONTRACT: all positions here are raw 0-based board_state
-            // indices — never .first. Both edible_valid_moves entries
-            // and this function's return value stay 0-based throughout.
             if (where == "UP" && has_up){
                 if (engine->game_state->board_state[pos - 5].second == ' '){
                     edible_valid_moves.push_back({pos, pos - 5});

@@ -34,7 +34,6 @@ void MiniMax::findBestMove(){
     int saved_goats_in_hand = engine->game_state->goats_in_hand;
     int saved_goats_killed = engine->game_state->goats_killed;
 
-    // Set the turn to the bot's turn before searching
     engine->game_state->turn = (bot_piece == 'T') ? "baagh" : "goat";
 
     int bestScore = minimax(0, true, -WIN_SCORE, WIN_SCORE);
@@ -127,7 +126,7 @@ int MiniMax::minimax(int depth, bool maximizing, int alpha, int beta){
     else
     {
         for (int id = 1; id <= 25; id++)
-        {
+        {   
             if (engine->game_state->board_state[id].second!= curr_piece) continue;
             
             eval_board->valid_moves.clear();

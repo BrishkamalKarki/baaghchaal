@@ -103,12 +103,14 @@ void GameConfigerScene::buildUI() {
     // 1. GAME MODE SELECTION SECTION
     hdr_game_mode = createTextHeader("CHOOSE GAME MODE", centerX, startY - 45.0f);
     btn_pvp = createConfigButton({centerX - largeBtnW - 40.0f, startY}, {largeBtnW, largeBtnH}, "PVP MODE", [this]() {
-        ui_manager->game_state->game_mode = "B V P";
+        ui_manager->game_state->game_mode = "P V P";
         ui_manager->state_changed = true;
     });
     btn_bot = createConfigButton({centerX + 40.0f, startY}, {largeBtnW, largeBtnH}, "VS BOT", [this]() {
-        ui_manager->game_state->game_mode = "B V B";
+        ui_manager->game_state->game_mode = "B V P";
         ui_manager->state_changed = true;
+        ui_manager->game_state->player1 = "goat";
+        ui_manager->game_state->player2 = "baagh";
     });
 
     startY += 120.0f;
@@ -187,7 +189,7 @@ void GameConfigerScene::handleEvents(const SDL_Event& event) {
     btn_pvp.handleEvent(event);
     btn_bot.handleEvent(event);
 
-    if (ui_manager->game_state->game_mode == "B V B") {
+    if (ui_manager->game_state->game_mode == "B V P") {
         btn_side_baagh.handleEvent(event);
         btn_side_goat.handleEvent(event);
         btn_diff_low.handleEvent(event);
@@ -229,7 +231,7 @@ void GameConfigerScene::render() {
     if (hdr_game_mode.first) SDL_RenderTexture(ui_manager->renderer, hdr_game_mode.first, nullptr, &hdr_game_mode.second);
     if (hdr_timer_set.first) SDL_RenderTexture(ui_manager->renderer, hdr_timer_set.first, nullptr, &hdr_timer_set.second);
     
-    if (gs.game_mode == "B V B") {
+    if (gs.game_mode == "B V P") {
         if (hdr_play_as.first) SDL_RenderTexture(ui_manager->renderer, hdr_play_as.first, nullptr, &hdr_play_as.second);
         if (hdr_bot_diff.first) SDL_RenderTexture(ui_manager->renderer, hdr_bot_diff.first, nullptr, &hdr_bot_diff.second);
     }
@@ -239,8 +241,8 @@ void GameConfigerScene::render() {
     }
 
     // CALCULATE ACTIVE/INACTIVE FILL COLORS FOR LARGE BUTTONS BASED ON GAME STATE
-    SDL_Color c_pvp = (gs.game_mode == "B V P") ? getActiveColor() : getInactiveColor();
-    SDL_Color c_bot = (gs.game_mode == "B V B") ? getActiveColor() : getInactiveColor();
+    SDL_Color c_pvp = (gs.game_mode == "P V P") ? getActiveColor() : getInactiveColor();
+    SDL_Color c_bot = (gs.game_mode == "B V P") ? getActiveColor() : getInactiveColor();
     SDL_Color c_ton = (gs.timer_mode) ? getActiveColor() : getInactiveColor();
     SDL_Color c_toff = (!gs.timer_mode) ? getActiveColor() : getInactiveColor();
     SDL_Color c_play = theme.greenish_yellow;
@@ -269,7 +271,7 @@ void GameConfigerScene::render() {
     btn_play.draw(ui_manager->renderer);
 
     // DRAW CONDITIONAL SMALL BUTTONS (SIDE CHOSEN, DIFFICULTY, AND DURATION SETTINGS)
-    if (gs.game_mode == "B V B") {
+    if (gs.game_mode == "B V P") {
         btn_side_baagh.draw(ui_manager->renderer);
         btn_side_goat.draw(ui_manager->renderer);
         btn_diff_low.draw(ui_manager->renderer);

@@ -98,9 +98,6 @@ void StartupScene::buildUI(){
   // FULL BACKDROP
   bg_rect = {0.f, 0.f, static_cast<float>(w_w), static_cast<float>(w_h)};
  
-  // GLOWING LOGO - BIG, CENTERED, TOP OF SCREEN
-  baaghchaal_txt = {center_x - 260.f, 50.f, 520.f, 165.f};
- 
   // MAIN MENU - PLAY / INFO / EXIT, STACKED. SAME SIZE {280,80} FOR ALL THREE SO THE PADDING AROUND
   // EACH LABEL AND THE PILL'S ROUNDED EDGE READ IDENTICAL ACROSS ALL THREE BUTTONS.
   // PLAY - STARTS THE GAME DIRECTLY IN PLAYER VS BOT MODE. NO MODE-SELECT SUBMENU ANYMORE;
@@ -168,12 +165,8 @@ void StartupScene::buildInfoOverlay(){
  
 void StartupScene::render(){
   // BACKDROP - DRAWN TWICE TO COUNTER THE TEXTURE'S BUILT-IN LOW ALPHA (SET GLOBALLY IN
-  // Texture::loadTexture) SO IT READS BRIGHT AND SATURATED LIKE THE MOCKUP INSTEAD OF WASHED OUT
-  SDL_RenderTexture(renderer, ui_manager->texture.background, NULL, &bg_rect);
-  SDL_RenderTexture(renderer, ui_manager->texture.background, NULL, &bg_rect);
- 
-  // GLOWING LOGO
-  SDL_RenderTexture(renderer, ui_manager->texture.baaghchaal_txt, NULL, &baaghchaal_txt);
+  // Texture::loadTexture SO IT READS BRIGHT AND SATURATED LIKE THE MOCKUP INSTEAD OF WASHED OUT
+  SDL_RenderTexture(renderer, ui_manager->texture.cover, NULL, &bg_rect);
  
   // SUBTITLE
   for (const auto& [rect, tex] : texts){
