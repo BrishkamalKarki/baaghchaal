@@ -86,24 +86,13 @@ public:
         return {position.x, position.y, size.x, size.y + shape.offset_lower};
     }
 
-    void handleEvent(const SDL_Event& event)
+    bool handleEvent(const SDL_Event& event)
     {
         if(event.type == SDL_EVENT_MOUSE_BUTTON_DOWN)
         {
             float mouseX = event.button.x;
             float mouseY = event.button.y;
             SDL_FRect bounds = getGlobalBounds();
-
-            // SDL_Log("Button bounds: %.1f %.1f %.1f %.1f",
-            //         bounds.x,
-            //         bounds.y,
-            //         bounds.w,
-            //         bounds.h);
-
-            if(onClick)
-            {
-                SDL_Log("Button has callback.");
-            }
 
             if(mouseX >= bounds.x &&
                mouseX <= bounds.x + bounds.w &&
@@ -114,7 +103,9 @@ public:
                 {
                     onClick();
                 }
+                return true; // Event consumed
             }
         }
+        return false;
     }
 };
