@@ -6,6 +6,7 @@
 Engine::Engine(void* game_st, BoardConfig* b_conf) : b_conf(b_conf), bot(this), board_eval(this){
   game_state = static_cast<GameState*>(game_st);
   b_conf->makePoints();
+  turn_start_ticks = SDL_GetTicks();
 }
 
 void Engine::routeToEngine(int pos, char type){

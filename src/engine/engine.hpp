@@ -19,6 +19,7 @@ class Engine{
     int pos_tiger_etn;
     bool check_trapped;
     std::string turn;
+    Uint64 turn_start_ticks = 0;
 
     std::pair<int, int> from_to = {-1, -1}; // STORES THE BOARD POSTION - FROM POSITION TO WHERE THE BAAGH OR BAAKHRA SHOULD MOVE
     Engine(void* game_st, BoardConfig* b_conf);

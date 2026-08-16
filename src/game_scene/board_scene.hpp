@@ -110,5 +110,32 @@ public:
     void buildUI() override;
     void render() override;
     void clearLayers();
+
+    // PAUSE OVERLAY - SHOWN WHEN THE PAUSE BUTTON (BOTTOM LEFT) IS CLICKED.
+    // DIMS THE BACKGROUND AND SHOWS RESUME / MAIN MENU / EXIT OPTIONS.
+    bool showing_pause = false;
+    SDL_FRect pause_btn_rect{};       // HIT-TEST RECT FOR THE PAUSE BUTTON TEXTURE
+    Button pause_hit_btn;             // INVISIBLE BUTTON FOR HIT-TESTING THE PAUSE ICON
+
+    // PAUSE MENU PANEL (LAYERED WOODEN BOARD LOOK)
+    RoundedRect out_pause_board;
+    RoundedRect mid_pause_board;
+    RoundedRect in_pause_board;
+    std::vector<RoundedRect*> pause_panels;
+
+    // PAUSE MENU TITLE TEXT
+    std::vector<std::pair<SDL_FRect, SDL_Texture*>> pause_texts;
+
+    // PAUSE MENU PILL BUTTONS
+    RoundedRect resume_btn_shape;
+    Button resume_btn;
+    RoundedRect mainmenu_btn_shape;
+    Button mainmenu_btn;
+    RoundedRect exitgame_btn_shape;
+    Button exitgame_btn;
+
+    void buildPauseOverlay();
+    void renderPauseOverlay();
+    void handleEvent(const SDL_Event& event);
 }; 
 

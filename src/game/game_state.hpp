@@ -22,5 +22,6 @@ public:
   int goats_killed;
   int baagh_trapped;
   bool goats_finished;
+  int move = 1;
   GameState();
 };

@@ -36,6 +36,7 @@ public:
     GameState* game_state = nullptr;
     bool scene_state = false;
     bool state_changed = false;
+    std::vector<std::function<void()>> deferred_actions;
 
     UIManager(Config* gameConf, SDL_Window* win, SDL_Renderer*, Engine* engine, void* game_state);
     ScenceOrd scnord;

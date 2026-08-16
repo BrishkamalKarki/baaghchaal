@@ -12,6 +12,8 @@ public:
   SDL_Texture* goat = nullptr;
   SDL_Texture* board = nullptr;
   SDL_Texture* cover = nullptr;
+  SDL_Texture* cover_dim = nullptr;
+  SDL_Texture* pause_button = nullptr;
   SDL_Texture* background = nullptr;
   SDL_Texture* baaghchaal_txt = nullptr;
   const char* tex_location = nullptr;
@@ -47,6 +49,14 @@ public:
     int y = cover->h;
     SDL_Log("%d, %d", x, y);
     SDL_SetTextureScaleMode(cover, SDL_SCALEMODE_NEAREST);
+
+    // COVER DIM TEXTURE LOADING (STARTUP SCREEN BACKGROUND)
+    cover_dim = IMG_LoadTexture(renderer, "assets/sprites/cover_dim.png");
+    SDL_SetTextureScaleMode(cover_dim, SDL_SCALEMODE_NEAREST);
+
+    // PAUSE BUTTON TEXTURE LOADING
+    pause_button = IMG_LoadTexture(renderer, "assets/sprites/pause_button.png");
+    SDL_SetTextureScaleMode(pause_button, SDL_SCALEMODE_NEAREST);
 
     // BACKGROUND TEXTURE LOADING
     background = IMG_LoadTexture(renderer, "assets/sprites/background.png");

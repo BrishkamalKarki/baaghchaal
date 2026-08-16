@@ -200,6 +200,6 @@ void ResultScene::render(){
  
 void ResultScene::handleEvent(const SDL_Event& event){
   // BOTH BUTTONS ARE ALWAYS ON SCREEN - NO OVERLAY/SUBMENU TOGGLE ON THIS SCENE
-  play_again_btn.handleEvent(event);
-  main_menu_btn.handleEvent(event);
+  if (play_again_btn.handleEvent(event)) return;
+  if (main_menu_btn.handleEvent(event)) return;
 }
