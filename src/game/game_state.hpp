@@ -6,7 +6,7 @@ class GameState{
 public:
   std::string turn;
   std::string game_won;
-  std::vector<std::pair<int, char>> board_state;
+  std::vector<std::pair<int, char>> board_state; // 1 - indexed 
   std::vector<int> baagh_trapped_at_pos;
   std::string bot_taken;
   std::string human_taken;
@@ -17,6 +17,7 @@ public:
   bool timer_mode;
   int sec_p_move;
   std::string bot_diff_level;
+  int move; // CONTINOUSLY COUNT EACH NO OF MOVE
 
   int goats_in_hand;
   int goats_killed;
