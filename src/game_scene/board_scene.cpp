@@ -1,6 +1,7 @@
 #include <iostream>
 #include "game_config/board_config/board_config.hpp"
 #include "ui/ui_manager.hpp"
+#include <algorithm>
 #include "game_config/theme_config.hpp"
 #include <algorithm>
 
@@ -37,10 +38,6 @@ void BoardScene::buildUI(){
   }
 
   this->clearLayers();
-  if (ui_manager->game_state->turn == ui_manager->game_state->bot_taken){
-    ui_manager->engine->routeToEngine(-1, ' ');
-    ui_manager->state_changed = true;
-  }
 
   // MAKING THE BAAGH TEXTURES - CIRCULAR BUTTONS
   baagh_circ.resize(4);
@@ -53,7 +50,6 @@ void BoardScene::buildUI(){
         for (int& bgh_tpos : ui_manager->game_state->baagh_trapped_at_pos){
           if (pos == bgh_tpos){
             trapped = true;
-            SDL_Log("trapped in here");
           }
         }
         baagh_circ[baagh] = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 40.f, "", nullptr, theme.white};
@@ -152,20 +148,32 @@ void BoardScene::buildUI(){
 
   for (int row=0; row<5; row++){
     for (int col=0; col<5; col++){
-      if (std::find(ui_manager->engine->board_eval.valid_moves.begin(), ui_manager->engine->board_eval.valid_moves.end(), i+1) != ui_manager->engine->board_eval.valid_moves.end()){
+      if (std::find(ui_manager->engine->board_eval.valid_moves.begin(), ui_manager->engine->board_eval.valid_moves.end(), i) != ui_manager->engine->board_eval.valid_moves.end()){
         if (ui_manager->game_state->turn != ui_manager->game_state->bot_taken)
           board_pnt_btn[i].first = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 15.f, "", nullptr, theme.greenish_yellow};
         else 
           board_pnt_btn[i].first = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 15.f, "", nullptr, theme.invisible};
       }
-      else  
+      else 
         board_pnt_btn[i].first = {{bconfig.points[row][col].second.first, bconfig.points[row][col].second.second}, 15.f, "", nullptr, theme.invisible};
       
       ui_manager->board_layer.circular_buttons.push_back({i+1, &board_pnt_btn[i].first});
       board_pnt_btn[i].first.onClick = [this, i](){
-        this->ui_manager->state_changed = true;
-        this->ui_manager->engine->routeToEngine(i);
-        ui_manager->engine->board_eval.valid_moves.clear();
+        bool occupied = false;
+        for (auto& [pos, type] : ui_manager->game_state->board_state){ // CHECKING IF THERE IS ANY ON THE CLICKED POSTITION
+            if (pos - 1 == i){
+              if (type != ' '){
+                occupied = true;
+                break;
+              }
+            }
+        }
+        SDL_Log("%d at pos %d  and %d asdfasdfads", (int)occupied, i, 9000);
+        if (occupied == false){
+          this->ui_manager->state_changed = true;
+          this->ui_manager->engine->routeToEngine(i);
+          ui_manager->engine->board_eval.valid_moves.clear();
+        }
       };
       i++;
     }
@@ -190,27 +198,26 @@ void BoardScene::buildUI(){
   createRoundRects(292.f, 172.f, 1400.f, 390.f, 22.f, &theme.wooden_dark_brown, in_goat_info_board);
 
   // BOARD WHERE THE TIMER INFO IS SHOWN
-  createRoundRects(308.f, 158.f, 1400.f, 725.f, 22.f, &theme.black, out_timer_info_board);
-  createRoundRects(300.f, 150.f, 1400.f, 725.f, 22.f, &theme.wooden_brown, mid_timer_info_board);
-  createRoundRects(292.f, 142.f, 1400.f, 725.f, 22.f, &theme.wooden_dark_brown, in_timer_info_board);
+  createRoundRects(308.f, 158.f - 25.f, 1400.f, 725.f - 150.f + 12.5f, 22.f, &theme.black, out_timer_info_board);
+  createRoundRects(300.f, 150.f - 25.f, 1400.f, 725.f - 150.f + 12.5f, 22.f, &theme.wooden_brown, mid_timer_info_board);
+  createRoundRects(292.f, 142.f - 25.f, 1400.f, 725.f - 150.f + 12.5f, 22.f, &theme.wooden_dark_brown, in_timer_info_board);
 
   // BOARD WHERE THE CONFIGURATION INFO IS SHOWN
-  createRoundRects(308.f, 408.f, 200.f, 360.f, 22.f, &theme.black, out_config_info_board);
-  createRoundRects(300.f, 400.f, 200.f, 360.f, 22.f, &theme.wooden_brown, mid_config_info_board);
-  createRoundRects(292.f, 392.f, 200.f, 360.f, 22.f, &theme.wooden_dark_brown, in_config_info_board);
+  createRoundRects(308.f, 308.f - 50.f, 200.f, 360.f - 75.f, 22.f, &theme.black, out_config_info_board);
+  createRoundRects(300.f, 300.f - 50.f, 200.f, 360.f - 75.f, 22.f, &theme.wooden_brown, mid_config_info_board);
+  createRoundRects(292.f, 292.f - 50.f, 200.f, 360.f - 75.f, 22.f, &theme.wooden_dark_brown, in_config_info_board);
 
   // BOARD WHERE THE TURN INFO IS SHOWN
-  createRoundRects(308.f, 198.f, 200.f, 705.f, 22.f, &theme.black, out_turn_info_board);
-  createRoundRects(300.f, 190.f, 200.f, 705.f, 22.f, &theme.wooden_brown, mid_turn_info_board);
-  createRoundRects(292.f, 182.f, 200.f, 705.f, 22.f, &theme.wooden_dark_brown, in_turn_info_board);
+  createRoundRects(308.f, 198.f - 50.f, 200.f, 705.f - 175.f, 22.f, &theme.black, out_turn_info_board); 
+  createRoundRects(300.f, 190.f - 50.f, 200.f, 705.f - 175.f, 22.f, &theme.wooden_brown, mid_turn_info_board); 
+  createRoundRects(292.f, 182.f - 50.f, 200.f, 705.f - 175.f, 22.f, &theme.wooden_dark_brown, in_turn_info_board); 
 
   // LINES IN THE BOARDS
   createRoundRects(200.f, 12.f, 1400.f, 150.f, 6.f, &theme.wooden_brown, baagh_board_line);
   createRoundRects(200.f, 12.f, 1400.f, 350.f, 6.f, &theme.wooden_brown, goat_board_line);
-  createRoundRects(200.f, 12.f, 1400.f, 700.f, 6.f, &theme.wooden_brown, timer_board_line);
+  createRoundRects(200.f, 12.f, 1400.f, 700.f - 125.f, 6.f, &theme.wooden_brown, timer_board_line);
   createRoundRects(200.f, 12.f, 200.f, 210.f, 6.f, &theme.wooden_brown, config_board_line);
-  createRoundRects(200.f, 12.f, 200.f, 660.f, 6.f, &theme.wooden_brown, turn_board_line);
-
+  createRoundRects(200.f, 12.f, 200.f, 660.f - 150.f, 6.f, &theme.wooden_brown, turn_board_line);
 
   baagh_board_circ = CircularButton({1320.f, 100.f}, 40.f, "", nullptr, theme.white);
   // ui_manager->board_layer.board_tex_comp.push_back({&baagh_board_circ, ui_manager->texture.baagh});
@@ -218,9 +225,9 @@ void BoardScene::buildUI(){
   // CREATING THE TEXTS 
   createBoardTexts(ui_manager->font.font_bold, "BAAGH", 1400.f, 150.f, theme.white, -80, -40, baagh_title, baagh_title_tex, baagh_title_rect);
   createBoardTexts(ui_manager->font.font_bold, "GOAT", 1400.f, 350.f, theme.white, -80, -40, goat_title, goat_title_tex, goat_title_rect);
-  createBoardTexts(ui_manager->font.font_bold, "TIMER", 1400.f, 700.f, theme.white, -80, -40, timer_title, timer_title_tex, timer_title_rect);
+  createBoardTexts(ui_manager->font.font_bold, "TIMER", 1400.f, 700.f - 125.f, theme.white, -80, -40, timer_title, timer_title_tex, timer_title_rect);
   createBoardTexts(ui_manager->font.font_bold, "CONFIG", 200.f, 210.f, theme.white, -80, -40, conf_title, conf_title_tex, conf_title_rect);
-  createBoardTexts(ui_manager->font.font_bold, "TURN", 200.f, 660.f, theme.white, -80, -40, turn_title, turn_title_tex, turn_title_rect);
+  createBoardTexts(ui_manager->font.font_bold, "MOVE", 200.f, 660.f - 150.f, theme.white, -80, -40, turn_title, turn_title_tex, turn_title_rect);
 
   createBoardTexts(ui_manager->font.font_regular_bold, "TOTAL BAAGHS   4", 1400.f, 150.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
   int baagh_trapped = ui_manager->engine->board_eval.checkBaaghTrapped();
@@ -236,8 +243,18 @@ void BoardScene::buildUI(){
   createBoardTexts(ui_manager->font.font_regular_bold, goatts_ih_text.c_str(), 1400.f, 350.f, theme.white, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
   createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 1400.f, 350.f, theme.white, -80, 70, normal_texts, normal_text_tex, normal_text_rect);
 
-  if (ui_manager->game_state->timer_mode){
-    // createBoardTexts(ui_manager->font.font_regular_bold, goatts_killed_text.c_str(), 1400.f, 350.f, theme.white, -80, 45, normal_texts, normal_text_tex, normal_text_rect);
+  // TIMER PART OVER IN HERE
+  if (ui_manager->game_state->timer_mode && ui_manager->game_state->sec_p_move > 0){
+    Uint64 now = SDL_GetTicks();
+    Uint64 elapsed_ms = now - ui_manager->engine->turn_start_ticks;
+    int elapsed_sec = static_cast<int>(elapsed_ms / 1000);
+    int remaining = ui_manager->game_state->sec_p_move - elapsed_sec;
+    if (remaining <= 0){
+      remaining = 0;
+      ui_manager->game_state->game_won = ui_manager->game_state->turn;
+    } 
+    std::string time_left_text = "TIME LEFT   " + std::to_string(remaining) + "S";
+    createBoardTexts(ui_manager->font.font_regular_bold, time_left_text.c_str(), 1400.f, 700.f - 125.f, theme.white, -80, 20, normal_texts, normal_text_tex, normal_text_rect);
   }
 
   std::string game_mode = "GAME MODE   " + ui_manager->game_state->game_mode;
@@ -247,24 +264,25 @@ void BoardScene::buildUI(){
   if (ui_manager->game_state->game_mode == "B V P"){
     std::string bot_diff_level = "BOT LEVEL   " + ui_manager->game_state->bot_diff_level;
     createBoardTexts(ui_manager->font.font_regular_bold, bot_diff_level.c_str(), 200.f, 360.f, theme.white, -80, -55, normal_texts, normal_text_tex, normal_text_rect);
-    std::string bot = "BOT   " + ui_manager->game_state->bot_taken;
-    std::transform(bot.begin(), bot.end(), bot.begin(), ::toupper);
+    std::string bot = ui_manager->game_state->bot_taken== "baagh" ? "BOT    BAAAGH" : "BOT     GOAT";
     createBoardTexts(ui_manager->font.font_regular_bold, bot.c_str(), 200.f, 360.f, theme.white, -80, -30, normal_texts, normal_text_tex, normal_text_rect);
-    std::string player = "PLAYER   " + ui_manager->game_state->human_taken;
-    std::transform(player.begin(), player.end(), player.begin(), ::toupper);
+    std::string player = ui_manager->game_state->human_taken == "baagh" ? "HUMAN    BAAAGH" : "HUMAN     GOAT";
     createBoardTexts(ui_manager->font.font_regular_bold, player.c_str(), 200.f, 360.f, theme.white, -80, -5, normal_texts, normal_text_tex, normal_text_rect);
   }
   else{
-    std::string player1 = "PLAYER1   " + ui_manager->game_state->player1;
-    std::transform(player1.begin(), player1.end(), player1.begin(), ::toupper);
+    std::string player1 = ui_manager->game_state->player1 == "baagh" ? "PLAYER1    BAAAGH" : "PLAYER1     GOAT";
     createBoardTexts(ui_manager->font.font_regular_bold, player1.c_str(), 200.f, 360.f, theme.white, -80, -55, normal_texts, normal_text_tex, normal_text_rect);
-    std::string player2 = "PLAYER2   " + ui_manager->game_state->player2;
-    std::transform(player2.begin(), player2.end(), player2.begin(), ::toupper);
+    std::string player2 = ui_manager->game_state->player1 == "baagh" ? "PLAYER2    BAAAGH" : "PLAYER2     GOAT";
     createBoardTexts(ui_manager->font.font_regular_bold, player2.c_str(), 200.f, 360.f, theme.white, -80, -30, normal_texts, normal_text_tex, normal_text_rect);
   }
 
-};
+  std::string turn = ui_manager->game_state->turn == "baagh" ? "TURN    BAAAGH" : "TURN     GOAT";
+  std::transform(turn.begin(), turn.end(), turn.begin(), ::toupper);
+  createBoardTexts(ui_manager->font.font_regular_bold, turn.c_str(), 200.f, 705.f - 175.f, theme.white, -80, -10, normal_texts, normal_text_tex, normal_text_rect);
+  std::string move_no = "MOVE   " + std::to_string(ui_manager->game_state->move);
+  createBoardTexts(ui_manager->font.font_regular_bold, move_no.c_str(), 200.f, 705.f - 175.f, theme.white, -80, 15, normal_texts, normal_text_tex, normal_text_rect);
 
+};
 
 void BoardScene::createBoardTexts(TTF_Font* font, const char* text, float centerX, float centerY,
                 SDL_Color color, float factor_x_text, float factor_y_text,
@@ -286,7 +304,7 @@ void BoardScene::createRoundRects(float w, float h, float x, float y, float rad,
 
        
 void BoardScene::render(){
-
+  
   // RENDERING THE BACKGROUND IMAGE
   // SDL_SetRenderLogicalPresentation(renderer, 0, 0, SDL_LOGICAL_PRESENTATION_DISABLED); // DISABLEING THE LOGICAL PRESENTATION
   for (const auto& [bg, rect] : ui_manager->board_layer.background_texture){

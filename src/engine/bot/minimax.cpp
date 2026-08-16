@@ -1,12 +1,13 @@
 #include "minimax.hpp"
 
 #include <SDL3/SDL.h>
+
 #include <limits>
 #include <cmath>
 #include <algorithm>
-#include <cstring>
 
 #include "engine/engine.hpp"
+
 
 static const int WIN_SCORE = 10000000;
 
@@ -17,771 +18,598 @@ MiniMax::MiniMax(Engine* eng)
 
     bot_piece = ' ';
     opp_piece = ' ';
-    turn = ' ';
-
     from = -1;
     to = -1;
-
-    depth_lim = 4;
-    time_budget_ms = 2000;
-    time_up = false;
-    node_count = 0;
-
-    memset(killerFrom, 0, sizeof(killerFrom));
-    memset(killerTo, 0, sizeof(killerTo));
-    memset(history, 0, sizeof(history));
-
-    tt.resize(TT_SIZE);
+    depth_lim = 8;
 }
 
+void MiniMax::findBestMove(){
 
+    bot_piece = (engine->game_state->bot_taken == "goat") ? 'G' : 'T';
+    opp_piece = (bot_piece == 'G') ? 'T' : 'G';
 
-void MiniMax::findBestMove()
-{
-    SDL_Log("========== MINIMAX START ==========");
-
-    std::vector<std::pair<int, char>> saved_board = engine->game_state->board_state;
-    std::string saved_game_turn = engine->game_state->turn;
+    // SAVING THE CURRENT STATES TO UNDO LATER
+    std::vector<std::pair<int, char>> saved_board_state = engine->game_state->board_state;
+    std::string saved_turn = engine->game_state->turn;
     int saved_goats_in_hand = engine->game_state->goats_in_hand;
-    int saved_goats_killed  = engine->game_state->goats_killed;
+    int saved_goats_killed = engine->game_state->goats_killed;
 
-    bot_piece = engine->game_state->bot_taken == "goat" ? 'G' : 'T';
-    opp_piece = bot_piece == 'G' ? 'T' : 'G';
+    // Set the turn to the bot's turn before searching
+    engine->game_state->turn = (bot_piece == 'T') ? "baagh" : "goat";
 
-    memset(killerFrom, 0, sizeof(killerFrom));
-    memset(killerTo, 0, sizeof(killerTo));
-    for (int s = 0; s < 2; s++)
-        for (int f = 0; f < 25; f++)
-            for (int t = 0; t < 25; t++)
-                history[s][f][t] /= 2; 
+    int bestScore = minimax(0, true, -WIN_SCORE, WIN_SCORE);
 
-    search_start = std::chrono::steady_clock::now();
-    node_count = 0;
-
-    int best_from = -1, best_to = -1;
-
-    for (int d = 2; d <= 16; d += 2){ 
-        turn = bot_piece;
-        from = -2;
-        to = -1;
-        time_up = false;
-        depth_lim = d;
-
-        int alpha = -WIN_SCORE - 1;
-        int beta  =  WIN_SCORE + 1;
-
-        int score = negamax(0, alpha, beta);
-
-        engine->game_state->board_state = saved_board;
-        engine->game_state->turn = saved_game_turn;
-        engine->game_state->goats_in_hand = saved_goats_in_hand;
-        engine->game_state->goats_killed  = saved_goats_killed;
-
-        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::steady_clock::now() - search_start).count();
-
-        bool depthCompleted = (from != -2) && !time_up;
-
-        if (depthCompleted){
-            best_from = from;
-            best_to = to;
-            SDL_Log("Depth %d complete | score=%d | from=%d | to=%d | elapsed=%lldms | nodes=%lld",
-                    d, score, best_from, best_to, (long long)elapsed, node_count);
-        }
-        else if (from != -2){
-            best_from = from;
-            best_to = to;
-            SDL_Log("Depth %d partial (time up) | using from=%d | to=%d", d, best_from, best_to);
-        }
-
-        if (elapsed > time_budget_ms || time_up){
-            SDL_Log("Time budget reached, stopping at depth %d", d);
-            break;
-        }
-    }
-
-    from = best_from;
-    to = best_to;
-
-    SDL_Log("MINIMAX RESULT | from=%d | to=%d", from, to);
-
-    engine->game_state->board_state = saved_board;
-    engine->game_state->turn = saved_game_turn;
+    // RESTORE THE BOARD AND THE SAVED STATES
+    engine->game_state->board_state = saved_board_state;
+    engine->game_state->turn = saved_turn;
     engine->game_state->goats_in_hand = saved_goats_in_hand;
-    engine->game_state->goats_killed  = saved_goats_killed;
-
-    eval_board->valid_moves.clear();
-    eval_board->edible_valid_moves.clear();
-
-    SDL_Log ("MINIMAX END" );
+    engine->game_state->goats_killed = saved_goats_killed;
 }
 
+int MiniMax::minimax(int depth, bool maximizing, int alpha, int beta){
 
-bool MiniMax::timeCheck()
-{
-    if ((++node_count & 1023) == 0){
-        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::steady_clock::now() - search_start).count();
-        if (elapsed >= time_budget_ms){
-            time_up = true;
+    std::string winner = eval_board->checkWinner();
+
+    if (winner == "goat"){
+        if (bot_piece == 'G')
+            return WIN_SCORE + depth;
+
+        return -(WIN_SCORE + depth);
+    }
+
+    if (winner == "baagh"){
+        if (bot_piece == 'T')
+            return WIN_SCORE + depth;
+
+        return -(WIN_SCORE + depth);
+    }
+
+    if (depth >= depth_lim) return evaluate_score();
+
+    char curr_piece = (engine->game_state->turn == "baagh") ? 'T' : 'G';
+    engine->game_state->turn = (curr_piece == 'T') ? "baagh" : "goat";
+
+    int bestScore = maximizing ? -std::numeric_limits<int>::max() : std::numeric_limits<int>::max();
+    bool found_move = false;
+
+    if (curr_piece == 'G' && engine->game_state->goats_in_hand > 0){
+        for (int id = 1; id <= 25; id++){
+            if ( engine->game_state->board_state[id].second != ' '){
+                continue;
+            }
+
+            found_move = true;
+
+            // SAVING THE EACH BOARD STATES FOR LATER RESTORING AT THIS NODE
+            std::vector<std::pair<int, char>> saved_board_state = engine->game_state->board_state;
+            std::string saved_turn = engine->game_state->turn;
+            int saved_goats_in_hand = engine->game_state->goats_in_hand;
+            int saved_goats_killed = engine->game_state->goats_killed;
+
+            engine->game_state->board_state[id].second = 'G';
+            engine->game_state->goats_in_hand--;
+
+            // REPLACING THE TURN
+            engine->game_state->turn = "baagh";
+
+            int score = minimax(depth + 1, !maximizing, alpha, beta);
+
+            // RESTORING THE SAVED
+            engine->game_state->board_state = saved_board_state;
+            engine->game_state->turn = saved_turn;
+            engine->game_state->goats_in_hand = saved_goats_in_hand;
+            engine->game_state->goats_killed = saved_goats_killed;
+
+            if (depth == 0 && score > bestScore){
+                bestScore = score;
+                from = -1;
+                to = id;
+            }
+
+            if (maximizing){
+                if (score > bestScore)
+                    bestScore = score;
+
+                if (bestScore > alpha)
+                    alpha = bestScore;
+            }
+            else{
+                if (score < bestScore)
+                    bestScore = score;
+
+                if (bestScore < beta)   
+                    beta = bestScore;
+            }
+
+            if (beta <= alpha) break;
         }
-    }
-    return time_up;
-}
-
-
-
-uint64_t MiniMax::computeHash()
-{
-    uint64_t h = 1469598103934665603ULL; 
-    for (auto& [id, piece] : engine->game_state->board_state){
-        uint64_t v = (piece == 'T') ? 1 : (piece == 'G' ? 2 : 0);
-        h ^= v;
-        h *= 1099511628211ULL; 
-    }
-    h ^= (turn == 'T' ? 1ULL : 2ULL);
-    h *= 1099511628211ULL;
-    h ^= static_cast<uint64_t>(engine->game_state->goats_in_hand);
-    h *= 1099511628211ULL;
-    return h;
-}
-
-
-void MiniMax::applyMove(const SearchMove& move,
-                         std::vector<std::pair<int,char>>& savedBoard,
-                         std::string& savedGameTurn,
-                         int& savedGoatsInHand,
-                         int& savedGoatsKilled,
-                         char& savedTurn,
-                         bool& wasCapture)
-{
-    savedBoard = engine->game_state->board_state;
-    savedGameTurn = engine->game_state->turn;
-    savedGoatsInHand = engine->game_state->goats_in_hand;
-    savedGoatsKilled = engine->game_state->goats_killed;
-    savedTurn = turn;
-    wasCapture = false;
-
-    engine->game_state->turn = (turn == 'T') ? "baagh" : "goat";
-
-    if (turn == 'G' && move.from == -1)
-    {
-        engine->game_state->board_state[move.to].second = 'G';
-        engine->game_state->goats_in_hand--;
-        turn = 'T';
     }
     else
     {
-        eval_board->valid_moves.clear();
-        eval_board->edible_valid_moves.clear();
-        eval_board->getValidMovesAt(move.from);
+        for (int id = 1; id <= 25; id++)
+        {
+            if (engine->game_state->board_state[id].second!= curr_piece) continue;
+            
+            eval_board->valid_moves.clear();
+            eval_board->edible_valid_moves.clear();
 
-        engine->game_state->board_state[move.from].second = ' ';
-        engine->game_state->board_state[move.to].second = turn;
+            engine->game_state->turn = (curr_piece == 'T') ? "baagh" : "goat";
+            eval_board->getValidMovesAt(id);
 
-        if (turn == 'T'){
-            for (const auto& [goat_pos, landing_pos] : eval_board->edible_valid_moves){
-                if (landing_pos == move.to){
-                    engine->game_state->board_state[goat_pos].second = ' ';
-                    engine->game_state->goats_killed++;
-                    wasCapture = true;
-                    break;
+            std::vector<int> node_valid_moves = eval_board->valid_moves; // VALID MOVES FOR THIS NODE
+            std::vector<std::pair<int, int>> node_edible_valid_moves = eval_board->edible_valid_moves; // MOVES THAT THE TIGER CAN EAT
+            eval_board->valid_moves.clear();
+            eval_board->edible_valid_moves.clear();
+
+            for (int destination : node_valid_moves){
+                found_move = true;
+                bool is_capture = false; // INITIALLY IF THE BAAGH HAVE 0 EADIBLE MOVES
+                int capture_pos = -1;
+
+                if (curr_piece == 'T'){
+                    for (const auto& [goat_pos, landing_pos] : node_edible_valid_moves){
+                        if (landing_pos == destination){
+                            is_capture = true;
+                            capture_pos = goat_pos;
+                            break;
+                        }
+                    }
                 }
+
+                std::vector<std::pair<int, char>>  saved_board_state = engine->game_state->board_state;
+                std::string saved_turn = engine->game_state->turn;
+                int saved_goats_in_hand = engine->game_state->goats_in_hand;
+                int saved_goats_killed = engine->game_state->goats_killed;
+
+                // MAKING THE MOVE                
+                engine->game_state->board_state[id].second = ' ';
+                engine->game_state->board_state[destination].second = curr_piece;
+
+                // IF THE TIGER IS CAPTURING THE GOAT
+                if (curr_piece == 'T' && is_capture){
+                    engine->game_state->board_state[capture_pos].second = ' ';
+                    engine->game_state->goats_killed++;
+                }
+
+                engine->game_state->turn == "baagh" ? "goat" : "baagh";
+
+                int score = minimax(depth + 1, !maximizing, alpha, beta);
+
+                // RESTORING THE BOARD
+                engine->game_state->board_state = saved_board_state;
+                engine->game_state->turn = saved_turn;
+                engine->game_state->goats_in_hand = saved_goats_in_hand;
+                engine->game_state->goats_killed = saved_goats_killed;
+
+                if (depth == 0 && score > bestScore){
+                    bestScore = score;
+                    from = id;
+                    to = destination;
+                }
+
+                if (maximizing){
+                    if (score > bestScore)
+                        bestScore = score;
+
+                    if (bestScore > alpha)
+                        alpha = bestScore;
+                }
+                else{
+                    if (score < bestScore)
+                        bestScore = score;
+
+                    if (bestScore < beta)
+                        beta = bestScore;
+                }   
+
+                if (beta <= alpha)
+                    break;
             }
-        }
 
-        turn = (turn == 'T') ? 'G' : 'T';
-    }
-
-    eval_board->valid_moves.clear();
-    eval_board->edible_valid_moves.clear();
-}
-
-void MiniMax::undoMove(const std::vector<std::pair<int,char>>& savedBoard,
-                        const std::string& savedGameTurn,
-                        int savedGoatsInHand,
-                        int savedGoatsKilled,
-                        char savedTurn)
-{
-    engine->game_state->board_state = savedBoard;
-    engine->game_state->turn = savedGameTurn;
-    engine->game_state->goats_in_hand = savedGoatsInHand;
-    engine->game_state->goats_killed = savedGoatsKilled;
-    turn = savedTurn;
-}
-
-
-
-std::vector<MiniMax::SearchMove> MiniMax::generateMoves()
-{
-    std::vector<SearchMove> moves;
-
-    if (turn == 'G' && engine->game_state->goats_in_hand > 0)
-    {
-        for (auto& [id, piece] : engine->game_state->board_state){
-            if (piece != ' ') continue;
-            moves.push_back({ -1, id - 1, 0 });
-        }
-    }
-    else
-    {
-        for (auto& [id, piece] : engine->game_state->board_state){
-            if (piece != turn) continue;
-
-            int start_pos = id - 1;
-
-            eval_board->valid_moves.clear();
-            eval_board->edible_valid_moves.clear();
-            engine->game_state->turn = (turn == 'T') ? "baagh" : "goat";
-            eval_board->getValidMovesAt(start_pos);
-
-            for (int destination : eval_board->valid_moves){
-                moves.push_back({ start_pos, destination, 0 });
-            }
-        }
-        eval_board->valid_moves.clear();
-        eval_board->edible_valid_moves.clear();
-    }
-
-    return moves;
-}
-
-
-
-void MiniMax::scoreMoves(std::vector<SearchMove>& moves, int depth, int ttFrom, int ttTo)
-{
-    int sideIdx = (turn == 'T') ? 1 : 0;
-
-    for (auto& move : moves){
-        if (move.from == ttFrom && move.to == ttTo){
-            move.score = 10000000;
-            continue;
-        }
-
-        if (turn == 'T' && move.from != -1){
-            eval_board->valid_moves.clear();
-            eval_board->edible_valid_moves.clear();
-            eval_board->getValidMovesAt(move.from);
-            bool isCap = false;
-            for (const auto& [goat_pos, landing_pos] : eval_board->edible_valid_moves){
-                if (landing_pos == move.to){ isCap = true; break; }
-            }
-            eval_board->valid_moves.clear();
-            eval_board->edible_valid_moves.clear();
-            if (isCap){
-                move.score = 1000000;
-                continue;
-            }
-        }
-
-        if (depth < MAX_PLY){
-            if (move.from == killerFrom[depth][0] && move.to == killerTo[depth][0]){
-                move.score = 900000;
-                continue;
-            }
-            if (move.from == killerFrom[depth][1] && move.to == killerTo[depth][1]){
-                move.score = 800000;
-                continue;
-            }
-        }
-
-        int f = (move.from == -1) ? move.to : move.from; 
-        int t = move.to;
-        move.score = history[sideIdx][f][t];
-    }
-}
-
-
-int MiniMax::negamax(int depth, int alpha, int beta)
-{
-    if (timeCheck())
-        return 0;
-
-    engine->game_state->turn = (turn == 'T') ? "baagh" : "goat";
-
-    std::string winner_string = eval_board->checkWinner();
-
-    if (winner_string == "goat")
-        return (turn == 'G') ? (WIN_SCORE - depth) : -(WIN_SCORE - depth);
-
-    if (winner_string == "baagh")
-        return (turn == 'T') ? (WIN_SCORE - depth) : -(WIN_SCORE - depth);
-
-    if (depth >= depth_lim)
-        return quiescence(alpha, beta, 4);
-
-    uint64_t key = computeHash();
-    size_t ttIdx = static_cast<size_t>(key) & (TT_SIZE - 1);
-    TTEntry& entry = tt[ttIdx];
-    int ttFrom = -2, ttTo = -1;
-
-    int origAlpha = alpha, origBeta = beta;
-    int remaining = depth_lim - depth;
-
-    if (entry.key == key){
-        ttFrom = entry.bestFrom;
-        ttTo = entry.bestTo;
-
-        if (entry.depth >= remaining){
-            if (entry.flag == TTFlag::EXACT) return entry.score;
-            if (entry.flag == TTFlag::LOWER) alpha = std::max(alpha, entry.score);
-            if (entry.flag == TTFlag::UPPER) beta  = std::min(beta,  entry.score);
-            if (alpha >= beta) return entry.score;
+            if (beta <= alpha)
+                break;
         }
     }
 
-    std::vector<SearchMove> moves = generateMoves();
-
-    if (moves.empty()){
-        return -(WIN_SCORE - depth);
+    if (!found_move){
+        return evaluate_score();
     }
 
-    scoreMoves(moves, depth, ttFrom, ttTo);
-
-    int bestScore = -WIN_SCORE - 1;
-    int bestFrom = moves[0].from, bestTo = moves[0].to;
-    TTFlag flag = TTFlag::UPPER;
-    int movesSearched = 0;
-
-    for (size_t i = 0; i < moves.size(); i++){
-        size_t bestIdx = i;
-        for (size_t j = i + 1; j < moves.size(); j++)
-            if (moves[j].score > moves[bestIdx].score) bestIdx = j;
-        if (bestIdx != i) std::swap(moves[i], moves[bestIdx]);
-
-        const SearchMove& move = moves[i];
-
-        std::vector<std::pair<int,char>> savedBoard;
-        std::string savedGameTurn;
-        int savedGoatsInHand, savedGoatsKilled;
-        char savedTurn;
-        bool wasCapture;
-
-        applyMove(move, savedBoard, savedGameTurn, savedGoatsInHand, savedGoatsKilled, savedTurn, wasCapture);
-
-        int val;
-        int reduction = 0;
-
-        if (movesSearched >= 4 && remaining >= 3 && !wasCapture){
-            reduction = 1;
-            if (movesSearched >= 10) reduction = 2;
-        }
-
-        if (movesSearched == 0){
-            val = -negamax(depth + 1, -beta, -alpha);
-        }
-        else{
-            val = -negamax(depth + 1 + reduction, -alpha - 1, -alpha);
-
-            if (reduction > 0 && val > alpha && !time_up)
-                val = -negamax(depth + 1, -alpha - 1, -alpha); 
-
-            if (val > alpha && val < beta && !time_up)
-                val = -negamax(depth + 1, -beta, -alpha);
-        }
-
-        undoMove(savedBoard, savedGameTurn, savedGoatsInHand, savedGoatsKilled, savedTurn);
-        movesSearched++;
-
-        if (time_up) return 0;
-
-        if (val > bestScore){
-            bestScore = val;
-            bestFrom = move.from;
-            bestTo = move.to;
-        }
-
-        if (val > alpha){
-            alpha = val;
-            flag = TTFlag::EXACT;
-            if (depth == 0){
-                from = move.from;
-                to = move.to;
-            }
-        }
-
-        if (alpha >= beta){
-            flag = TTFlag::LOWER;
-            if (!wasCapture && depth < MAX_PLY){
-                killerFrom[depth][1] = killerFrom[depth][0];
-                killerTo[depth][1] = killerTo[depth][0];
-                killerFrom[depth][0] = move.from;
-                killerTo[depth][0] = move.to;
-
-                int sideIdx = (turn == 'T') ? 0 : 1; 
-                int f = (move.from == -1) ? move.to : move.from;
-                history[sideIdx][f][move.to] += remaining * remaining;
-            }
-            break;
-        }
-    }
-
-    if (!time_up){
-        entry.key = key;
-        entry.score = bestScore;
-        entry.bestFrom = bestFrom;
-        entry.bestTo = bestTo;
-        entry.depth = remaining;
-        entry.flag = flag;
-    }
-
-    (void)origAlpha; (void)origBeta;
     return bestScore;
 }
 
-int MiniMax::quiescence(int alpha, int beta, int qdepth)
-{
-    if (timeCheck())
-        return 0;
+int MiniMax::evaluate_score(){
 
-    int standPat = evaluate_score();
-
-    if (standPat >= beta) return beta;
-    if (standPat > alpha) alpha = standPat;
-
-    if (turn != 'T' || qdepth <= 0)
-        return alpha;
-
-    for (auto& [id, piece] : engine->game_state->board_state){
-        if (piece != 'T') continue;
-        int start = id - 1;
-
-        eval_board->valid_moves.clear();
-        eval_board->edible_valid_moves.clear();
-        engine->game_state->turn = "baagh";
-        eval_board->getValidMovesAt(start);
-
-        std::vector<std::pair<int,int>> local_captures = eval_board->edible_valid_moves;
-
-        for (auto& [goat_pos, landing_pos] : local_captures){
-            std::vector<std::pair<int, char>> savedBoard = engine->game_state->board_state;
-            int savedGoatsKilled = engine->game_state->goats_killed;
-            char savedTurn = turn;
-
-            engine->game_state->board_state[start].second = ' ';
-            engine->game_state->board_state[landing_pos].second = 'T';
-            engine->game_state->board_state[goat_pos].second = ' ';
-            engine->game_state->goats_killed++;
-
-            turn = 'G';
-            int val = -quiescence(-beta, -alpha, qdepth - 1);
-            turn = savedTurn;
-
-            engine->game_state->board_state = savedBoard;
-            engine->game_state->goats_killed = savedGoatsKilled;
-
-            if (val >= beta){
-                eval_board->valid_moves.clear();
-                eval_board->edible_valid_moves.clear();
-                return beta;
-            }
-            if (val > alpha) alpha = val;
-        }
-    }
-
-    eval_board->valid_moves.clear();
-    eval_board->edible_valid_moves.clear();
-
-    return alpha;
-}
-
-
-int MiniMax::evaluate_score()
-{
     const int goats_killed = engine->game_state->goats_killed;
-    const int tigers = countTigers();
-    const int goats  = countGoats();
+    const int tigers = 4 - eval_board->checkBaaghTrapped();
+    const int goats = countGoats();
 
-    const TigerScan scan = scanTigers();
+    // 
+    const TigerScoreFactors tsf = getScoreTiger();
 
-    const int t_mob            = scan.totalMobility;
-    const int captures         = scan.totalCaptures;
-    const int vulnerable       = static_cast<int>(scan.vulnerableGoatPositions.size());
-    const int center           = scan.centerControl;
-    const int escape           = scan.escapeScore;
-    const int restriction      = scan.restriction;
-    const int edge             = scan.edgeScore;
-    const int immediateDanger  = scan.danger;
-
-    const int g_mob = goatMobility();
-    const int trapped = engine->game_state->baagh_trapped;
-
+    const int t_mob = tsf.ttl_mobility;
+    const int captures = tsf.ttl_capture; 
+    const int vulnerable = static_cast<int>(tsf.vulnerable_goat_pos.size());
+    const int center = tsf.center_control;
+    const int escape = tsf.esc_score;
+    const int restriction = tsf.restriction;
+    const int edge = tsf.edge_score;
+    const int immobale_danger = tsf.danger;
+    const int trapped = tsf.trapped_count;
     const int clusters = goatClusters();
-    const int advanced = goatAdvancedPositions();
     const int blocking = goatBlockingScore();
 
     const PlacementSafety placement = computePlacementSafety();
-    const int safePlacements       = placement.safe;
-    const int dangerousPlacements  = placement.dangerous;
+    const int safe_placement = placement.safe;
 
-    const bool placementPhase = engine->game_state->goats_in_hand > 0;
+    const int danger_placement = placement.dangerous;
 
-    int score = 0; // positive = good for TIGER
+    int score = 0;
 
     score += goats_killed * Scores::GOATS_KILLED;
+    score += t_mob * Scores::TIGERS_MOBILITY;
+    score += captures * Scores::TIGER_CAPTURE; // HOW MANY TOTAL CAPTURES ARE POSSIBLE
+    score -= trapped * Scores::TIGER_TRAPPED; 
+    score += center * Scores::TIGER_CENTER; // CENTER COVERAGE ADVANTAGE
+    score += escape * Scores::TIGER_ESCAPE; // COMPACTED FOR MOBILITY AND CAPTURE COUNT
 
-    score += t_mob * Scores::TIGER_MOBILITY;
-    score += captures * Scores::TIGER_CAPTURE;
-    score -= trapped * Scores::TIGER_TRAPPED;
-    score += center * Scores::TIGER_CENTER;
-    score += escape * Scores::TIGER_ESCAPE;
-    score += edge * Scores::TIGER_EDGE;
 
-    score -= g_mob * Scores::GOAT_MOBILITY;
+
+
+    // score += edge * Scores::TIGER_EDGE; // TIGER AT EDGE DISADVANTAGE
+
+
+
     score += vulnerable * Scores::GOAT_VULNERABLE;
-    score += restriction * Scores::GOAT_RESTRICT;
+    score += restriction * Scores::GOAT_RESTRICT; // FOR TIGER, NEGATIVE ADVANTAGE
     score -= clusters * Scores::GOAT_CLUSTER;
-    score -= advanced * Scores::GOAT_ADVANCED;
-    score -= blocking * Scores::GOAT_BLOCKING;
+    score -= blocking * ExtraScores::GOAT_BLOCKING; // HOW MANY OF THE GOATS/EDGES ARE BLOCING A GOAT TO EAT
 
-    if (placementPhase){
-        score += restriction * 20;
-        score += vulnerable * 40;
-        score -= dangerousPlacements * Scores::GOAT_DANGER_PLACEMENT;
-        score -= safePlacements * Scores::GOAT_SAFE_PLACEMENT;
+    // IF THE GOAT IS STILL TO BE PLACED
+    if (engine->game_state->goats_in_hand > 0){
+        // score += restriction * 20; 
+        // score += vulnerable * 40;
+        score += danger_placement * ExtraScores::GOAT_DANGER_PLACEMENT;
+        score -= safe_placement * ExtraScores::GOAT_SAFE_PLACEMENT;
         score += t_mob * 4;
     }
     else{
-        score -= trapped * 150;
-        score += captures * 35;
-        score += immediateDanger * 100;
-        score -= g_mob * 4;
+        // score -= trapped * 150;
+        // score += captures * 35;
+        // score += immobale_danger * 100;
+        // score -= g_mob * 4;
     }
 
-    score += tigers * 3;
-    score -= goats * 1;
+    score += tigers * ExtraScores::TIGER_COUNT_BONUS;
+    score -= goats * ExtraScores::GOAT_COUNT_PENALTY;
+    if (bot_piece == 'T')
+        return score;
 
-    return (turn == 'T') ? score : -score;
-}
-
-
-
-int MiniMax::countTigers()
-{
-    int count = 0;
-    for (const auto& [id, type] : engine->game_state->board_state)
-        if (type == 'T') count++;
-    return count;
+    return -score;
 }
 
 int MiniMax::countGoats()
 {
     int count = 0;
-    for (const auto& [id, type] : engine->game_state->board_state)
-        if (type == 'G') count++;
+    for (int id = 1; id <= 25; id++)
+    {
+        if (engine->game_state->board_state[id].second == 'G')
+        {
+            count++;
+        }
+    }
     return count;
 }
 
-int MiniMax::goatMobility()
-{
-    if (engine->game_state->goats_in_hand > 0)
-        return 0;
-
-    int mobility = 0;
-
-    for (const auto& [id, type] : engine->game_state->board_state){
-        if (type != 'G') continue;
-
-        int pos = id - 1;
-
-        eval_board->valid_moves.clear();
-        eval_board->edible_valid_moves.clear();
-        engine->game_state->turn = "goat";
-        eval_board->getValidMovesAt(pos);
-
-        mobility += static_cast<int>(eval_board->valid_moves.size());
-    }
-
-    eval_board->valid_moves.clear();
-    eval_board->edible_valid_moves.clear();
-
-    return mobility;
-}
-
-int MiniMax::goatClusters()
-{
+// CHECKING THE GOAT CLUSTERS - ADJACENT GOATS ON THE BOARD
+int MiniMax::goatClusters(){
     int clusters = 0;
+    for (int pos = 0; pos < 25; pos++){
+        if (engine->game_state->board_state[pos].second != 'G') continue;
 
-    for (const auto& [id, type] : engine->game_state->board_state){
-        if (type != 'G') continue;
-
-        int pos = id - 1;
-        int row = pos / 5;
-        int col = pos % 5;
-
-        for (const auto& [other_id, other_type] : engine->game_state->board_state){
-            if (other_type != 'G') continue;
-            if (other_id <= id) continue;
-
-            int other_pos = other_id - 1;
-            int other_row = other_pos / 5;
-            int other_col = other_pos % 5;
-
-            int dr = std::abs(row - other_row);
-            int dc = std::abs(col - other_col);
-
-            if ((dr == 1 && dc == 0) || (dr == 0 && dc == 1) || (dr == 1 && dc == 1))
+        int row_of_pos = pos / 5;
+        int col_of_pos = pos % 5;
+        bool has_up = row_of_pos > 0;
+        bool has_down = row_of_pos < 4;
+        bool has_left = col_of_pos > 0;
+        bool has_right = col_of_pos < 4;
+        bool is_main_diag = (row_of_pos == col_of_pos);
+        bool is_anti_diag = (row_of_pos + col_of_pos == 4);
+        
+        if (has_up){
+            int neighbor = pos - 5;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
                 clusters++;
+            }
+        }
+        // DOWN
+        if (has_down){
+            int neighbor = pos + 5;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
+        }
+        // LEFT
+        if (has_left){
+            int neighbor = pos - 1;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
+        }
+        // RIGHT
+        if (has_right){
+            int neighbor = pos + 1;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
+        }
+        // UP-LEFT
+        if (is_main_diag && has_up && has_left){
+            int neighbor = pos - 6;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
+        }
+        // DOWN-RIGHT
+        if (is_main_diag && has_down && has_right){
+            int neighbor = pos + 6;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
+        }
+        // UP-RIGHT
+        if (is_anti_diag && has_up && has_right){
+            int neighbor = pos - 4;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
+        }
+        // DOWN-LEFT
+        if (is_anti_diag && has_down && has_left){
+            int neighbor = pos + 4;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                clusters++;
+            }
         }
     }
 
-    return clusters;
+    return clusters / 2;
 }
 
-int MiniMax::goatAdvancedPositions()
-{
-    int score = 0;
+// GETTING THE NUMBER OF GOATS THAT BLOCKS THE GOAT
+int MiniMax::goatBlockingScore(){
+    int goats_blocking_tiger = 0;
 
-    for (const auto& [id, type] : engine->game_state->board_state){
-        if (type != 'G') continue;
+    for (int pos = 0; pos < 25; pos++){
+        if (engine->game_state->board_state[pos].second != 'T') continue;
 
-        int pos = id - 1;
-        int row = pos / 5;
+        int row_pos = pos / 5;
+        int col_pos = pos % 5;
+        bool has_up = row_pos > 0;
+        bool has_down = row_pos < 4;
+        bool has_left = col_pos > 0;
+        bool has_right = col_pos < 4;
+        bool is_main_diag = (row_pos == col_pos);
+        bool is_anti_diag = (row_pos + col_pos == 4);
 
-        if (row == 2) score += 3;
-        else if (row == 1 || row == 3) score += 2;
-        else score += 1;
-    }
+        if (has_up){
+            int neighbor = pos - 5;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_r = row_pos - 2;
+                if (jump_r < 0) goats_blocking_tiger++;
+                else{
+                    int jump_pos = jump_r * 5 + col_pos;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-    return score;
-}
+        if (has_down){
+            int neighbor = pos + 5;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_r = row_pos + 2;
+                if (jump_r > 4) goats_blocking_tiger++;
+                else{
+                    int jump_pos = jump_r * 5 + col_pos;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-int MiniMax::goatBlockingScore()
-{
-    int score = 0;
+        if (has_left){
+            int neighbor = pos - 1;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_c = col_pos - 2;
+                if (jump_c < 0) goats_blocking_tiger++;
+                else{
+                    int jump_pos = row_pos * 5 + jump_c;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-    for (const auto& [id, type] : engine->game_state->board_state){
-        if (type != 'G') continue;
+        if (has_right){
+            int neighbor = pos + 1;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_c = col_pos + 2;
+                if (jump_c > 4) goats_blocking_tiger++;
+                else{
+                    int jump_pos = row_pos * 5 + jump_c;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-        int goat_pos = id - 1;
+        if (is_main_diag && has_up && has_left){
+            int neighbor = pos - 6;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_r = row_pos - 2;
+                int jump_c = col_pos - 2;
+                if (jump_r < 0 || jump_c < 0) goats_blocking_tiger++;
+                else{
+                    int jump_pos = jump_r * 5 + jump_c;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-        for (const auto& [tiger_id, tiger_type] : engine->game_state->board_state){
-            if (tiger_type != 'T') continue;
+        if (is_main_diag && has_down && has_right){
+            int neighbor = pos + 6;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_r = row_pos + 2;
+                int jump_c = col_pos + 2;
+                if (jump_r > 4 || jump_c > 4) goats_blocking_tiger++;
+                else{
+                    int jump_pos = jump_r * 5 + jump_c;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-            int tiger_pos = tiger_id - 1;
+        if (is_anti_diag && has_up && has_right){
+            int neighbor = pos - 4;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_r = row_pos - 2;
+                int jump_c = col_pos + 2;
+                if (jump_r < 0 || jump_c > 4) goats_blocking_tiger++;
+                else{
+                    int jump_pos = jump_r * 5 + jump_c;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
+        }
 
-            int tr = tiger_pos / 5;
-            int tc = tiger_pos % 5;
-            int gr = goat_pos / 5;
-            int gc = goat_pos % 5;
-
-            int dr = std::abs(tr - gr);
-            int dc = std::abs(tc - gc);
-
-            if ((dr == 1 && dc == 0) || (dr == 0 && dc == 1) || (dr == 1 && dc == 1))
-                score++;
+        if (is_anti_diag && has_down && has_left){
+            int neighbor = pos + 4;
+            if (engine->game_state->board_state[neighbor].second == 'G'){
+                int jump_r = row_pos + 2;
+                int jump_c = col_pos - 2;
+                if (jump_r > 4 || jump_c < 0) goats_blocking_tiger++;
+                else{
+                    int jump_pos = jump_r * 5 + jump_c;
+                    if (engine->game_state->board_state[jump_pos].second != ' ') goats_blocking_tiger++;
+                }
+            }
         }
     }
-
-    return score;
+    return goats_blocking_tiger;
 }
 
-MiniMax::TigerScan MiniMax::scanTigers()
-{
-    TigerScan scan;
+// GETTING THE INFO FOR THE SCORING FACTOR FOR THE TIGER
+MiniMax::TigerScoreFactors MiniMax::getScoreTiger() {
+    TigerScoreFactors tsf{};
 
-    for (const auto& [id, type] : engine->game_state->board_state){
-        if (type != 'T') continue;
-
-        int pos = id - 1;
+    for (int id = 1; id <= 25; id++) {
+        if (engine->game_state->board_state[id].second != 'T') continue;
 
         eval_board->valid_moves.clear();
         eval_board->edible_valid_moves.clear();
         engine->game_state->turn = "baagh";
-        eval_board->getValidMovesAt(pos);
+        eval_board->getValidMovesAt(id);
 
-        int mobility = static_cast<int>(eval_board->valid_moves.size());
-        int capture_count = static_cast<int>(eval_board->edible_valid_moves.size());
+        std::vector<int> node_valid_moves = eval_board->valid_moves;
+        std::vector<std::pair<int, int>> node_edible_valid_moves = eval_board->edible_valid_moves;
+        eval_board->valid_moves.clear();
+        eval_board->edible_valid_moves.clear();
 
-        scan.totalMobility += mobility;
-        scan.totalCaptures += capture_count;
+        int mobility = static_cast<int>(node_valid_moves.size());
+        int capture_count = static_cast<int>(node_edible_valid_moves.size());
+        int total_actions = mobility + capture_count;
 
-        for (const auto& [goat_pos, landing_pos] : eval_board->edible_valid_moves){
-            (void)landing_pos;
-            if (std::find(scan.vulnerableGoatPositions.begin(),
-                           scan.vulnerableGoatPositions.end(),
-                           goat_pos) == scan.vulnerableGoatPositions.end()){
-                scan.vulnerableGoatPositions.push_back(goat_pos);
+        tsf.ttl_mobility += mobility;
+        tsf.ttl_capture += capture_count;
+
+        for (const auto& [goat_pos, landing_pos] : node_edible_valid_moves) {
+            if (std::find(tsf.vulnerable_goat_pos.begin(), tsf.vulnerable_goat_pos.end(), goat_pos) == tsf.vulnerable_goat_pos.end()) {
+                tsf.vulnerable_goat_pos.push_back(goat_pos);
             }
         }
 
-        int total = mobility + capture_count;
+        if (total_actions >= 5) { tsf.esc_score += 5; }
+        else if (total_actions == 4) { tsf.esc_score += 4; }
+        else if (total_actions == 3) { tsf.esc_score += 2; }
+        else if (total_actions == 2) { tsf.esc_score -= 1; }
+        else if (total_actions == 1) { tsf.esc_score -= 3; }
+        else { tsf.esc_score -= 8; }
 
-        if (total >= 5)      scan.escapeScore += 5;
-        else if (total == 4) scan.escapeScore += 4;
-        else if (total == 3) scan.escapeScore += 2;
-        else if (total == 2) scan.escapeScore += 0;
-        else if (total == 1) scan.escapeScore -= 3;
-        else                  scan.escapeScore -= 8;
+        if (total_actions == 0) {
+            tsf.restriction -= 6;
+            tsf.trapped_count++;
+        } else if (total_actions == 1) {
+            tsf.restriction -= 4;
+        } else if (total_actions == 2) {
+            tsf.restriction -= 2;
+        } else if (total_actions == 3) {
+            tsf.restriction -= 1;
+        }
 
-        if (mobility == 0)      scan.restriction += 6;
-        else if (mobility == 1) scan.restriction += 4;
-        else if (mobility == 2) scan.restriction += 2;
-        else if (mobility == 3) scan.restriction += 1;
+        tsf.danger += capture_count * 4;
 
-        if (capture_count >= 2)      scan.danger += 3;
-        else if (capture_count == 1) scan.danger += 1;
+        int idx = id - 1;
+        int row = idx / 5;
+        int col = idx % 5;
+        int dist = std::abs(row - 2) + std::abs(col - 2);
 
-        int row = pos / 5;
-        int col = pos % 5;
-        int center_distance = std::abs(row - 2) + std::abs(col - 2);
+        if (dist == 0) { tsf.center_control += 4; }
+        else if (dist == 1) { tsf.center_control += 3; }
+        else if (dist == 2) { tsf.center_control += 2; }
 
-        if (center_distance == 0)      scan.centerControl += 4;
-        else if (center_distance == 1) scan.centerControl += 3;
-        else if (center_distance == 2) scan.centerControl += 1;
-
-        if (row == 0 || row == 4 || col == 0 || col == 4)
-            scan.edgeScore -= 1;
+        if (row == 0 || row == 4 || col == 0 || col == 4) {
+            tsf.edge_score -= 1;
+        }
     }
 
     eval_board->valid_moves.clear();
     eval_board->edible_valid_moves.clear();
-
-    return scan;
+    return tsf;
 }
 
-MiniMax::PlacementSafety MiniMax::computePlacementSafety()
-{
+// IF ANY POS HAS THE PLACEMENT VULNERABLE THEN DANGERAOUS POSITIONS IS THAT
+MiniMax::PlacementSafety MiniMax::computePlacementSafety(){
     PlacementSafety result;
-
-    if (engine->game_state->goats_in_hand <= 0)
+    if (engine->game_state->goats_in_hand <= 0){
         return result;
+    }
 
-    for (auto& [id, piece] : engine->game_state->board_state){
-        if (piece != ' ') continue;
+    for (int id = 1; id <= 25; id++){
+        if (engine->game_state->board_state[id].second != ' ') continue;
 
-        int pos = id - 1;
-
-        engine->game_state->board_state[pos].second = 'G';
-
+        engine->game_state->board_state[id].second = 'G';
         bool vulnerable = false;
 
-        for (const auto& [tiger_id, tiger_type] : engine->game_state->board_state){
-            if (tiger_type != 'T') continue;
-
-            int tiger_pos = tiger_id - 1;
+        for (int tid = 1; tid <= 25; tid++){
+            if (engine->game_state->board_state[tid].second != 'T') continue;
 
             eval_board->valid_moves.clear();
             eval_board->edible_valid_moves.clear();
+            std::string saved_turn =  engine->game_state->turn;
             engine->game_state->turn = "baagh";
-            eval_board->getValidMovesAt(tiger_pos);
+            eval_board->getValidMovesAt(tid);
 
-            for (const auto& [goat_pos, landing] : eval_board->edible_valid_moves){
-                (void)landing;
-                if (goat_pos == pos){ vulnerable = true; break; }
+            engine->game_state->turn = saved_turn;
+
+            std::vector<std::pair<int, int>> node_edible_valid_moves = eval_board->edible_valid_moves;
+            eval_board->valid_moves.clear();
+            eval_board->edible_valid_moves.clear();
+
+            for (const auto& [goat_pos, landing_pos] : node_edible_valid_moves){
+                (void)landing_pos;
+                if (goat_pos == id){
+                    vulnerable = true;
+                    break;
+                }
             }
 
             if (vulnerable) break;
         }
 
-        engine->game_state->board_state[pos].second = ' ';
+        engine->game_state->board_state[id].second = ' ';
 
         if (vulnerable) result.dangerous++;
-        else            result.safe++;
+        else result.safe++;
     }
 
     eval_board->valid_moves.clear();
     eval_board->edible_valid_moves.clear();
-
     return result;
 }
