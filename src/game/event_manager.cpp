@@ -13,23 +13,27 @@ SDL_AppResult GameEvent::handleEvent(SDL_Event* event)
         event->button.y = logicalY;
     } 
 
-    for(auto button : ui_manager->board_layer.buttons)
-    {
-        button->handleEvent(*event);
-    }
+    ui_manager->handleEvents(*event);
 
-    for(auto [id, c_button] : ui_manager->board_layer.circular_buttons)
-    {
-        c_button->handleEvent(*event);
-    }
+    if (!ui_manager->pair_scene.empty() && ui_manager->pair_scene.back() == ScenceOrd::BOARD_SCENE) {
+        for(auto button : ui_manager->board_layer.buttons)
+        {
+            button->handleEvent(*event);
+        }
 
-    for(const auto& [id, baagh] : ui_manager->board_layer.baagh_pieces)
-    {
-        baagh.first->handleEvent(*event);
-    }
-    for(auto [id, goat] : ui_manager->board_layer.goat_pieces)
-    {
-        goat.first->handleEvent(*event);
+        for(auto [id, c_button] : ui_manager->board_layer.circular_buttons)
+        {
+            c_button->handleEvent(*event);
+        }
+
+        for(const auto& [id, baagh] : ui_manager->board_layer.baagh_pieces)
+        {
+            baagh.first->handleEvent(*event);
+        }
+        for(auto [id, goat] : ui_manager->board_layer.goat_pieces)
+        {
+            goat.first->handleEvent(*event);
+        }
     }
 
     return SDL_APP_CONTINUE;
