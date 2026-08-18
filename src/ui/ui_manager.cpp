@@ -143,44 +143,35 @@ void UIManager::renderLayer()
     if (board_scene) board_scene->render();
     if (game_state->timer_mode && game_state->sec_p_move > 0){
       Uint64 now = SDL_GetTicks();
-
-      std::string time_left_text;
-      std::string saved_time = "";  
-      Uint64 elapsed_ms; 
+      Uint64 elapsed_ms = 0;
       if (!game_state->game_paused){
         if (engine->bot_busy)
-          elapsed_ms = SDL_GetTicks() - engine->bot.think_time;
-        if (!engine->bot_busy)
-          elapsed_ms = SDL_GetTicks() - engine->turn_start_ticks;
+          elapsed_ms = now - engine->bot.think_time;
+        else
+          elapsed_ms = now - engine->turn_start_ticks;
         int elapsed_sec = static_cast<int>(elapsed_ms / 1000);
         int remaining = game_state->sec_p_move - elapsed_sec;
+        if (remaining < 0) remaining = 0;
         time_paused = 0;
         time_resumed = 0;
-        if (remaining <= 0){
-          remaining = 0;
-          game_state->game_won = game_state->turn;
-        } 
-        saved_time = time_left_text;
-        // GOING TO THE RESULT SCREEN
-        std::string time_left_text = "TIME LEFT   " + std::to_string(remaining) + "S";
         if (remaining <= 0){
           std::string winner = game_state->turn == "baagh" ? "goat" : "baagh";
           game_state->game_won = winner;
           game_state->won_by_time_out = true;
         }
-
-        SDL_Surface* surface = TTF_RenderText_Blended(font.font_regular_bold, time_left_text.c_str(), 0, {255, 255, 255, 255});
-        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_DestroySurface(surface);
-        SDL_FRect rect = {1400.f - 80.f, 700.f - 125.f + 20.f, static_cast<float>(texture->w), static_cast<float>(texture->h)};
-        SDL_RenderTexture(renderer, texture, NULL, &rect);
+        saved_time_string = "TIME LEFT   " + std::to_string(remaining) + "S";
       }
-      else{
-        SDL_Surface* surface = TTF_RenderText_Blended(font.font_regular_bold, saved_time.c_str(), 0, {255, 255, 255, 255});
-        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_DestroySurface(surface);
-        SDL_FRect rect = {1400.f - 80.f, 700.f - 125.f + 20.f, static_cast<float>(texture->w), static_cast<float>(texture->h)};
-        SDL_RenderTexture(renderer, texture, NULL, &rect);
+      if (!saved_time_string.empty()){
+        SDL_Surface* surface = TTF_RenderText_Blended(font.font_regular_bold, saved_time_string.c_str(), saved_time_string.length(), {255, 255, 255, 255});
+        if (surface){
+          SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+          SDL_DestroySurface(surface);
+          if (texture){
+            SDL_FRect rect = {1400.f - 80.f, 700.f - 125.f + 20.f, static_cast<float>(texture->w), static_cast<float>(texture->h)};
+            SDL_RenderTexture(renderer, texture, NULL, &rect);
+            SDL_DestroyTexture(texture);
+          }
+        }
       }
     }
 

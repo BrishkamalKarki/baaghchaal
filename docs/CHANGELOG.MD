@@ -126,17 +126,32 @@ Added the rounded rects in the board scece for the configuration info display, b
 ---
 
 
-### [5 Brishkamal Karki] - 2026-08-16
+### [6 Brishkamal Karki] - 2026-08-18
 
 ### Added
-- Added the full ui for board scene
-- Added the total engine and the bot (minimax with alphabeta prunning)
+- Added the prebuilt `libraries/` folder (SDL3 + support libraries) so the game builds without vcpkg or internet
+- Added `CMakePresets.json` with 4 presets (debug/release for Linux and Windows)
+- Added `docs/SETUP_AND_RELEASE.md` (setup, troubleshooting, slimming, GitHub release guide)
+- Added Requirements and Troubleshooting sections to `README.md`
+
 ### Description
+  Big cleanup round: the game now builds fully offline from one `CMakeLists.txt`,
+  and the repo was slimmed down so it fits comfortably on GitHub.
 
 ### Changed
-  nothing
+- Rewrote `CMakeLists.txt` — one file for both platforms (Windows uses the MSVC `.lib` libraries, Linux links the `.a` files with `--start-group` / `--end-group`)
+- Rewrote `commander.sh` — only simple flags now (`-R` for release, `-C` to force re-configure)
+- Improved `commander.ps1` — adds bundled `tools/ninja.exe` to PATH and copies the SDL3 DLLs next to the `.exe`
+- Slimmed `libraries/` from 210 MB to 86 MB (kept only the libraries the game actually links)
+- Slimmed `assets/` from 50 MB to 10 MB (kept only the fonts, sounds and sprites the game loads)
+- Updated `.gitignore` (build folders no longer tracked)
+- Deleted junk files (old `build/`, root `CMakeCache.txt`, `CMakeFiles/`, `Makefile`)
+- Moved `proposal.pdf` and the game-flow image into `docs/`
 
 ### Fixed
-  nothing
+- Fixed the pause button crash (empty timer text caused a NULL texture and a segfault)
 
----
+  Note: the startup screen, the result screen (including its main menu) and the
+  settings screen were not made by me — they were built by my teammates.
+  Known issue: playing again after visiting the main menu still crashes the game;
+  the cause is found and the fix is ready, but not applied yet.

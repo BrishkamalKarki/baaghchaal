@@ -19,6 +19,8 @@ void BoardScene::clearLayers(){
   ui_manager->board_layer.goat_pieces.clear();
   ui_manager->board_layer.texture_components.clear();
   ui_manager->board_layer.texts.clear();
+  ui_manager->board_layer.info_boards.clear();
+  ui_manager->board_layer.board_tex_comp.clear(); 
   line_rects.clear();
   board_pnt_btn.clear();
   rects.clear();
@@ -488,13 +490,17 @@ void BoardScene::buildPauseOverlay(){
   
   // TITLE TEXT 
   {
-    SDL_Surface* surf = TTF_RenderText_Blended(ui_manager->font.font_bold, "PAUSED", 0, theme.white);
-    SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
-    float tw = static_cast<float>(surf->w);
-    float th = static_cast<float>(surf->h);
-    SDL_DestroySurface(surf);
-    SDL_FRect r = {cx - tw / 2.f, cy - 160.f, tw, th};
-    pause_texts.push_back({r, tex});
+    SDL_Surface* surf = TTF_RenderText_Blended(ui_manager->font.font_bold, "PAUSED", 6, theme.white);
+    if (surf){
+      SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
+      float tw = static_cast<float>(surf->w);
+      float th = static_cast<float>(surf->h);
+      SDL_DestroySurface(surf);
+      if (tex){
+        SDL_FRect r = {cx - tw / 2.f, cy - 160.f, tw, th};
+        pause_texts.push_back({r, tex});
+      }
+    }
   }
   
   // PILL BUTTONS - RESUME / MAIN MENU / EXIT GAME
@@ -555,7 +561,7 @@ void BoardScene::renderPauseOverlay(){
 
   // TITLE
   for (const auto& [rect, tex] : pause_texts){
-    SDL_RenderTexture(renderer, tex, NULL, &rect);
+    if (tex) SDL_RenderTexture(renderer, tex, NULL, &rect);
   }
   
   // BUTTONS

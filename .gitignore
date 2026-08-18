@@ -1,5 +1,12 @@
-.vscode/
+build/
 build_ln/
 build_wn/
-README.md
-third_party/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+*.pdb
+.vscode/
+BaaghChaal-v0.1.0-linux.tar.gz
+BaaghChaal-linux-release-v0.1.0
+BaaghChaal-v0.1.0-windows.zip
+BaaghChaal-windows-release-v0.1.0

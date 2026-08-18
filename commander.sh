@@ -12,6 +12,7 @@ SUB_BUILD_DIR="build_release"
 if [ "$1" = "-R" ]; then
   if [ "$2" = "-C" ] || [ "$1" = "-C" ]; then
     cmake --preset release-linux
+    cp -t "$BUILD_DIR/build_debug/" "$PWD/libraries/x64-linux/lib"/*.a   
     echo -e "\e[34mre-builded dude\e[0m"
   fi
   cmake --build "$BUILD_DIR/$SUB_BUILD_DIR"
@@ -22,6 +23,7 @@ else
   SUB_BUILD_DIR="build_debug"
   if [ "$2" = "-C" ] || [ "$1" = "-C" ]; then
     cmake --preset debug-linux
+    cp -t "$BUILD_DIR/build_debug/" "$PWD/libraries/x64-linux/lib"/*.a     
     echo -e "\e[34mre-builded dude\e[0m"
   fi
   cmake --build "$BUILD_DIR/$SUB_BUILD_DIR"

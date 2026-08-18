@@ -3,6 +3,7 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <vector>
 #include <memory>
+#include <string>
 
 #include "ui_layer.hpp"
 #include "game_config/system_config.hpp"
@@ -58,4 +59,5 @@ public:
     void handleEvents(const SDL_Event& event);
     
     Uint64 time_paused, time_resumed;
+    std::string saved_time_string;
 };

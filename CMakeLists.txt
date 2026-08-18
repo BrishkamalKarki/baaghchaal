@@ -24,44 +24,83 @@ add_executable(
     BaaghChaal
     ${SRC_FILES}
     )
-
-# ALSO CHECK FOR THE HEADERS FILE
-target_include_directories(
-    BaaghChaal  
-    PRIVATE
-    "${CMAKE_SOURCE_DIR}/src"
-    )
-
+    
 if(WIN32)
-    set (VCPKG_TRIPLET_DIR "${CMAKE_SOURCE_DIR}/third_party/x64-windows")
+    set (VCPKG_TRIPLET_DIR "${CMAKE_SOURCE_DIR}/libraries/x64-windows")
 elseif(UNIX)
-    set (VCPKG_TRIPLET_DIR "${CMAKE_SOURCE_DIR}/third_party/x64-linux")
+    set (VCPKG_TRIPLET_DIR "${CMAKE_SOURCE_DIR}/libraries/x64-linux")
 endif()
 
-list(APPEND CMAKE_PREFIX_PATH "${VCPKG_TRIPLET_DIR}")
+# ALSO CHECK FOR THE HEADERS FILE
+if (WIN32)
+    target_include_directories(
+        BaaghChaal  
+        PRIVATE
+        "${CMAKE_SOURCE_DIR}/src"
+    )
+elseif (UNIX)
+    target_include_directories(
+        BaaghChaal
+        PRIVATE
+        "${CMAKE_SOURCE_DIR}/src"
+        "${VCPKG_TRIPLET_DIR}/include"
+    )
+endif()
 
-find_package(SDL3 REQUIRED)
-find_package(SDL3_image REQUIRED)
-find_package(SDL3_ttf REQUIRED)
-find_package(SDL3_mixer REQUIRED)
+
+if (WIN32)
+list(APPEND CMAKE_PREFIX_PATH "${VCPKG_TRIPLET_DIR}")
+endif()
+
+if (WIN32)
+    find_package(SDL3 REQUIRED)
+    find_package(SDL3_image REQUIRED)
+    find_package(SDL3_ttf REQUIRED)
+    find_package(SDL3_mixer REQUIRED)
+    find_library(BZIP2_LIB bz2 PATHS "${VCPKG_TRIPLET_DIR}/lib" REQUIRED)
+    find_library(BROTLIDEC_LIB brotlidec PATHS "${VCPKG_TRIPLET_DIR}/lib" REQUIRED)
+    find_library(BROTLICOMMON_LIB brotlicommon PATHS "${VCPKG_TRIPLET_DIR}/lib" REQUIRED)
+endif()
+
+if (WIN32)
+    find_package(Freetype CONFIG REQUIRED)
+endif()
 
 
 
 # LINKING THE EXECUTABLE WITH SDL3 + EXTENSIONS
-target_link_libraries(
-    BaaghChaal
-    PRIVATE
-    SDL3::SDL3
-    SDL3_image::SDL3_image
-    SDL3_ttf::SDL3_ttf
-    SDL3_mixer::SDL3_mixer
+if (WIN32)
+    target_link_libraries(
+        BaaghChaal
+        PRIVATE
+        SDL3::SDL3
+        SDL3_image::SDL3_image
+        SDL3_ttf::SDL3_ttf
+        SDL3_mixer::SDL3_mixer
     )
-
-if(WIN32)
-    add_custom_command(TARGET BaaghChaal POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different 
-            $<TARGET_RUNTIME_DLLS:BaaghChaal>
-            $<TARGET_FILE_DIR:BaaghChaal>
-        COMMAND_EXPAND_LISTS
+elseif(UNIX)
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        set(SDL3_LIB_DIR "${VCPKG_TRIPLET_DIR}/lib")
+    else()
+        set(SDL3_LIB_DIR "${VCPKG_TRIPLET_DIR}/debug/lib")
+    endif()
+    target_link_libraries(
+        BaaghChaal
+        PRIVATE
+        -Wl,--start-group
+        "${SDL3_LIB_DIR}/libSDL3.a"
+        "${SDL3_LIB_DIR}/libSDL3_image.a"
+        "${SDL3_LIB_DIR}/libSDL3_ttf.a"
+        "${SDL3_LIB_DIR}/libSDL3_mixer.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libfreetype.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libpng.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libjpeg.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libz.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libbz2.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libbrotlidec.a"
+        "${VCPKG_TRIPLET_DIR}/lib/libbrotlicommon.a"
+        -Wl,--end-group
+        -lm
+        -pthread
     )
 endif()

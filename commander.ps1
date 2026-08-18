@@ -15,11 +15,13 @@ if ($env:Path -notlike "*$PATH_NINJA*"){
 
 if (($args.Count -ge 1 -and $args[0] -eq "-C") -or ($args.Count -ge 1 -and $args[1] -eq "-C")){
     cmake --preset "debug-windows"
+    Copy-Item "$PWD/libraries/x64-windows/bin/*.dll" "$BUILD_DIR/build_debug/" -Force
     Write-Host "re-builded the bebug dude" -ForegroundColor Blue
 }
 
-if (($args.Count -ge 1 -and $args[0] -eq "-C") -or ($args.Count -ge 1 -and $args[1] -eq "-C")){
+if (($args.Count -ge 1 -and $args[0] -eq "-R") -or ($args.Count -ge 1 -and $args[1] -eq "-R")){
     cmake --preset "release-windows"
+    Copy-Item "$PWD/libraries/x64-windows/bin/*.dll" "$BUILD_DIR/build_release/" -Force
     Write-Host "re-builded the release dude" -ForegroundColor Blue
 }
 

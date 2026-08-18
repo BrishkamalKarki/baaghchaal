@@ -11,8 +11,7 @@
     "generator": "Ninja",
     "binaryDir": "${sourceDir}/build_ln/build_debug",
     "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Debug",
-      "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/bootstrap-vcpkg.cmake"
+      "CMAKE_BUILD_TYPE": "Debug"
     }
   },
   {
@@ -21,8 +20,7 @@
     "generator": "Ninja",
     "binaryDir": "${sourceDir}/build_ln/build_release",
     "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Release",
-      "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/bootstrap-vcpkg.cmake"
+      "CMAKE_BUILD_TYPE": "Release"
     }
   },
   {
@@ -31,8 +29,7 @@
     "generator": "Ninja",
     "binaryDir": "${sourceDir}/build_wn/build_debug",
     "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Debug",
-      "CMAKE_TOOLCHAIN_FILE":"${sourceDir}/cmake/bootstrap-vcpkg.cmake"
+      "CMAKE_BUILD_TYPE": "Debug"
     }
   },
   {
@@ -41,8 +38,7 @@
     "generator": "Ninja",
     "binaryDir": "${sourceDir}/build_wn/build_release",
     "cacheVariables": {
-      "CMAKE_BUILD_TYPE": "Release",
-      "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/bootstrap-vcpkg.cmake"
+      "CMAKE_BUILD_TYPE": "Release"
     }
   }],
   "buildPresets": [
