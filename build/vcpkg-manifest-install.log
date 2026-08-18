@@ -1,0 +1,668 @@
+Detecting compiler hash for triplet x64-linux...
+Compiler found: /usr/bin/c++
+The following packages will be built and installed:
+  * brotli:x64-linux@1.2.0
+  * bzip2[core,tool]:x64-linux@1.0.8#6
+  * dbus[core,systemd]:x64-linux@1.16.2#5
+  * expat:x64-linux@2.8.2
+  * freetype[brotli,bzip2,core,png,zlib]:x64-linux@2.14.3
+  * gperf:x64-linux@3.3
+  * libcap:x64-linux@2.78
+  * libjpeg-turbo:x64-linux@3.2.0
+  * liblzma:x64-linux@5.8.3
+  * libmount:x64-linux@2.41.3#1
+  * libpng:x64-linux@1.6.58
+  * libsystemd:x64-linux@260.2
+  * libxcrypt:x64-linux@4.5.2
+  * lz4:x64-linux@1.10.0
+    sdl3[core,dbus,ibus,wayland,x11]:x64-linux@3.4.12
+    sdl3-image[core,jpeg,png]:x64-linux@3.4.4#1
+    sdl3-mixer:x64-linux@3.2.4
+    sdl3-ttf:x64-linux@3.2.2#1
+  * vcpkg-cmake:x64-linux@2024-04-23
+  * vcpkg-cmake-config:x64-linux@2024-05-23
+  * vcpkg-cmake-get-vars:x64-linux@2025-05-29
+  * vcpkg-get-python-packages:x64-linux@2025-04-05
+  * vcpkg-make:x64-linux@2026-01-01
+  * vcpkg-tool-meson:x64-linux@1.9.0#10
+  * zlib:x64-linux@1.3.2#1
+  * zstd:x64-linux@1.5.7
+Additional packages (*) will be modified to complete this operation.
+Restored 0 package(s) from /home/colonel-karna/.cache/vcpkg/archives in 31.3 us. Use --debug to see more details.
+Installing 1/26 vcpkg-cmake-config:x64-linux@2024-05-23...
+vcpkg-cmake-config:x64-linux@2024-05-23 package ABI: 357e50c65e3693c78938674101138616fe8563dccf9323b81539681d92519865
+Building vcpkg-cmake-config:x64-linux@2024-05-23...
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-config_x64-linux/share/vcpkg-cmake-config/vcpkg_cmake_config_fixup.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-config_x64-linux/share/vcpkg-cmake-config/vcpkg-port-config.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-config_x64-linux/share/vcpkg-cmake-config/copyright
+-- Skipping post-build validation due to VCPKG_POLICY_EMPTY_PACKAGE
+Starting submission of vcpkg-cmake-config:x64-linux@2024-05-23 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake-config:x64-linux: 88 ms
+Installing 2/26 vcpkg-cmake:x64-linux@2024-04-23...
+vcpkg-cmake:x64-linux@2024-04-23 package ABI: ecc23d4fcb56a5c760fef0d348e3a5793595f0aa4164f09169b1f8a0b58d5ee7
+Building vcpkg-cmake:x64-linux@2024-04-23...
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg_cmake_configure.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg_cmake_build.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg_cmake_install.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/vcpkg-port-config.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake_x64-linux/share/vcpkg-cmake/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-cmake:x64-linux@2024-04-23 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake:x64-linux: 99.2 ms
+Completed submission of vcpkg-cmake-config:x64-linux@2024-05-23 to 1 binary cache(s) in 14.9 ms
+Installing 3/26 zstd:x64-linux@1.5.7...
+zstd:x64-linux@1.5.7 package ABI: aeb5823ad46bff0f673c5e070f88a83677e944262a21e403a21efb697e21142d
+Building zstd:x64-linux@1.5.7...
+-- Using cached facebook-zstd-v1.5.7.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/zstd/src/v1.5.7-bb6cae2b2e.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/facebook-zstd-v1.5.7.tar.gz
+-- Applying patch no-static-suffix.patch
+-- Applying patch fix-emscripten-and-clang-cl.patch
+-- Applying patch fix-windows-rc-compile.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/zstd/src/v1.5.7-bb6cae2b2e.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zstd_x64-linux/lib/pkgconfig/libzstd.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zstd_x64-linux/debug/lib/pkgconfig/libzstd.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zstd_x64-linux/share/zstd/usage
+-- Performing post-build validation
+Starting submission of zstd:x64-linux@1.5.7 to 1 binary cache(s) in the background
+Elapsed time to handle zstd:x64-linux: 15 s
+Completed submission of vcpkg-cmake:x64-linux@2024-04-23 to 1 binary cache(s) in 9.36 ms
+Installing 4/26 vcpkg-cmake-get-vars:x64-linux@2025-05-29...
+vcpkg-cmake-get-vars:x64-linux@2025-05-29 package ABI: 2542585c17e969d6da29ab86ff864d598ddbf6b9139454b7573c7c6a07459831
+Building vcpkg-cmake-get-vars:x64-linux@2025-05-29...
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-get-vars_x64-linux/share/vcpkg-cmake-get-vars/vcpkg_cmake_get_vars.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-get-vars_x64-linux/share/vcpkg-cmake-get-vars/cmake_get_vars
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-get-vars_x64-linux/share/vcpkg-cmake-get-vars/cmake_get_vars/CMakeLists.txt
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-get-vars_x64-linux/share/vcpkg-cmake-get-vars/cmake-get-vars.cmake.in
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-get-vars_x64-linux/share/vcpkg-cmake-get-vars/vcpkg-port-config.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-cmake-get-vars_x64-linux/share/vcpkg-cmake-get-vars/copyright
+-- Performing post-build validation
+Starting submission of vcpkg-cmake-get-vars:x64-linux@2025-05-29 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-cmake-get-vars:x64-linux: 81.3 ms
+Installing 5/26 vcpkg-tool-meson:x64-linux@1.9.0#10...
+vcpkg-tool-meson:x64-linux@1.9.0#10 package ABI: 79ffea6eda7ed3a0e2aeb7abfcb08a8555a2f81a82377c778a3ecf27ea53276b
+Building vcpkg-tool-meson:x64-linux@1.9.0#10...
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/vcpkg-tool-meson_x64-linux/share/vcpkg-tool-meson/copyright
+-- Found Python version '3.12.3 at /usr/bin/python3'
+-- Using meson: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/tools/meson-1.9.0-633807/meson.py
+-- Performing post-build validation
+Starting submission of vcpkg-tool-meson:x64-linux@1.9.0#10 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-tool-meson:x64-linux: 108 ms
+Installing 6/26 vcpkg-get-python-packages:x64-linux@2025-04-05...
+vcpkg-get-python-packages:x64-linux@2025-04-05 package ABI: e29af10cb2040dd7a3308b897e46a5076dbfa7b3d7e547a9590e2da1d4d94f27
+Building vcpkg-get-python-packages:x64-linux@2025-04-05...
+-- Skipping post-build validation due to VCPKG_POLICY_EMPTY_PACKAGE
+Starting submission of vcpkg-get-python-packages:x64-linux@2025-04-05 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-get-python-packages:x64-linux: 58.2 ms
+Installing 7/26 lz4:x64-linux@1.10.0...
+lz4:x64-linux@1.10.0 package ABI: 4dd276a79ce427f22692c2dab25e2df47959ee80eaa4827ebd46783a876e27cb
+Building lz4:x64-linux@1.10.0...
+-- Using cached lz4-lz4-v1.10.0.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/lz4/src/v1.10.0-61bd08d80e.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/lz4-lz4-v1.10.0.tar.gz
+-- Applying patch target-lz4-lz4.diff
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/lz4/src/v1.10.0-61bd08d80e.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/lz4_x64-linux/lib/pkgconfig/liblz4.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/lz4_x64-linux/debug/lib/pkgconfig/liblz4.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/lz4_x64-linux/share/lz4/usage
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/lz4_x64-linux/share/lz4/copyright
+-- Performing post-build validation
+Starting submission of lz4:x64-linux@1.10.0 to 1 binary cache(s) in the background
+Elapsed time to handle lz4:x64-linux: 6.1 s
+Completed submission of zstd:x64-linux@1.5.7 to 1 binary cache(s) in 281 ms
+Completed submission of vcpkg-cmake-get-vars:x64-linux@2025-05-29 to 1 binary cache(s) in 7.44 ms
+Completed submission of vcpkg-tool-meson:x64-linux@1.9.0#10 to 1 binary cache(s) in 7.86 ms
+Completed submission of vcpkg-get-python-packages:x64-linux@2025-04-05 to 1 binary cache(s) in 7.01 ms
+Installing 8/26 vcpkg-make:x64-linux@2026-01-01...
+vcpkg-make:x64-linux@2026-01-01 package ABI: 2cd21e4705ee876f4b83aad627de1d86a96bd0f5dd92ceab9ca35e68c8effc7d
+Building vcpkg-make:x64-linux@2026-01-01...
+-- Using cached automake-1.17.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/vcpkg-make/src/automake-1-c362683103.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/automake-1.17.tar.gz
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/vcpkg-make/src/automake-1-c362683103.clean
+-- Getting CMake variables for x64-linux
+-- Loading CMake variables from /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/vcpkg-make/cmake-get-vars_C_CXX-x64-linux.cmake.log
+-- x64-linux autotools triplet: x86_64-pc-linux-gnu (from config.guess)
+-- Performing post-build validation
+Starting submission of vcpkg-make:x64-linux@2026-01-01 to 1 binary cache(s) in the background
+Elapsed time to handle vcpkg-make:x64-linux: 1.7 s
+Completed submission of lz4:x64-linux@1.10.0 to 1 binary cache(s) in 78.5 ms
+Installing 9/26 libxcrypt:x64-linux@4.5.2...
+libxcrypt:x64-linux@4.5.2 package ABI: 7015fc0e36de4911d50ee123a5b2c72da4f6d5472822ca88f8bbea2f8c6c1b67
+Building libxcrypt:x64-linux@4.5.2...
+-- Using cached besser82-libxcrypt-v4.5.2.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libxcrypt/src/v4.5.2-7ca15a2a8e.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/besser82-libxcrypt-v4.5.2.tar.gz
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libxcrypt/src/v4.5.2-7ca15a2a8e.clean
+-- Getting CMake variables for x64-linux
+-- Loading CMake variables from /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libxcrypt/cmake-get-vars_C_CXX-x64-linux.cmake.log
+-- Generating configure for x64-linux
+-- Finished generating configure for x64-linux
+-- Configuring x64-linux-dbg
+-- Configuring x64-linux-rel
+-- Building/Installing x64-linux-dbg
+-- Making target 'all' for x64-linux-dbg
+-- Making target 'install' for x64-linux-dbg
+-- Building/Installing x64-linux-rel
+-- Making target 'all' for x64-linux-rel
+-- Making target 'install' for x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libxcrypt_x64-linux/lib/pkgconfig/libcrypt.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libxcrypt_x64-linux/lib/pkgconfig/libxcrypt.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libxcrypt_x64-linux/debug/lib/pkgconfig/libcrypt.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libxcrypt_x64-linux/debug/lib/pkgconfig/libxcrypt.pc
+-- Performing post-build validation
+Starting submission of libxcrypt:x64-linux@4.5.2 to 1 binary cache(s) in the background
+Elapsed time to handle libxcrypt:x64-linux: 30 s
+Completed submission of vcpkg-make:x64-linux@2026-01-01 to 1 binary cache(s) in 13.9 ms
+Installing 10/26 libmount:x64-linux@2.41.3#1...
+libmount:x64-linux@2.41.3#1 package ABI: 7b1dfc1f26e1f08617ed1a2009d0128f78a02c10037712ba63043cacf02598df
+Building libmount:x64-linux@2.41.3#1...
+-- Using cached util-linux-2.41.3.tar.xz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libmount/src/2.41.3-53757992c3.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/util-linux-2.41.3.tar.xz
+-- Applying patch hide-private-symbols.diff
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libmount/src/2.41.3-53757992c3.clean
+-- Getting CMake variables for x64-linux
+-- Loading CMake variables from /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libmount/cmake-get-vars_C_CXX-x64-linux.cmake.log
+-- Generating configure for x64-linux
+-- Finished generating configure for x64-linux
+-- Configuring x64-linux-dbg
+-- Configuring x64-linux-rel
+-- Building/Installing x64-linux-dbg
+-- Making target 'all' for x64-linux-dbg
+-- Making target 'install' for x64-linux-dbg
+-- Building/Installing x64-linux-rel
+-- Making target 'all' for x64-linux-rel
+-- Making target 'install' for x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libmount_x64-linux/lib/pkgconfig/blkid.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libmount_x64-linux/lib/pkgconfig/mount.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libmount_x64-linux/debug/lib/pkgconfig/blkid.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libmount_x64-linux/debug/lib/pkgconfig/mount.pc
+-- Performing post-build validation
+Starting submission of libmount:x64-linux@2.41.3#1 to 1 binary cache(s) in the background
+Elapsed time to handle libmount:x64-linux: 1.3 min
+Completed submission of libxcrypt:x64-linux@4.5.2 to 1 binary cache(s) in 56.1 ms
+Installing 11/26 liblzma:x64-linux@5.8.3...
+liblzma:x64-linux@5.8.3 package ABI: 134b6a90e951216d15b00781f8c0e2c61decd9fc1b9a23b2614efef540ccfbf7
+Building liblzma:x64-linux@5.8.3...
+-- Using cached tukaani-project-xz-v5.8.3.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/liblzma/src/v5.8.3-6de1f0384d.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/tukaani-project-xz-v5.8.3.tar.gz
+-- Applying patch build-tools.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/liblzma/src/v5.8.3-6de1f0384d.clean
+-- Configuring x64-linux
+CMake Warning at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build/vcpkg_installed/x64-linux/share/vcpkg-cmake/vcpkg_cmake_configure.cmake:344 (message):
+  The following variables are not used in CMakeLists.txt:
+
+      XZ_SANDBOX
+
+  Please recheck them and remove the unnecessary options from the
+  `vcpkg_cmake_configure` call.
+
+  If these options should still be passed for whatever reason, please use the
+  `MAYBE_UNUSED_VARIABLES` argument.
+Call Stack (most recent call first):
+  ports/liblzma/portfile.cmake:26 (vcpkg_cmake_configure)
+  scripts/ports.cmake:206 (include)
+
+
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/liblzma_x64-linux/lib/pkgconfig/liblzma.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/liblzma_x64-linux/debug/lib/pkgconfig/liblzma.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/liblzma_x64-linux/share/liblzma/copyright
+-- Performing post-build validation
+Starting submission of liblzma:x64-linux@5.8.3 to 1 binary cache(s) in the background
+Elapsed time to handle liblzma:x64-linux: 16 s
+Completed submission of libmount:x64-linux@2.41.3#1 to 1 binary cache(s) in 288 ms
+Installing 12/26 libcap:x64-linux@2.78...
+libcap:x64-linux@2.78 package ABI: 8a5bfe9c6052b8da35e2153b085d44141880f5138f098daf6c15eda4865d7b54
+Building libcap:x64-linux@2.78...
+-- Using cached libcap-2.78.tar.xz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libcap/src/libcap-2-a77fee36a9.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libcap-2.78.tar.xz
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libcap/src/libcap-2-a77fee36a9.clean
+-- Getting CMake variables for x64-linux
+-- Loading CMake variables from /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libcap/cmake-get-vars_C_CXX-x64-linux.cmake.log
+-- Configuring x64-linux-dbg
+-- Configuring x64-linux-rel
+-- Building/Installing x64-linux-dbg
+-- Making target 'all' for x64-linux-dbg
+-- Making target 'install' for x64-linux-dbg
+-- Building/Installing x64-linux-rel
+-- Making target 'all' for x64-linux-rel
+-- Making target 'install' for x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libcap_x64-linux/lib/pkgconfig/libcap.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libcap_x64-linux/lib/pkgconfig/libpsx.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libcap_x64-linux/debug/lib/pkgconfig/libcap.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libcap_x64-linux/debug/lib/pkgconfig/libpsx.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libcap_x64-linux/share/libcap/copyright
+-- Performing post-build validation
+Starting submission of libcap:x64-linux@2.78 to 1 binary cache(s) in the background
+Elapsed time to handle libcap:x64-linux: 4.5 s
+Completed submission of liblzma:x64-linux@5.8.3 to 1 binary cache(s) in 112 ms
+Installing 13/26 gperf:x64-linux@3.3...
+gperf:x64-linux@3.3 package ABI: e39202934b4d97ae8a453e4a4731b7ee0d0d45dd4bb25510b529ffd2d92e0ab3
+Building gperf:x64-linux@3.3...
+-- Using cached gperf-3.3.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/gperf/src/gperf-3-b814f52c10.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/gperf-3.3.tar.gz
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/gperf/src/gperf-3-b814f52c10.clean
+-- Getting CMake variables for x64-linux
+-- Loading CMake variables from /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/gperf/cmake-get-vars_C_CXX-x64-linux.cmake.log
+-- Generating configure for x64-linux
+-- Finished generating configure for x64-linux
+-- Configuring x64-linux-rel
+-- Building/Installing x64-linux-rel
+-- Making target 'all' for x64-linux-rel
+-- Making target 'install' for x64-linux-rel
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/gperf_x64-linux/share/gperf/copyright
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/gperf_x64-linux/tools/gperf/gperf' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Performing post-build validation
+Starting submission of gperf:x64-linux@3.3 to 1 binary cache(s) in the background
+Elapsed time to handle gperf:x64-linux: 27 s
+Completed submission of libcap:x64-linux@2.78 to 1 binary cache(s) in 27 ms
+Installing 14/26 libsystemd:x64-linux@260.2...
+libsystemd:x64-linux@260.2 package ABI: 4ab287ff30d4f96015d7047550899566924e15a97134249306742e2df394936d
+Building libsystemd:x64-linux@260.2...
+-- Found Python version '3.12.3 at /usr/bin/python3'
+-- Using meson: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/tools/meson-1.9.0-633807/meson.py
+-- Using cached systemd-systemd-v260.2.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libsystemd/src/v260.2-1a875e5b45.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/systemd-systemd-v260.2.tar.gz
+-- Applying patch disable-warning-nonnull.patch
+-- Applying patch only-libsystemd.patch
+-- Applying patch pkgconfig.patch
+-- Applying patch fix-2604-build.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libsystemd/src/v260.2-1a875e5b45.clean
+-- Setting up python virtual environment...
+-- Installing python packages: jinja2
+-- Setting up python virtual environment... finished.
+-- Configuring x64-linux-dbg
+-- Getting CMake variables for x64-linux
+-- Loading CMake variables from /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libsystemd/cmake-get-vars_C_CXX-x64-linux.cmake.log
+-- Configuring x64-linux-dbg done
+-- Configuring x64-linux-rel
+-- Configuring x64-linux-rel done
+-- Package x64-linux-dbg
+-- Package x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libsystemd_x64-linux/lib/pkgconfig/libsystemd.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libsystemd_x64-linux/debug/lib/pkgconfig/libsystemd.pc
+-- Performing post-build validation
+Starting submission of libsystemd:x64-linux@260.2 to 1 binary cache(s) in the background
+Elapsed time to handle libsystemd:x64-linux: 1.2 min
+Completed submission of gperf:x64-linux@3.3 to 1 binary cache(s) in 30.4 ms
+Installing 15/26 expat:x64-linux@2.8.2...
+expat:x64-linux@2.8.2 package ABI: ae67566cc02bbe8e5b78b05b376504c78dc6d1cba798e4d1478e17a6fda5de60
+Building expat:x64-linux@2.8.2...
+-- Using cached libexpat-libexpat-R_2_8_2.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/expat/src/R_2_8_2-303f035c99.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libexpat-libexpat-R_2_8_2.tar.gz
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/expat/src/R_2_8_2-303f035c99.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/expat_x64-linux/lib/pkgconfig/expat.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/expat_x64-linux/debug/lib/pkgconfig/expat.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/expat_x64-linux/share/expat/copyright
+-- Performing post-build validation
+Starting submission of expat:x64-linux@2.8.2 to 1 binary cache(s) in the background
+Elapsed time to handle expat:x64-linux: 7.6 s
+Completed submission of libsystemd:x64-linux@260.2 to 1 binary cache(s) in 650 ms
+Installing 16/26 dbus[core,systemd]:x64-linux@1.16.2#5...
+dbus[core,systemd]:x64-linux@1.16.2#5 package ABI: 32cb724548d2b3d0b7fcd1392363cee83e10591f262ab52f2217f57192adffbc
+Building dbus[core,systemd]:x64-linux@1.16.2#5...
+-- Note: dbus only supports dynamic library linkage. Building dynamic library.
+-- Using cached dbus-dbus-dbus-1.16.2.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/dbus/src/bus-1.16.2-1cbfa372b6.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/dbus-dbus-dbus-1.16.2.tar.gz
+-- Applying patch cmake.dep.patch
+-- Applying patch pkgconfig.patch
+-- Applying patch getpeereid.patch
+-- Applying patch libsystemd.patch
+-- Applying patch remove-path.patch
+-- Applying patch remove-var-lib-dbus-creation.patch
+-- Applying patch session-socket-dir.diff
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/dbus/src/bus-1.16.2-1cbfa372b6.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/lib/pkgconfig/dbus-1.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/lib/pkgconfig/dbus-1.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/share/dbus/copyright
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/lib/libdbus-1.so.3.38.3' (From '' -> To '$ORIGIN')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/libexec/dbus-daemon-launch-helper' (From '' -> To '$ORIGIN:$ORIGIN/../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-cleanup-sockets' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-daemon' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-launch' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-monitor' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-run-session' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-send' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-test-tool' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-update-activation-environment' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/debug/tools/dbus/dbus-uuidgen' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/lib/libdbus-1.so.3.38.3' (From '' -> To '$ORIGIN')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/libexec/dbus-daemon-launch-helper' (From '' -> To '$ORIGIN:$ORIGIN/../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-cleanup-sockets' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-daemon' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-launch' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-monitor' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-run-session' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-send' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-test-tool' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-update-activation-environment' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/dbus_x64-linux/tools/dbus/dbus-uuidgen' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Performing post-build validation
+Starting submission of dbus[core,systemd]:x64-linux@1.16.2#5 to 1 binary cache(s) in the background
+Elapsed time to handle dbus:x64-linux: 55 s
+Completed submission of expat:x64-linux@2.8.2 to 1 binary cache(s) in 51.4 ms
+Installing 17/26 sdl3[core,dbus,ibus,wayland,x11]:x64-linux@3.4.12...
+sdl3[core,dbus,ibus,wayland,x11]:x64-linux@3.4.12 package ABI: 51cb0b8170816687d8d1adc0db4cd332e369010df89b2a70f92a1e638cbb4e0a
+Building sdl3[core,dbus,ibus,wayland,x11]:x64-linux@3.4.12...
+-- Using cached libsdl-org-SDL-release-3.4.12.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3/src/ase-3.4.12-441a9855e8.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libsdl-org-SDL-release-3.4.12.tar.gz
+-- Applying patch fix-freebsd.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3/src/ase-3.4.12-441a9855e8.clean
+CMake Warning at ports/sdl3/portfile.cmake:35 (message):
+  You will need to install Xorg dependencies to use feature x11:
+
+  sudo apt install libx11-dev libxft-dev libxext-dev
+
+Call Stack (most recent call first):
+  scripts/ports.cmake:206 (include)
+
+
+CMake Warning at ports/sdl3/portfile.cmake:38 (message):
+  You will need to install Wayland dependencies to use feature wayland:
+
+  sudo apt install libwayland-dev libxkbcommon-dev libegl1-mesa-dev
+
+Call Stack (most recent call first):
+  scripts/ports.cmake:206 (include)
+
+
+CMake Warning at ports/sdl3/portfile.cmake:41 (message):
+  You will need to install ibus dependencies to use feature ibus:
+
+  sudo apt install libibus-1.0-dev
+
+Call Stack (most recent call first):
+  scripts/ports.cmake:206 (include)
+
+
+-- Configuring x64-linux
+CMake Warning at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build/vcpkg_installed/x64-linux/share/vcpkg-cmake/vcpkg_cmake_configure.cmake:344 (message):
+  The following variables are not used in CMakeLists.txt:
+
+      SDL_UNIX_CONSOLE_BUILD
+
+  Please recheck them and remove the unnecessary options from the
+  `vcpkg_cmake_configure` call.
+
+  If these options should still be passed for whatever reason, please use the
+  `MAYBE_UNUSED_VARIABLES` argument.
+Call Stack (most recent call first):
+  ports/sdl3/portfile.cmake:58 (vcpkg_cmake_configure)
+  scripts/ports.cmake:206 (include)
+
+
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3_x64-linux/lib/pkgconfig/sdl3.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3_x64-linux/debug/lib/pkgconfig/sdl3.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3_x64-linux/share/sdl3/usage
+-- Performing post-build validation
+Starting submission of sdl3[core,dbus,ibus,wayland,x11]:x64-linux@3.4.12 to 1 binary cache(s) in the background
+Elapsed time to handle sdl3:x64-linux: 1.6 min
+Completed submission of dbus[core,systemd]:x64-linux@1.16.2#5 to 1 binary cache(s) in 822 ms
+Installing 18/26 zlib:x64-linux@1.3.2#1...
+zlib:x64-linux@1.3.2#1 package ABI: 0f48de4427e550280126ef75cc3b6c33859fc587a95d5cafb03fad4d4b4ebf75
+Building zlib:x64-linux@1.3.2#1...
+-- Using cached madler-zlib-v1.3.2.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/zlib/src/v1.3.2-c19a0bfd23.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/madler-zlib-v1.3.2.tar.gz
+-- Applying patch 0001-no-version-script-on-ohos.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/zlib/src/v1.3.2-c19a0bfd23.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zlib_x64-linux/lib/pkgconfig/zlib.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zlib_x64-linux/debug/lib/pkgconfig/zlib.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zlib_x64-linux/share/zlib/vcpkg-cmake-wrapper.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/zlib_x64-linux/share/zlib/copyright
+-- Performing post-build validation
+Starting submission of zlib:x64-linux@1.3.2#1 to 1 binary cache(s) in the background
+Elapsed time to handle zlib:x64-linux: 3.6 s
+Completed submission of sdl3[core,dbus,ibus,wayland,x11]:x64-linux@3.4.12 to 1 binary cache(s) in 1.6 s
+Installing 19/26 libpng:x64-linux@1.6.58...
+libpng:x64-linux@1.6.58 package ABI: 7661e7bb24f6e861604ece4b552cdd397abe3e3151f9ec99683632924a14aa4e
+Building libpng:x64-linux@1.6.58...
+-- Using cached pnggroup-libpng-v1.6.58.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libpng/src/v1.6.58-b91136795d.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/pnggroup-libpng-v1.6.58.tar.gz
+-- Applying patch cmake.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libpng/src/v1.6.58-b91136795d.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/share/png/vcpkg-cmake-wrapper.cmake
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/share/libpng/libpng-config.cmake
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/lib/pkgconfig/libpng16.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/debug/lib/pkgconfig/libpng16.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/debug/lib/pkgconfig/libpng.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/lib/pkgconfig/libpng.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/share/libpng/usage
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libpng_x64-linux/share/libpng/copyright
+-- Performing post-build validation
+Starting submission of libpng:x64-linux@1.6.58 to 1 binary cache(s) in the background
+Elapsed time to handle libpng:x64-linux: 4.9 s
+Completed submission of zlib:x64-linux@1.3.2#1 to 1 binary cache(s) in 67.8 ms
+Installing 20/26 libjpeg-turbo:x64-linux@3.2.0...
+libjpeg-turbo:x64-linux@3.2.0 package ABI: 1462bf2ba141a9e2ec613f319e2d55bece64dbde4108e10b7c224dc6fdbc2389
+Building libjpeg-turbo:x64-linux@3.2.0...
+-- Using cached libjpeg-turbo-libjpeg-turbo-3.2.0.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libjpeg-turbo/src/3.2.0-3cdbbb0a83.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libjpeg-turbo-libjpeg-turbo-3.2.0.tar.gz
+-- Applying patch add-options-for-docs-headers.patch
+-- Applying patch workaround_cmake_system_processor.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/libjpeg-turbo/src/3.2.0-3cdbbb0a83.clean
+-- Configuring x64-linux
+CMake Warning at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/build/vcpkg_installed/x64-linux/share/vcpkg-cmake/vcpkg_cmake_configure.cmake:344 (message):
+  The following variables are not used in CMakeLists.txt:
+
+      NEON_INTRINSICS
+
+  Please recheck them and remove the unnecessary options from the
+  `vcpkg_cmake_configure` call.
+
+  If these options should still be passed for whatever reason, please use the
+  `MAYBE_UNUSED_VARIABLES` argument.
+Call Stack (most recent call first):
+  ports/libjpeg-turbo/portfile.cmake:45 (vcpkg_cmake_configure)
+  scripts/ports.cmake:206 (include)
+
+
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libjpeg-turbo_x64-linux/lib/pkgconfig/libjpeg.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libjpeg-turbo_x64-linux/lib/pkgconfig/libturbojpeg.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libjpeg-turbo_x64-linux/debug/lib/pkgconfig/libjpeg.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libjpeg-turbo_x64-linux/debug/lib/pkgconfig/libturbojpeg.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/libjpeg-turbo_x64-linux/share/libjpeg-turbo/copyright
+-- Performing post-build validation
+Starting submission of libjpeg-turbo:x64-linux@3.2.0 to 1 binary cache(s) in the background
+Elapsed time to handle libjpeg-turbo:x64-linux: 17 s
+Completed submission of libpng:x64-linux@1.6.58 to 1 binary cache(s) in 96 ms
+Installing 21/26 sdl3-image[core,jpeg,png]:x64-linux@3.4.4#1...
+sdl3-image[core,jpeg,png]:x64-linux@3.4.4#1 package ABI: a3a6e969a04740e1f7b466cbfc80a27b8e64d4fcb3f61205165b1d375ab41a17
+Building sdl3-image[core,jpeg,png]:x64-linux@3.4.4#1...
+-- Using cached libsdl-org-SDL_image-release-3.4.4.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3-image/src/ease-3.4.4-44be596e96.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libsdl-org-SDL_image-release-3.4.4.tar.gz
+-- Applying patch dependencies.diff
+-- Applying patch pkgconfig-libname.diff
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3-image/src/ease-3.4.4-44be596e96.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-image_x64-linux/lib/pkgconfig/sdl3-image.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-image_x64-linux/debug/lib/pkgconfig/sdl3-image.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-image_x64-linux/share/sdl3-image/usage
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-image_x64-linux/share/sdl3-image/copyright
+-- Performing post-build validation
+Starting submission of sdl3-image[core,jpeg,png]:x64-linux@3.4.4#1 to 1 binary cache(s) in the background
+Elapsed time to handle sdl3-image:x64-linux: 6.5 s
+Completed submission of libjpeg-turbo:x64-linux@3.2.0 to 1 binary cache(s) in 589 ms
+Installing 22/26 sdl3-mixer:x64-linux@3.2.4...
+sdl3-mixer:x64-linux@3.2.4 package ABI: d8ba589ddbd6f15ec668de11cc46b08c73dd2ecdeea9039fb94fffc834701425
+Building sdl3-mixer:x64-linux@3.2.4...
+-- Using cached libsdl-org-SDL_mixer-release-3.2.4.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3-mixer/src/ease-3.2.4-fd811b934b.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libsdl-org-SDL_mixer-release-3.2.4.tar.gz
+-- Applying patch fluidsynth.diff
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3-mixer/src/ease-3.2.4-fd811b934b.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-mixer_x64-linux/lib/pkgconfig/sdl3-mixer.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-mixer_x64-linux/debug/lib/pkgconfig/sdl3-mixer.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-mixer_x64-linux/share/sdl3-mixer/usage
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-mixer_x64-linux/share/sdl3-mixer/copyright
+-- Performing post-build validation
+Starting submission of sdl3-mixer:x64-linux@3.2.4 to 1 binary cache(s) in the background
+Elapsed time to handle sdl3-mixer:x64-linux: 5.7 s
+Completed submission of sdl3-image[core,jpeg,png]:x64-linux@3.4.4#1 to 1 binary cache(s) in 92.6 ms
+Installing 23/26 bzip2[core,tool]:x64-linux@1.0.8#6...
+bzip2[core,tool]:x64-linux@1.0.8#6 package ABI: 7532c2b2f4d15651265f74393faa69c7c543d47c073d668feb0a1d7e09e531f7
+Building bzip2[core,tool]:x64-linux@1.0.8#6...
+-- Using cached bzip2-1.0.8.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/bzip2/src/bzip2-1-336d4794a3.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/bzip2-1.0.8.tar.gz
+-- Applying patch fix-import-export-macros.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/bzip2/src/bzip2-1-336d4794a3.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/bzip2_x64-linux/lib/pkgconfig/bzip2.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/bzip2_x64-linux/debug/lib/pkgconfig/bzip2.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/bzip2_x64-linux/share/bzip2/copyright
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/bzip2_x64-linux/tools/bzip2/bzip2' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/bzip2_x64-linux/tools/bzip2/bzip2recover' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Performing post-build validation
+Starting submission of bzip2[core,tool]:x64-linux@1.0.8#6 to 1 binary cache(s) in the background
+Elapsed time to handle bzip2:x64-linux: 3.6 s
+Completed submission of sdl3-mixer:x64-linux@3.2.4 to 1 binary cache(s) in 80.4 ms
+Installing 24/26 brotli:x64-linux@1.2.0...
+brotli:x64-linux@1.2.0 package ABI: 1f75518a3fbe766d809b03163e34a9a7cc8d88234635381b22a8f740a60aeaca
+Building brotli:x64-linux@1.2.0...
+-- Using cached google-brotli-v1.2.0.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/brotli/src/v1.2.0-7af7ca71ad.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/google-brotli-v1.2.0.tar.gz
+-- Applying patch install.patch
+-- Applying patch pkgconfig.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/brotli/src/v1.2.0-7af7ca71ad.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/lib/pkgconfig/libbrotlicommon.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/lib/pkgconfig/libbrotlidec.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/lib/pkgconfig/libbrotlienc.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/debug/lib/pkgconfig/libbrotlicommon.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/debug/lib/pkgconfig/libbrotlidec.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/debug/lib/pkgconfig/libbrotlienc.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/share/brotli/usage
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/share/brotli/copyright
+-- Adjusted RPATH of '/home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/brotli_x64-linux/tools/brotli/brotli' (From '' -> To '$ORIGIN:$ORIGIN/../../lib')
+-- Performing post-build validation
+Starting submission of brotli:x64-linux@1.2.0 to 1 binary cache(s) in the background
+Elapsed time to handle brotli:x64-linux: 14 s
+Completed submission of bzip2[core,tool]:x64-linux@1.0.8#6 to 1 binary cache(s) in 36.3 ms
+Installing 25/26 freetype[brotli,bzip2,core,png,zlib]:x64-linux@2.14.3...
+freetype[brotli,bzip2,core,png,zlib]:x64-linux@2.14.3 package ABI: 209006aca73760677ffb7123d08188dd1e0f086023d2a0e636401f654a1f41d7
+Building freetype[brotli,bzip2,core,png,zlib]:x64-linux@2.14.3...
+-- Using cached freetype-freetype-VER-2-14-3.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/freetype/src/VER-2-14-3-46d5ca34ec.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/freetype-freetype-VER-2-14-3.tar.gz
+-- Applying patch 0003-Fix-UWP.patch
+-- Applying patch brotli-static.patch
+-- Applying patch bzip2.patch
+-- Applying patch fix-exports.patch
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/freetype/src/VER-2-14-3-46d5ca34ec.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/freetype_x64-linux/lib/pkgconfig/freetype2.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/freetype_x64-linux/debug/lib/pkgconfig/freetype2.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/freetype_x64-linux/share/freetype/usage
+-- Performing post-build validation
+Starting submission of freetype[brotli,bzip2,core,png,zlib]:x64-linux@2.14.3 to 1 binary cache(s) in the background
+Elapsed time to handle freetype:x64-linux: 16 s
+Completed submission of brotli:x64-linux@1.2.0 to 1 binary cache(s) in 410 ms
+Installing 26/26 sdl3-ttf:x64-linux@3.2.2#1...
+sdl3-ttf:x64-linux@3.2.2#1 package ABI: 75370bf519a3803e02ae2efe5584127f769fc1f7fb31b226454bbcabbe26410d
+Building sdl3-ttf:x64-linux@3.2.2#1...
+-- Using cached libsdl-org-SDL_ttf-release-3.2.2.tar.gz
+-- Cleaning sources at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3-ttf/src/ease-3.2.2-37d6f7b748.clean. Use --editable to skip cleaning for the packages you specify.
+-- Extracting source /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/downloads/libsdl-org-SDL_ttf-release-3.2.2.tar.gz
+-- Applying patch link-sdl3.diff
+-- Using source at /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/buildtrees/sdl3-ttf/src/ease-3.2.2-37d6f7b748.clean
+-- Configuring x64-linux
+-- Building x64-linux-dbg
+-- Building x64-linux-rel
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-ttf_x64-linux/lib/pkgconfig/sdl3-ttf.pc
+-- Fixing pkgconfig file: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-ttf_x64-linux/debug/lib/pkgconfig/sdl3-ttf.pc
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-ttf_x64-linux/share/sdl3-ttf/usage
+-- Installing: /home/colonel-karna/comat/BrishkamalMaterial/ColonelDocuments/CodeHub/Projects/Cpp/baaghchaal/vcpkg/packages/sdl3-ttf_x64-linux/share/sdl3-ttf/copyright
+-- Performing post-build validation
+Starting submission of sdl3-ttf:x64-linux@3.2.2#1 to 1 binary cache(s) in the background
+Elapsed time to handle sdl3-ttf:x64-linux: 9.2 s
+Installed contents are licensed to you by owners. Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Some packages did not declare an SPDX license. Check the `copyright` file for each package for more information about their licensing.
+Packages installed in this vcpkg installation declare the following licenses:
+(AFL-2.1 OR GPL-2.0-or-later)
+(BSD-3-Clause OR GPL-2.0-only)
+(FTL OR GPL-2.0-or-later)
+Apache-2.0
+BSD-2-Clause
+BSD-3-Clause
+GPL-3.0-or-later
+MIT
+Zlib
+bzip2-1.0.6
+libpng-2.0
+sdl3 provides CMake targets:
+
+  find_package(SDL3 CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE SDL3::SDL3)
+
+sdl3-image provides CMake targets:
+
+  find_package(SDL3_image CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:SDL3_image::SDL3_image-shared>,SDL3_image::SDL3_image-shared,SDL3_image::SDL3_image-static>)
+
+sdl3-image provides pkg-config modules:
+
+  # image loading library for Simple DirectMedia Layer
+  sdl3-image
+
+sdl3-mixer provides CMake targets:
+
+  find_package(SDL3_mixer CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:SDL3_mixer::SDL3_mixer>,SDL3_mixer::SDL3_mixer,SDL3_mixer::SDL3_mixer-static>)
+
+sdl3-ttf provides CMake targets:
+
+  find_package(SDL3_ttf CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE SDL3_ttf::SDL3_ttf)
+
+Completed submission of freetype[brotli,bzip2,core,png,zlib]:x64-linux@2.14.3 to 1 binary cache(s) in 449 ms
+Waiting for 1 remaining binary cache submissions...
+Completed submission of sdl3-ttf:x64-linux@3.2.2#1 to 1 binary cache(s) in 54.6 ms (1/1)
+All requested installations completed successfully in: 8.2 min

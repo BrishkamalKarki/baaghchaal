@@ -87,7 +87,6 @@ public:
     SDL_Texture* normal_text_tex;
     SDL_FRect normal_text_rect;
 
-    // Live timer — updated every frame in render(), never in buildUI()
     SDL_Texture* live_timer_tex = nullptr;
     SDL_FRect    live_timer_rect{};
     void updateTimerText();
@@ -116,11 +115,14 @@ public:
     void render() override;
     void clearLayers();
 
-    // PAUSE OVERLAY - SHOWN WHEN THE PAUSE BUTTON (BOTTOM LEFT) IS CLICKED.
     // DIMS THE BACKGROUND AND SHOWS RESUME / MAIN MENU / EXIT OPTIONS.
     bool showing_pause = false;
-    SDL_FRect pause_btn_rect{};       // HIT-TEST RECT FOR THE PAUSE BUTTON TEXTURE
-    Button pause_hit_btn;             // INVISIBLE BUTTON FOR HIT-TESTING THE PAUSE ICON
+    SDL_FRect pause_btn_rect{};       
+    Button pause_hit_btn;           
+
+    // UNDO BUTTON - NEXT TO THE PAUSE BUTTON (BOTTOM LEFT)
+    SDL_FRect undo_btn_rect{};       
+    Button undo_hit_btn;            
 
     // PAUSE MENU PANEL (LAYERED WOODEN BOARD LOOK)
     RoundedRect out_pause_board;
@@ -139,12 +141,14 @@ public:
     RoundedRect exitgame_btn_shape;
     Button exitgame_btn;
 
-    int paused_time; // PAUSED TIME
-    int unpaused_time;
+    int paused_time = 0; // PAUSED TIME
+    int unpaused_time = 0;
     std::string saved_time_string;
 
     void buildPauseOverlay();
     void renderPauseOverlay();
     void handleEvent(const SDL_Event& event);
+
+    ~BoardScene();
 }; 
 

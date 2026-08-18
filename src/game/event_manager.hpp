@@ -11,5 +11,4 @@ public:
 
   GameEvent(UIManager* ui_manager, SDL_Renderer* renderer);
   SDL_AppResult handleEvent(SDL_Event* event);
-
 };

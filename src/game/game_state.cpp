@@ -12,11 +12,13 @@ GameState::GameState(){
   goats_in_hand = 20;
   goats_killed = 0;
   goats_finished = false;
-  bot_taken = "goat";
-  human_taken = "baagh";
+  bot_taken = "";
+  human_taken = "";
   game_mode = "";
   bot_diff_level = "HARD";
+  audio_loaded = true;
 
+  move_played = false;
   won_by_time_out = false;
 
   player1 = "baagh";
@@ -39,12 +41,12 @@ void GameState::resetGameState(){
   }
   move = 1;
   turn = "goat";
-    baagh_trapped = 0;
+  baagh_trapped = 0;
   goats_in_hand = 20;
   goats_killed = 0;
   goats_finished = false;
-  bot_taken = "goat";
-  human_taken = "baagh";
+  bot_taken = "";
+  human_taken = "";
   game_mode = "";
   bot_diff_level = "HARD";
 
@@ -57,6 +59,7 @@ void GameState::resetGameState(){
 
   timer_mode = true;
   sec_p_move = copied_sec_per_move;
+  audio_loaded = true;
 
   bot_taken = copied_bot_taken;
   human_taken = copied_human_taken;

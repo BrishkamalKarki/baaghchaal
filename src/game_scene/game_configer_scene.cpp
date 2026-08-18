@@ -104,12 +104,14 @@ void GameConfigerScene::buildUI() {
     hdr_game_mode = createTextHeader("CHOOSE GAME MODE", centerX, startY - 45.0f);
     btn_pvp = createConfigButton({centerX - largeBtnW - 40.0f, startY}, {largeBtnW, largeBtnH}, "PVP MODE", [this]() {
         ui_manager->game_state->game_mode = "P V P";
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
         ui_manager->state_changed = true;
     });
     btn_bot = createConfigButton({centerX + 40.0f, startY}, {largeBtnW, largeBtnH}, "VS BOT", [this]() {
         ui_manager->game_state->game_mode = "B V P";
         ui_manager->state_changed = true;
         ui_manager->game_state->player1 = "goat";
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
         ui_manager->game_state->player2 = "baagh";
     });
 
@@ -121,25 +123,30 @@ void GameConfigerScene::buildUI() {
         ui_manager->game_state->human_taken = "baagh";
         ui_manager->game_state->bot_taken = "goat";
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
     btn_side_goat = createConfigButton({centerX - 250.0f + 15.0f, startY}, {smallBtnW, smallBtnH}, "GOAT", [this]() {
         ui_manager->game_state->human_taken = "goat";
         ui_manager->game_state->bot_taken = "baagh";
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
 
     hdr_bot_diff = createTextHeader("BOT DIFFICULTY", centerX + 250.0f, startY - 35.0f);
     btn_diff_low = createConfigButton({centerX + 250.0f - smallBtnW*1.5f - 20.0f, startY}, {smallBtnW, smallBtnH}, "EASY", [this]() {
         ui_manager->game_state->bot_diff_level = "EASY";
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
     btn_diff_med = createConfigButton({centerX + 250.0f - smallBtnW/2.0f, startY}, {smallBtnW, smallBtnH}, "MEDIUM", [this]() {
         ui_manager->game_state->bot_diff_level = "MEDIUM";
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
     btn_diff_high = createConfigButton({centerX + 250.0f + smallBtnW/2.0f + 20.0f, startY}, {smallBtnW, smallBtnH}, "HARD", [this]() {
         ui_manager->game_state->bot_diff_level = "HARD";
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
 
     startY += 110.0f;
@@ -149,10 +156,12 @@ void GameConfigerScene::buildUI() {
     btn_timer_on = createConfigButton({centerX - largeBtnW - 40.0f, startY}, {largeBtnW, largeBtnH}, "TIMER ON", [this]() {
         ui_manager->game_state->timer_mode = true;
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
     btn_timer_off = createConfigButton({centerX + 40.0f, startY}, {largeBtnW, largeBtnH}, "TIMER OFF", [this]() {
         ui_manager->game_state->timer_mode = false;
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
 
     startY += 120.0f;
@@ -162,14 +171,17 @@ void GameConfigerScene::buildUI() {
     btn_time_10 = createConfigButton({centerX - smallBtnW*1.5f - 20.0f, startY}, {smallBtnW, smallBtnH}, "15S", [this]() {
         ui_manager->game_state->sec_p_move = 15;
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
     btn_time_20 = createConfigButton({centerX - smallBtnW/2.0f, startY}, {smallBtnW, smallBtnH}, "30S", [this]() {
         ui_manager->game_state->sec_p_move = 30;
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
     btn_time_30 = createConfigButton({centerX + smallBtnW/2.0f + 20.0f, startY}, {smallBtnW, smallBtnH}, "45S", [this]() {
         ui_manager->game_state->sec_p_move = 45;
         ui_manager->state_changed = true;
+        MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     });
 
     startY += 120.0f;

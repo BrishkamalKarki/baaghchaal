@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <thread>
+#include <atomic>
 
 #include "game_config/board_config/board_config.hpp"
 #include "game/game_state.hpp"
@@ -23,17 +25,31 @@ class Engine{
     std::pair<int, int> from_to = {-1, -1};
 
     explicit Engine(void* game_st, BoardConfig* b_conf);
+    ~Engine();
+    void resetEngineState();
     MiniMax bot;
+
+    // ASYNC BOT SEARCH
+    std::atomic<bool> bot_busy{false};
+    std::atomic<bool> bot_result_pending{false};
+    std::thread bot_thread;
+    void startBotThink();
 
     void routeToEngine(int pos, char type = ' ');
     void changePosBaagh();
     void changePosGoat();
     void selectPos(int pos);
 
+    bool just_killed_goat = false, just_trapped_tiger = false;
+
     int performBotMove();
 
     uint32_t bit_board_tigers[10];
     uint32_t bit_board_goats[10];
+    int saved_goats_in_hand[10];
+    int saved_goats_killed[10];
+    std::string saved_turn[10];
+    int saved_move[10];
     int saved = -1;
     std::vector<std::pair<int, char>> board_state; 
 
@@ -43,5 +59,6 @@ class Engine{
     int last_processed_pos = -1;
 
     void saveBoardState();
+    void resetHistory();
     void undoMove();
 };

@@ -2,21 +2,24 @@
 
 SDL_AppResult GameEvent::handleEvent(SDL_Event* event)
 {
-    if (event->type == SDL_EVENT_QUIT) {
+    if (event->type == SDL_EVENT_QUIT){
         return SDL_APP_SUCCESS;
     }
 
-    if (event->type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+    if (event->type == SDL_EVENT_MOUSE_BUTTON_DOWN){
         float logicalX, logicalY;
         SDL_RenderCoordinatesFromWindow(renderer, event->button.x, event->button.y, &logicalX, &logicalY);
         event->button.x = logicalX;
         event->button.y = logicalY;
-    } 
+    }
+
+    // THE WIDGET POINTERS BEFORE RE-DISPATCHING THE SAME EVENT.
+    auto* prev_board_scene = ui_manager->board_scene.get();
 
     ui_manager->handleEvents(*event);
 
-    if (!ui_manager->pair_scene.empty() && ui_manager->pair_scene.back() == ScenceOrd::BOARD_SCENE) {
-        if (!ui_manager->board_scene || !ui_manager->board_scene->showing_pause) {
+    if (!ui_manager->pair_scene.empty() && ui_manager->pair_scene.back() == ScenceOrd::BOARD_SCENE && ui_manager->board_scene.get() == prev_board_scene){
+        if (!ui_manager->board_scene || !ui_manager->board_scene->showing_pause){
             for(auto button : ui_manager->board_layer.buttons)
             {
                 button->handleEvent(*event);

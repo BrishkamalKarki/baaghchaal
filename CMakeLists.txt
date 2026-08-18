@@ -32,10 +32,20 @@ target_include_directories(
     "${CMAKE_SOURCE_DIR}/src"
     )
 
+if(WIN32)
+    set (VCPKG_TRIPLET_DIR "${CMAKE_SOURCE_DIR}/third_party/x64-windows")
+elseif(UNIX)
+    set (VCPKG_TRIPLET_DIR "${CMAKE_SOURCE_DIR}/third_party/x64-linux")
+endif()
+
+list(APPEND CMAKE_PREFIX_PATH "${VCPKG_TRIPLET_DIR}")
+
 find_package(SDL3 REQUIRED)
 find_package(SDL3_image REQUIRED)
 find_package(SDL3_ttf REQUIRED)
 find_package(SDL3_mixer REQUIRED)
+
+
 
 # LINKING THE EXECUTABLE WITH SDL3 + EXTENSIONS
 target_link_libraries(

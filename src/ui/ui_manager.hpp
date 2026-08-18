@@ -12,6 +12,7 @@
 #include "game_scene/startup_scene.hpp"
 #include "game_scene/result_scene.hpp"
 #include "game_managers/texture_manager.hpp"
+#include "game_managers/sound_manager.hpp"
 #include "game_managers/font_manager.hpp"
 #include "engine/engine.hpp"
 #include "game/game_state.hpp"
@@ -49,9 +50,12 @@ public:
     // RESOURCES IN HERE
     Texture texture;
     Font font;
+    Sounds sound;
     BoardLayer board_layer;
     int last_timer_sec = -1;
     void initScene();
     void renderLayer();
     void handleEvents(const SDL_Event& event);
+    
+    Uint64 time_paused, time_resumed;
 };

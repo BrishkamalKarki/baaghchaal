@@ -14,60 +14,72 @@ public:
   SDL_Texture* cover = nullptr;
   SDL_Texture* cover_dim = nullptr;
   SDL_Texture* pause_button = nullptr;
+  SDL_Texture* undo_move = nullptr;
   SDL_Texture* background = nullptr;
   SDL_Texture* baaghchaal_txt = nullptr;
   const char* tex_location = nullptr;
   SDL_Renderer* renderer = nullptr;
 
   Texture(SDL_Renderer* renderer):renderer(renderer){}
+
+  SDL_Texture* loadOrNull(const char* path){
+    SDL_Texture* tex = IMG_LoadTexture(renderer, path);
+    if (!tex){
+      SDL_Log("TEXTURE LOAD FAILED: %s (%s)", path, SDL_GetError());
+    }
+    return tex;
+  }
+
   void loadTexture(){
     // BAAGH(TIGER) TEXTURE LOADING
-    baagh = IMG_LoadTexture(renderer, "assets/sprites/the_tiger.jpg"); 
-    SDL_SetTextureBlendMode(baagh, SDL_BLENDMODE_BLEND);
-    SDL_SetTextureScaleMode(baagh, SDL_SCALEMODE_PIXELART); 
-
-    // TRAPPED BAAGH(TIGER) TEXTURE LOADING
-    trapped_baagh = IMG_LoadTexture(renderer, "assets/sprites/the_tiger.jpg"); 
+    baagh = loadOrNull("assets/sprites/the_tiger.jpg");
     SDL_SetTextureBlendMode(baagh, SDL_BLENDMODE_BLEND);
     SDL_SetTextureScaleMode(baagh, SDL_SCALEMODE_PIXELART);
+
+    // TRAPPED BAAGH(TIGER) TEXTURE LOADING
+    trapped_baagh = loadOrNull("assets/sprites/the_tiger.jpg");
+    SDL_SetTextureBlendMode(trapped_baagh, SDL_BLENDMODE_BLEND);
+    SDL_SetTextureScaleMode(trapped_baagh, SDL_SCALEMODE_PIXELART);
     SDL_SetTextureAlphaMod(trapped_baagh, 99);
 
     // GOAT TEXTURE LOADING
-    goat = IMG_LoadTexture(renderer, "assets/sprites/the_goat.jpg"); 
+    goat = loadOrNull("assets/sprites/the_goat.jpg");
     SDL_SetTextureBlendMode(goat, SDL_BLENDMODE_BLEND);
-    SDL_SetTextureScaleMode(goat, SDL_SCALEMODE_PIXELART); 
-    
+    SDL_SetTextureScaleMode(goat, SDL_SCALEMODE_PIXELART);
+
     // BOARD TEXTURE LOADING
-    board = IMG_LoadTexture(renderer, "assets/sprites/wooden_board.jpg");
+    board = loadOrNull("assets/sprites/wooden_board.jpg");
     SDL_SetTextureScaleMode(board, SDL_SCALEMODE_PIXELART);
     SDL_SetTextureBlendMode(board, SDL_BLENDMODE_BLEND);
     SDL_SetTextureAlphaMod(board, 255);
 
     // COVER TEXTURE LOADING
-    cover = IMG_LoadTexture(renderer, "assets/sprites/cover_dim.png");
-    int x = cover->w;
-    int y = cover->h;
-    SDL_Log("%d, %d", x, y);
+    cover = loadOrNull("assets/sprites/cover_dim.png");
     SDL_SetTextureScaleMode(cover, SDL_SCALEMODE_NEAREST);
 
     // COVER DIM TEXTURE LOADING (STARTUP SCREEN BACKGROUND)
-    cover_dim = IMG_LoadTexture(renderer, "assets/sprites/cover_dim.png");
+    cover_dim = loadOrNull("assets/sprites/cover_dim.png");
     SDL_SetTextureScaleMode(cover_dim, SDL_SCALEMODE_NEAREST);
 
     // PAUSE BUTTON TEXTURE LOADING
-    pause_button = IMG_LoadTexture(renderer, "assets/sprites/pause_button.png");
+    pause_button = loadOrNull("assets/sprites/pause_button.png");
     SDL_SetTextureScaleMode(pause_button, SDL_SCALEMODE_NEAREST);
 
+    // UNDO BUTTON TEXTURE LOADING
+    undo_move = loadOrNull("assets/sprites/undo_move.png");
+    SDL_SetTextureScaleMode(undo_move, SDL_SCALEMODE_NEAREST);
+    SDL_SetTextureBlendMode(undo_move, SDL_BLENDMODE_BLEND);
+
     // BACKGROUND TEXTURE LOADING
-    background = IMG_LoadTexture(renderer, "assets/sprites/background.png");
+    background = loadOrNull("assets/sprites/background.png");
     SDL_SetTextureScaleMode(background, SDL_SCALEMODE_NEAREST);
     SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
     SDL_SetTextureAlphaMod(background, 123);
 
     // BAAGHCHAAL TEXT
-    baaghchaal_txt = IMG_LoadTexture(renderer, "assets/sprites/baaghchaal_txt.png");
-    SDL_SetTextureScaleMode(background, SDL_SCALEMODE_NEAREST);
-    SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
+    baaghchaal_txt = loadOrNull("assets/sprites/baaghchaal_txt.png");
+    SDL_SetTextureScaleMode(baaghchaal_txt, SDL_SCALEMODE_NEAREST);
+    SDL_SetTextureBlendMode(baaghchaal_txt, SDL_BLENDMODE_BLEND);
     SDL_SetTextureAlphaMod(baaghchaal_txt, 153);
 
   }

@@ -27,6 +27,8 @@ public:
   bool clicked_tobe_reloaded = false;
   bool game_paused;
   bool bot_thinking;
+  bool audio_loaded;
+  bool move_played;
 
   std::string copied_state;
   std::string copied_bot_taken;

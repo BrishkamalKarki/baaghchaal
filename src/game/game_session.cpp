@@ -13,13 +13,11 @@ GameSession::GameSession(SDL_Window* win, SDL_Renderer* rend, void* game_state, 
     ui_manager.initScene();
 } 
 
-SDL_AppResult GameSession::routeToEvents(SDL_Event* event)
-{
+SDL_AppResult GameSession::routeToEvents(SDL_Event* event){
     return game_event.handleEvent(event);
 }
 
-SDL_AppResult GameSession::runFrame()
-{
+SDL_AppResult GameSession::runFrame(){
     Uint64 start_time = SDL_GetTicks();
     
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
@@ -32,22 +30,24 @@ SDL_AppResult GameSession::runFrame()
 
     SDL_RenderPresent(renderer);
 
-    // DECLARAING THE TIME OUT WINNER
-    std::string winner = ui_manager.engine->board_eval.checkWinner();
-    if (winner == "goat" || winner == "baagh"){
-        ui_manager.game_state->move = 0;
-        ui_manager.game_state->turn = "goat";
-        ui_manager.pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
-        ui_manager.initScene();
-        ui_manager.game_state->won_by_time_out = true;
-        ui_manager.state_changed = true;
+    // DECLARAING THE WINNER
+    if (!ui_manager.engine->bot_busy){
+        std::string winner = ui_manager.engine->board_eval.checkWinner();
+        if ((winner == "goat" || winner == "baagh" || ui_manager.game_state->won_by_time_out) && ui_manager.game_state->audio_loaded &&
+        !ui_manager.pair_scene.empty() && ui_manager.pair_scene.back() != ScenceOrd::RESULT_SCREEN){
+            SDL_Delay(2000);
+            ui_manager.game_state->turn = "goat";
+            ui_manager.pair_scene.push_back(ScenceOrd::RESULT_SCREEN);
+            ui_manager.initScene();
+            ui_manager.state_changed = true;
+        }
     }
 
     Uint64 frame_end_time = SDL_GetTicks();
     if (frame_end_time - start_time < 1000/gameConf.FPS_limit){
         // SETTING UP THE FPS LIMIT FOR THE GAME - CURRENT FPS LIMIT = 60
         int elapsed_time = frame_end_time - start_time;
-        SDL_Delay(1000/gameConf.FPS_limit - elapsed_time);
+        SDL_Delay(1000 / gameConf.FPS_limit - elapsed_time);
     }
 
     prev_w = window_w;

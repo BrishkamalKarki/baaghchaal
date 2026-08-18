@@ -174,7 +174,6 @@ int BoardEvaluator::getValidMovesAt(int pos, std::string where){
 int BoardEvaluator::checkBaaghTrapped(bool update_real_state){
     int local_trapped = 0;
     std::vector<int> local_trapped_pos;
-
     std::vector<int> saved_valid_moves = valid_moves;
     std::vector<std::pair<int,int>> saved_edible = edible_valid_moves;
     std::string saved_turn = engine->game_state->turn;
@@ -187,7 +186,7 @@ int BoardEvaluator::checkBaaghTrapped(bool update_real_state){
             edible_valid_moves.clear();
             bgh_valid_moves.clear();
 
-            getValidMovesAt(id - 1); // id (.first) is 1-based; convert to 0-based array index
+            getValidMovesAt(id - 1);
 
             if (bgh_valid_moves.empty()){
                 local_trapped_pos.push_back(id - 1);
@@ -204,14 +203,10 @@ int BoardEvaluator::checkBaaghTrapped(bool update_real_state){
         engine->game_state->baagh_trapped = local_trapped;
         engine->game_state->baagh_trapped_at_pos = local_trapped_pos;
     }
-
     return local_trapped;
 }
 
 std::string BoardEvaluator::checkWinner(){
-    // false: never let search-tree calls overwrite the real, displayed
-    // trapped-tiger state — only whatever explicitly calls with `true`
-    // (the real move application path in engine.cpp) should do that.
     int trapped = checkBaaghTrapped(false);
 
     if (trapped == 4){

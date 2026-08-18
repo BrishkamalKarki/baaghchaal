@@ -3,7 +3,9 @@
 #include <vector>
 #include <string>
 
+#include <SDL3/SDL.h>
 #include "engine/rules.hpp"
+#include<atomic>
 
 class Engine;
 class BoardEvaluator;
@@ -33,28 +35,37 @@ public:
         std::vector<int> vulnerable_goat_pos;
     };
 
-    struct PlacementSafety {
-        int safe      = 0;
-        int dangerous = 0;
-    };
-
-    explicit MiniMax(Engine* eng);
+    MiniMax(Engine* eng);
+    std::atomic<bool> stop_requested{false};  
 
     void findBestMove();
+    Uint64 think_time;
 
 private:
+    static const int ABORT_SCORE = -2000000000;
 
+    // ITERATIVE DEEPENING STATE
+    int current_depth = 1;
+    bool aborted = false;
+    Uint64 search_start = 0;
+    int time_budget_ms = 0;
+
+    // STATIC PER-MOVE DATA
+    std::vector<bool> danger_map;
+    std::vector<int> place_order;
+    std::vector<int> center_dist;
+
+    void buildDangerMap();
+    void buildPlacementOrder();
+    int countGoatNeighbours(int id);
+    void fallbackMove();
 
     int minimax(int depth, bool maximizingPlayer, int alpha, int beta);
     int evaluate_score();
 
-    int countTigers();
     int countGoats();
-
     int goatClusters();
     int goatBlockingScore();
 
     TigerScoreFactors getScoreTiger();
-
-    PlacementSafety computePlacementSafety();
 };

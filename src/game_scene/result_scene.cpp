@@ -172,12 +172,15 @@ void ResultScene::buildUI(){
   createPillButton(play_again_btn_shape, play_again_btn, {center_x - 130.f, center_y + 130.f}, {220.f, 64.f},
                     "PLAY AGAIN", ui_manager->font.font_regular_bold, accent, theme.black);
   play_again_btn.onClick = [this](){ 
+    MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
     if (onPlayAgain) onPlayAgain(); 
   };
  
   createPillButton(main_menu_btn_shape, main_menu_btn, {center_x + 130.f, center_y + 130.f}, {220.f, 64.f},
                     "MAIN MENU", ui_manager->font.font_regular_bold, theme.wooden_brown, theme.white);
-  main_menu_btn.onClick = [this](){ if (onMainMenu) onMainMenu(); 
+  main_menu_btn.onClick = [this](){ 
+    MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
+    if (onMainMenu) onMainMenu(); 
   };
 }
  

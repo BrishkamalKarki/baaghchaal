@@ -178,12 +178,15 @@ void StartupScene::buildInfoOverlay(){
     addInfoText(ui_manager->font.font_regular, text, center_x, line_y, credit_color, -tw / 2.f, 0.f);
     line_y += 26.f;
   };
-  addCenteredCreditLine("DEVELOPED BY: Brishkamal Karki, Bishesh Khatri, Chandan Panjiyar");
+  addCenteredCreditLine("Developed By: Brishkamal Karki, Bishesh Khatri, Chandan Panjiyar");
 
   // BACK BUTTON - SAME PILL STYLE AND FONT AS THE MAIN MENU BUTTONS
   createPillButton(back_btn_shape, back_btn, {center_x, panel_cy + 210.f}, {220.f, 60.f},
                     "BACK", ui_manager->font.font_regular_bold, theme.wooden_brown, theme.white);
-  back_btn.onClick = [this](){ showing_info = false; };
+  back_btn.onClick = [this](){ 
+    showing_info = false;
+    MIX_PlayAudio(ui_manager->sound.mixer, ui_manager->sound.button_clicked);
+ };
 }
  
 void StartupScene::render(){
