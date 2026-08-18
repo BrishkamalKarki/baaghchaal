@@ -102,7 +102,7 @@ chmod +x commander.sh
 sudo apt update
 sudo apt install build-essential cmake ninja-build git
 ```
-```
+
 
 ### Windows environment
 
